@@ -302,7 +302,7 @@ msgstr ""
 #. module: ndt_data_test
 #: model:ir.model.fields,field_description:ndt_data_test.field_test_model__tl_ids
 msgid "tlm ids"
-msgstr "tala tml"
+msgstr ""
 
 #. module: ndt_data_test
 #: model:ir.model.fields.selection,name:ndt_data_test.selection__ndt_data_test__type__trobz_wage
