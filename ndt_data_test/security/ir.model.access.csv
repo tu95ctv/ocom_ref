@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ndt_data_test,access_ndt_data_test,model_ndt_data_test,,1,1,1,1
+access_ndt_test_model,access_ndt_test_model,model_test_model,,1,1,1,1
+access_ndt_test_line,access_ndt_test_line,model_test_line,,1,1,1,1

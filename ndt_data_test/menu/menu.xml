@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="create_data_test_menu" name="Create data test"  sequence="2"/>
+    <menuitem id="create_data_test_menu2" parent="create_data_test_menu" name="Create data test" action="action_create_data_test" sequence="2"/>
+    <menuitem id="test_model_menu2" parent="create_data_test_menu" name="Test Model nè1" action="action_test_model" sequence="1"/>
+
+</odoo>

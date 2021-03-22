@@ -1,0 +1,57 @@
+<odoo>
+    <record id="ndt_test_model_view" model="ir.ui.view">
+        <field name="name">test.model</field>
+        <field name="model">test.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="test" type="object" class="btn primary-btn" />
+                </header> 
+                <group>
+                    <group>
+                        <field name="name"  />
+                        <field name="name_test" />
+                        <field name="name_test2" />
+                        <field name="depend_field" />
+                        <field name="tl_id" />
+                        <field name="tl_ids"  />
+                        <field name="tl2_ids"  />
+                        <field name="tlo_ids">
+                            <tree editable="bottom">
+                                <field name="name" />
+                                <field name="employee_id" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="oc"  />
+                        <field name="oc_result" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="ndt_test_model_view_tree" model="ir.ui.view">
+        <field name="name">test.model</field>
+        <field name="model">test.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"  />
+                <field name="tl_id" />
+            </tree>
+        </field>
+    </record>
+                        
+
+    <record id="action_test_model" model="ir.actions.act_window">
+        <field name="name">test.model</field>
+        <field name="res_model">test.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ></field>
+        <field name="target">current</field>
+        <!-- <field name="view_ids" eval="[(5,0,0),()]" /> -->
+    </record>
+
+
+</odoo>

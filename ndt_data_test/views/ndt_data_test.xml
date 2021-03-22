@@ -1,0 +1,61 @@
+<odoo>
+    <record id="ndt_create_data_test_view" model="ir.ui.view">
+        <field name="name">Create data test</field>
+        <field name="model">ndt.data.test</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="rs"/>
+                        <field name="now_stt"/>
+                        <field name="auto_increase_stt"/>
+                        <field name="type" />
+                        <field name="input_text" />
+                        <field name="tl_ids" />
+                        <field name="t2" />
+                        </group>
+                    <group>
+                        <field name="is_validate_invoice" />
+                        <field name="is_promote_sol" />
+                        <field name="input_date"/>
+                        <field name="is_input_date"/>
+                        <field name="is_last_month"/>
+                        <field name="is_last_year"/>
+                    </group>
+
+                </group>
+
+                <footer>
+                    <button type="object" name="test" string="Test" class="btn btn-primary" />
+                    <button type="object" name="test2" string="Test2" class="btn btn-primary" />
+                    <button type="object" name="test3" string="Test3" class="btn btn-primary" />
+                    <button type="object" name="test4" string="Test4" class="btn btn-primary" />
+                    <button type="object" name="create_data_test" string="Tạo data test" class="btn btn-primary" />
+                    <button type="object" name="create_master_data" string="create_master_data" class="btn btn-primary" />
+                    <button type="object" name="setting_common" string="Cài vá gán ĐK" class="btn btn-default" />
+                    <button type="object" name="clean_all_data" string="clean all data" class="btn btn-primary" />
+                    <button type="object" name="clean_master_data" string="clean Master data" class="btn btn-primary" />
+
+
+                    <button type="object" name="install_module" string="install module" class="btn btn-default" />
+                    <button type="object" name="clear_coa" string="clear coa" class="btn btn-default" />
+                    <button type="object" name="uninstall_module" string="uninstall module" class="btn btn-default" />
+                    <button type="object" name="uninstall_l10n_vn" string="uninstall l10n vn" class="btn btn-default" />
+                    <button type="object" name="install_l10n_vn" string="install l10n vn" class="btn btn-default" />
+                    <button type="object" name="upgrade_l10n_vn" string="upgrade l10n vn" class="btn btn-default" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_create_data_test" model="ir.actions.act_window">
+        <field name="name">Create data test</field>
+        <field name="res_model">ndt.data.test</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="ndt_create_data_test_view"/>
+        <field name="target">new</field>
+    </record>
+
+    
+</odoo>
