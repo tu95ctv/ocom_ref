@@ -4,9 +4,16 @@ from odoo.exceptions import UserError
 from time import sleep
 import logging
 _logger = logging.getLogger(__name__)
+
+class SaleParent(models.Model):
+    _name = 'tp.sale.parent' #tên bàng tp_sale
+
+    xyz = fields.Char()
+
 class Sale(models.Model):
     _name = 'tp.sale' #tên bàng tp_sale
     _description = 'TP sale'
+    _inherits = {'tp.sale.parent': 'tp_sale_parent_id'}
 
     name = fields.Char(x=1)
     customer_id = fields.Many2one('res.partner')
@@ -71,7 +78,10 @@ class Sale(models.Model):
         _logger.info('hóa đơn từ Hà Nội %s'%rs)
 
 
+# class TPsaleInherit(models.Model):
+#     _inherit = 'tp.sale'
 
+#     inherit_test = fields.Char()
 
 
 

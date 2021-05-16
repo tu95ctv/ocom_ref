@@ -12,6 +12,7 @@
                 <group>
                     <group>
                         <field name="name" />
+                        <field name="xyz" />
                         <field name="customer_id" />
                         <field name="number" />
                         <field name="customer_ids" />
