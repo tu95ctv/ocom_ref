@@ -11,6 +11,7 @@ from time import sleep
 import logging
 import threading
 
+
 from odoo import api, SUPERUSER_ID
 
 _logger = logging.getLogger(__name__)
@@ -35,6 +36,7 @@ class CreatDataTest(models.TransientModel):
     type = fields.Selection([('trobz_wage', 'trobz_wage'),
                              ('sale_order', 'sale_order')], default='trobz_wage')
     # stt = fields.Char(default=1, readonly=1)
+    domain = fields.Char(default=[])
     name = fields.Char(translate=True)
     now_stt = fields.Char(compute='_compute_now_stt')
     auto_increase_stt = fields.Boolean(default=True)
@@ -50,7 +52,11 @@ class CreatDataTest(models.TransientModel):
     t2 = fields.Char()
     ############# Create so ################
 
+
+
     def test(self):
+        print ('akdfkdsjflkdf dklf')
+        raise UserError('akakak')
         self.rs = 1
         self.input_text = 2
         return

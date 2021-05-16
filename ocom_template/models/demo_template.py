@@ -17,7 +17,6 @@ from odoo.addons.counter_widget.models.fields import CounterChar
 def get_report_card_limit_remark(env):
     return env['ir.config_parameter'].sudo().get_param('report_card_limit_remark')
 
-
 class TestModel1(models.Model):
     _name = 'test.model1'
     name = CounterChar(counter_size=get_report_card_limit_remark, size=50)

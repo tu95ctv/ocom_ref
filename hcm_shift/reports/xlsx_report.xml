@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="hcm_shift"
+        model="hcm.shift"
+        string="Print to XLSX Shift"
+        report_type="xlsx"
+        name="module_name.report_shift"
+        file="hcm_shift"
+        attachment_use="False"
+    />
+
+</odoo>

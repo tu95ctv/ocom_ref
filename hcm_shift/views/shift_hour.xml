@@ -1,0 +1,41 @@
+<odoo>
+   <record id="shift_hour_form" model="ir.ui.view">
+        <field name="name">shift.hour.form</field>
+        <field name="model">shift.hour</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name" />
+                        <field name="begin_hour" />
+                        <field name="duration" />
+                        <field name="company_id" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="shift_hour_list" model="ir.ui.view">
+        <field name="name">shift.hour.tree</field>
+        <field name="model">shift.hour</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="name" />
+                <field name="begin_hour" />
+                <field name="duration" />
+                <field name="company_id" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="shift_hour_action" model="ir.actions.act_window">
+        <field name="name">shift.hour</field>
+        <field name="res_model">shift.hour</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem id="configuration_shift_menu" parent="hcm_shift_root_menu" name="Configuration"  sequence="2"/>
+    <menuitem id="shift_hour_menu" parent="configuration_shift_menu" name="Shift Hour" action="shift_hour_action" sequence="1"/>
+</odoo>

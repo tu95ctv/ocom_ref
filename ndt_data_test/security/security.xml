@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="test_model_for_fun" model="ir.rule">
+        <field name="name">Test model for fun</field>
+        <field name="model_id" ref="model_test_model"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('name_test','!=', 'q')]</field>
+    </record>
+
+</odoo>

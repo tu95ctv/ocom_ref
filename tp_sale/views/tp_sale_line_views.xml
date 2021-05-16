@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tp_sale_line_list" model="ir.ui.view">
+        <field name="name">tp.sale.list</field>
+        <field name="model">tp.sale.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id" />
+                <field name="qty" />
+                <field name="price_unit" />
+                <field name="price" />
+            </tree>
+        </field>
+    </record>
+</odoo>

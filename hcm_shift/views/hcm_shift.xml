@@ -1,0 +1,63 @@
+<odoo>
+   <record id="hcm_shift_form" model="ir.ui.view">
+        <field name="name">hcm.shift.form</field>
+        <field name="model">hcm.shift</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="button_1" type="object" class="btn btn-primary" string="button test" />
+                </header>
+                <group>
+                    <group>
+                        <field name="name"  string="name"/>
+                        <field name="date" />
+                        <field name="user_ids">
+                            <tree>
+                            <field name="name" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="shift_hour_id" />
+                        <field name="begin_dt" />
+                        <field name="end_dt" readonly="0"/>
+
+                    </group>
+                    
+                </group>
+                <field name="task_ids" >
+                        <tree editable="bottom">
+                            <field name="name" />
+                            <field name="date_begin"/>
+                            <field name="date_end" />
+                            <field name="parent_type"/>
+                            <field name="type_id"/>
+                            <field name="partner_ids" widget="many2many_tags" />
+                            <field name="company_id"/>
+                        </tree>
+                    </field>
+            </form>
+        </field>
+    </record>
+
+    <record id="hcm_shift_list" model="ir.ui.view">
+        <field name="name">hcm.shift.tree</field>
+        <field name="model">hcm.shift</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="name" />
+                <field name="user_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hcm_shift_action" model="ir.actions.act_window">
+        <field name="name">hcm.shift</field>
+        <field name="res_model">hcm.shift</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="hcm_shift_root_menu" name="Ca Trực"  sequence="1"/>
+    <menuitem id="hcm_shift_menu" parent="hcm_shift_root_menu" name="Ca trực" action="hcm_shift_action" sequence="1"/>
+</odoo>

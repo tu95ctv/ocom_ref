@@ -1,20 +1,36 @@
-# -*- coding: utf-8 -*-
+
 from odoo import http
+import json
+from odoo.http import Controller, route, request
+from odoo.exceptions import UserError
 
-# class Hcmaccount(http.Controller):
-#     @http.route('/hcmaccount/hcmaccount/', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
 
-#     @http.route('/hcmaccount/hcmaccount/objects/', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('hcmaccount.listing', {
-#             'root': '/hcmaccount/hcmaccount',
-#             'objects': http.request.env['hcmaccount.hcmaccount'].search([]),
-#         })
+class ABCcontroller(Controller):
 
-#     @http.route('/hcmaccount/hcmaccount/objects/<model("hcmaccount.hcmaccount"):obj>/', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('hcmaccount.object', {
-#             'object': obj
-#         })
+    # @route('/odoo_api3/get',methods=['GET'], auth="public")
+    @http.route('/odoo_api3/get/<string:model_name>', 
+    methods=['POST','GET'],
+    type='json',
+    auth='none',
+     )
+    def getabc(self, **params):
+        print ('**params**', params)
+        result = {'model_name': params['model_name'], 
+                'params':str(params)
+            }
+        return result
+        # return json.dumps(result)
+
+# class ABCcontrollerInherit(ABCcontroller):
+#     # @route('/odoo_api3/get',methods=['GET'], auth="public")
+#     # @http.route( auth='none', methods=['GET'], type='json')
+#     @http.route()
+#     def getabc(self,model_name, **params):
+#         rs = super().getabc(model_name, **params)
+#         rs.update({'123':'321'})
+#         # raise ValueError('abc')
+#         return rs   
+#         # result = {'model_name': model_name, 
+#         #         'params':str(params)
+#         #     }
+        # return json.dumps(result)

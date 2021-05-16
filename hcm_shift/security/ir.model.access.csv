@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hcm_shift,access_hcm_shift,model_hcm_shift,,1,1,1,1
+access_hcm_shift_task,access_shift_task,model_shift_task,,1,1,1,1
+access_hcm_shift_task_type,access_shift_task_type,model_shift_task_type,,1,1,1,1
+access_hcm_shift_hour,access_shift_hour,model_shift_hour,,1,1,1,1

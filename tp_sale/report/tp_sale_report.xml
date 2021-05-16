@@ -1,0 +1,47 @@
+<odoo>
+    <record id="action_report_saleorder" model="ir.actions.report">
+                <field name="name">Quotation / Order</field>
+                <field name="model">tp.sale</field>
+                <field name="report_type">qweb-pdf</field>
+                <field name="report_name">tp_sale.report_saleorder</field>
+                <field name="report_file">tp_sale.report_saleorder</field>
+                <field name="print_report_name">'test'</field>
+                <field name="binding_model_id" ref="model_tp_sale"/>
+                <field name="binding_type">report</field>
+                <field name="paperformat_id" ref="base.paperformat_us" />
+    </record>
+
+
+    <template id="report_saleorder">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="tp_sale.report_saleorder_document"/>
+            </t>
+        </t>
+    </template>
+
+
+
+    <template id="report_saleorder_document">
+    <t t-call="web.external_layout">
+        
+
+        <div class="row mt32 mb32" id="informations">
+              
+                <div class="col-auto col-3 mw-100 mb-2" name="expiration_date">
+                    <strong>Order Date:</strong>
+                    <p class="m-0" t-field="doc.order_date"/>
+                </div>
+                <div class="col-auto col-3 mw-100 mb-2">
+                    <strong>Customer:</strong>
+                    <p class="m-0" t-field="doc.customer_id"/>
+                </div>
+            </div>
+
+        
+    </t>
+</template>
+
+
+
+</odoo>

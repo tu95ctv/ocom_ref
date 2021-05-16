@@ -1,4 +1,10 @@
-import builtins
-rs = {name: getattr(builtins, name) for name in dir(builtins)}
-rs2 = rs['len'](range(10))
-print (rs2)
+
+
+def abcd(x,y,z=3):
+    print (x,y,z)
+
+abcd(2,3,z=4)
+
+ 
+abcd(2,3,4)
+abcd(z=4,2,3)

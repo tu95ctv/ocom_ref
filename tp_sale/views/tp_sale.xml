@@ -1,0 +1,73 @@
+<odoo>
+   <record id="tp_sale_form" model="ir.ui.view">
+        <field name="name">tp.sale.form</field>
+        <field name="model">tp.sale</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Test loi" name="test_loi" type="object" class="oe_highlight"/>
+                    <button string="print_out_in_date" name="print_out_in_date" type="object" class="oe_highlight"/>
+                    <button string="test" name="test" type="object" class="oe_highlight"/>
+                </header>
+                <group>
+                    <group>
+                        <field name="name" />
+                        <field name="customer_id" />
+                        <field name="number" />
+                        <field name="customer_ids" />
+                    </group>
+                    <group>
+                        <field name="order_date" />
+                        <field name="order_date_input" />
+                    </group>
+                </group>
+                <notebook>
+                    <page name="Sale lines" string="Sale lines">
+                        <field name="sale_line_ids" >
+                            
+                            
+                        </field>
+                    </page>
+                </notebook>
+                <group>
+                    <field name="amount" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="tp_sale_list" model="ir.ui.view">
+        <field name="name">tp.sale.list</field>
+        <field name="model">tp.sale</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="customer_id" />
+                <field name="order_date" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="tp_sale_search" model="ir.ui.view">
+        <field name="name">tp.sale.search</field>
+        <field name="model">tp.sale</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="customer_id" />
+                <filter name="search_ten_tu" string="Search tên tứ và k/h là xzy"
+                     domain="[('name','=','tu'), ('customer_id.name','=','xyz')]" />
+            </search>
+        </field>
+    </record>
+
+
+    <record id="tp_sale_action" model="ir.actions.act_window">
+        <field name="name">Sale Demo</field>
+        <field name="res_model">tp.sale</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+
+</odoo>

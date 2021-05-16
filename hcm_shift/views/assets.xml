@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_char_field" name="ocom_template assets" inherit_id="web.assets_backend">
+            <xpath expr="link[last()]" position="after">
+                <link rel="stylesheet" type="text/scss" href="/ocom_template/static/src/scss/count_char_field.scss"/>
+            </xpath>
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/ocom_template/static/src/js/count_char_field.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -5,13 +5,16 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="test" type="object" class="btn primary-btn" />
+                    <button name="test" string="Test" type="object" class="btn primary-btn" />
+                    <button name="test2" string="Test 2" type="object" class="btn primary-btn" />
                 </header> 
                 <group>
                     <group>
                         <field name="name"  />
                         <field name="name_test" />
                         <field name="name_test2" />
+                        <field name="domain" />
+                        <field name="number" />
                         <field name="depend_field" />
                         <field name="tl_id" />
                         <field name="tl_ids"  />

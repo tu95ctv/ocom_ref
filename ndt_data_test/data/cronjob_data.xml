@@ -1,30 +1,11 @@
 <odoo>
-    <record id="cronjob_fetch1" model="ir.cron">
-            <field name="name">Loop Fetch CronJob 1</field>
-            <field name="active">False</field> 
-            <field name="user_id" ref="base.user_root"/>
-            <field name="interval_number">1</field>
-            <field name="interval_type">minutes</field>
-            <field name="numbercall">-1</field>
-            <field eval="False" name="doall"/>
-            <!-- <field eval="'ndt.data.test'" name="model"/> -->
-            <field ref="model_ndt_data_test" name="model_id"/>
-            <field name="state">code</field>
-            <field name="code">model.test_em1()</field>
-    </record>
-
-    <record id="cronjob_fetch2" model="ir.cron">
-            <field name="name">Loop Fetch CronJob 2</field>
-            <field name="active">False</field> 
-            <field name="user_id" ref="base.user_root"/>
-            <field name="interval_number">1</field>
-            <field name="interval_type">minutes</field>
-            <field name="numbercall">-1</field>
-            <field eval="False" name="doall"/>
-            <!-- <field eval="'ndt.data.test'" name="model"/> -->
-            <field ref="model_ndt_data_test" name="model_id"/>
-            <field name="state">code</field>
-            <field name="code">model.test_em2()</field>
+    <record id="ir_mail_server_google" model="ir.mail_server" forcecreate="0">
+            <field name="name">google outgoing mail</field>
+            <field name="smtp_host">smtp.gmail.com</field>
+            <field eval="465" name="smtp_port"/>
+            <field eval="1" name="sequence"/>
+            <field name="smtp_encryption">ssl</field>
+            <field name="smtp_user">ductu8711@gmail.com</field>
+            <field name="smtp_pass">qmucilbqjhmfbyqa</field>
         </record>
-
 </odoo>
