@@ -5,7 +5,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button string="Test loi" name="test_loi" type="object" class="oe_highlight"/>
+                    <button string="test_abc1" name="test_abc1" type="object" class="oe_highlight"/>
+                    <button string="test_loi" name="test_loi" type="object" class="oe_highlight"/>
                     <button string="print_out_in_date" name="print_out_in_date" type="object" class="oe_highlight"/>
                     <button string="test" name="test" type="object" class="oe_highlight"/>
                 </header>

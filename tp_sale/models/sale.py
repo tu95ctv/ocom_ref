@@ -2,13 +2,32 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError
 from time import sleep
+from odoo.tools import config
 import logging
 _logger = logging.getLogger(__name__)
+
+
+# class User(models.Model):
+#     _inherit = 'res.users' #tên bàng tp_sale
+
+#     new_field = fields.Char()
+
+    
+
+class Contact(models.Model):
+    _inherit = 'res.partner' #tên bàng tp_sale
+
+    def print_abc(self):
+        print ('abc', config['data_dir'],'haha',config.filestore('o141'))
+
+
 
 class SaleParent(models.Model):
     _name = 'tp.sale.parent' #tên bàng tp_sale
 
     xyz = fields.Char()
+
+   
 
 class Sale(models.Model):
     _name = 'tp.sale' #tên bàng tp_sale
@@ -28,12 +47,22 @@ class Sale(models.Model):
     number = fields.Integer()
     order_date_input = fields.Date()
     customer_ids = fields.Many2many('res.partner', 'tp_sale_res_partner_relation', 'tp_sale_id', 'customer_id')
+    
+    def test_abc(self):
+        
+        print ('abc')
+
+    def test_abc1(self):
+        print (abc)
+        print ('abc')
+
     @api.depends('sale_line_ids.price')
     def _compute_amount(self):
         for rec in self:
             rec.amount = sum(rec.sale_line_ids.mapped('price'))
 
     def test_loi(self):
+        print ('test loi')
         with self.pool.cursor() as cr:
             cr.autocommit(True)
             for i in range(6):
@@ -85,6 +114,10 @@ class Sale(models.Model):
 
 
 
+# class TPSale2(models.Model):
+#     _inherit = 'tp.sale'
+
+#     tpsale2 = fields.Char()
    
 
 
