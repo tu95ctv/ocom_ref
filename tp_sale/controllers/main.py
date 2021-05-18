@@ -24,7 +24,52 @@ from odoo.addons.website.controllers.main import Website
 from odoo.addons.website_form.controllers.main import WebsiteForm
 from odoo.osv import expression
 _logger = logging.getLogger(__name__)
+from odoo.http import Response
+# test response json
 
+
+        
+class TestResponseJson (http.Controller):
+    
+    # def _json_response(self, result=None, error=None):
+    #     response = {
+    #         'jsonrpc': '2.0',
+    #         # 'id': self.jsonrequest.get('id')
+    #         }
+    #     if error is not None:
+    #         response['error'] = error
+    #     if result is not None:
+    #         response['result'] = result
+
+    #     mime = 'application/json'
+    #     body = json.dumps(response)
+
+    #     return Response(
+    #         body, status=error and error.pop('http_status', 200) or 200,
+    #         headers=[('Content-Type', mime), ('Content-Length', len(body))]
+        # )
+
+
+    @http.route(['''/test_respone_json''',
+    ], type='http', auth="public", website=True)
+    def test_respone_json(self):
+        rs = {'mua_xuan': 'la_kho'}
+        body = json.dumps(rs)
+        # return rs
+        mime = 'application/json'
+        return Response(
+            rs, status=200,
+            headers=[('Content-Type', mime), ('Content-Length', len(body))]
+        )
+
+        # return self._json_response(rs)
+        # # return Response(rs)
+
+
+
+
+
+#! test response json
 class TableCompute(object):
 
     def __init__(self):
