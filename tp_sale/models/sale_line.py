@@ -13,5 +13,8 @@ class SaleLine(models.Model):
     def _compute_price(self):
         for record in self:
             record.price = record.qty * record.price_unit
+    # @api.model
+    # def create(self, vls):
+    #     raise ValueError('akdfkdkf')
 
             

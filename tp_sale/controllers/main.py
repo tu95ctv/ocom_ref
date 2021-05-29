@@ -51,7 +51,7 @@ class TestResponseJson (http.Controller):
 
 
     @http.route(['''/test_respone_json''',
-    ], type='http', auth="public", website=True)
+    ], type='json', auth="user", methods=['GET'])
     def test_respone_json(self):
         rs = {'mua_xuan': 'la_kho'}
         body = json.dumps(rs)

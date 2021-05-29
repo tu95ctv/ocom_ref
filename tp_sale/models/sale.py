@@ -3,23 +3,21 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 from time import sleep
 from odoo.tools import config
+from datetime import date
 import logging
 _logger = logging.getLogger(__name__)
-
+import threading
 
 # class User(models.Model):
 #     _inherit = 'res.users' #tên bàng tp_sale
 
 #     new_field = fields.Char()
 
-    
-
 class Contact(models.Model):
     _inherit = 'res.partner' #tên bàng tp_sale
-
+    
     def print_abc(self):
         print ('abc', config['data_dir'],'haha',config.filestore('o141'))
-
 
 
 class SaleParent(models.Model):
@@ -27,15 +25,16 @@ class SaleParent(models.Model):
 
     xyz = fields.Char()
 
-   
 
 class Sale(models.Model):
     _name = 'tp.sale' #tên bàng tp_sale
     _description = 'TP sale'
-    _inherits = {'tp.sale.parent': 'tp_sale_parent_id'}
+    # _inherits = {'tp.sale.parent': 'tp_sale_parent_id'}
 
+    image_test = fields.Binary(attachment=False)
+    image_test_a = fields.Binary()
     name = fields.Char(x=1)
-    customer_id = fields.Many2one('res.partner')
+    customer_id = fields.Many2one('res.partner', domain=[('id','in',(3,4))])
     ### field one2many này hơi mới so với framework khác
     # One2many trường không có cột trong database
     # Nó liên kết tới 1 bảng khác, bảng đó có 1 cột khóa ngoại liên kết về bảng này
@@ -48,13 +47,77 @@ class Sale(models.Model):
     order_date_input = fields.Date()
     customer_ids = fields.Many2many('res.partner', 'tp_sale_res_partner_relation', 'tp_sale_id', 'customer_id')
     
+    def create_tp_sale_raise_tp_sale_line(self):
+        data = {
+            'name': 'test1',
+            'sale_line_ids': [(0,0,{'qty':2})]
+        }
+        self.create([data])
+
     def test_abc(self):
         
         print ('abc')
 
     def test_abc1(self):
-        print (abc)
-        print ('abc')
+        try:
+            self.create_crm_lead_one()
+        except:
+            pass
+    
+    def create_crm_lead_one_with_day_month(self,month, day):
+        print ('*create_crm_lead_one_with_day_month*')
+        C = self.env['crm.lead']
+        last_contact_date = date(2021,month,day)
+        C.create({'name': 'test', 
+            'type':'opportunity',
+            'deal_ref': False, 
+            'last_contact_date':last_contact_date})
+
+      
+    def create_crm_lead_one(self, thread_i):
+        C = self.env['crm.lead']
+        C.create({'name': 'test', 'deal_ref': False})
+
+
+    
+
+
+    def create_crm_lead(self, thread_i):
+        print ('bắt đầu tạo 1-1000 crm.lead')
+        for i in range(20):
+            month=i%5 or 5
+            day = i%28 or 28
+            self.create_crm_lead_one_with_day_month(month, day)
+    
+    def write_crm_lead(self,thread_i=0):
+        C = self.env['crm.lead']
+        limit = 2
+        offset = thread_i*limit
+        crms = C.search([], limit=limit, offset=offset)
+        for count, c in enumerate(crms):
+            print (c)
+            deal_ref = offset + count
+            c.write({'deal_ref':deal_ref})
+
+
+    def count_1_to_n(self):
+        for i in range(20):
+            print (i)
+            sleep(1)
+
+    def test_queue(self):
+        for thread_i in range(10):
+            print ('thread_i', thread_i)
+            self.with_delay().write_crm_lead(thread_i)
+
+    def test_queue_create(self):
+        print ('')
+        for thread_i in range(20):
+            print ('thread_i', thread_i)
+            self.with_delay().create_crm_lead(thread_i)
+            
+            
+
 
     @api.depends('sale_line_ids.price')
     def _compute_amount(self):
@@ -127,6 +190,9 @@ class SaleLineTest(models.Model):
     _description = 'TP sale'
 
     name = fields.Char()
+
+    # def create(self, vals_list):
+    #     raise ValueError('akakaka')
 
 
 
