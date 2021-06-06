@@ -58,10 +58,11 @@ class Sale(models.Model):
 
     
     def test(self):
+        
         _logger.info( 'abcccccccccccccc')
 
 
-        
+    
 
         # with api.Environment.manage():
         #     print ('with manage 1')
