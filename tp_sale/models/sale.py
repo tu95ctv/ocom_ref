@@ -59,6 +59,7 @@ class Sale(models.Model):
     
     def test(self):
         
+
         _logger.info( 'abcccccccccccccc')
 
 
