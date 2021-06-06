@@ -1,0 +1,104 @@
+<odoo>
+    <record model="bds.url" id="url_bds_com_vn_quan_1">
+            <field name="description">bds.com.vn 1</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-dat-quan-1</field>
+        </record>
+        
+        <record model="bds.url" id="url_bds_com_vn_quan_10">
+            <field name="description">bds.com.vn 10</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-dat-quan-10</field>
+        </record>
+        <record model="bds.url" id="url_bds_com_vn_quan_5">
+            <field name="description">bds.com.vn 5</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-dat-quan-5</field>
+        </record>
+      <record model="bds.url" id="url_bds_com_vn_qtanbinh">
+            <field name="description">bds.com.vn Tân Bình</field>
+            <!-- <field name="url">https://batdongsan.com.vn/ban-nha-dat-tan-binh/p5</field> -->
+            <field name="url">https://batdongsan.com.vn/ban-nha-dat-tan-binh/</field>
+
+        </record>
+      <record model="bds.url" id="url_bds_com_vn_tan_phu">
+            <field name="description">bds.com.vn Tân Phú</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-rieng-tan-phu</field>
+        </record>
+        
+         <record model="bds.url" id="url_bds_com_vn_binh_thanh">
+            <field name="description">bds.com.vn Bình Thạnh</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-rieng-binh-thanh</field>
+        </record>
+        
+        
+          <record model="bds.url" id="url_bds_com_vn_11">
+            <field name="description">bds.com.vn 11</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-rieng-quan-11</field>
+        </record>
+        
+         <record model="bds.url" id="url_bds_com_vn_go_vap">
+            <field name="description">bds.com.vn gò vấp</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-rieng-go-vap</field>
+        </record>
+        
+        
+           <record model="bds.url" id="url_bds_com_vn_phu_nhuan">
+            <field name="description">bds.com.vn Phú Nhuận</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-rieng-phu-nhuan</field>
+        </record>
+        
+        <record model="bds.url" id="url_bds_quan_3">
+            <field name="description">bds.com.vn 3</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-dat-quan-3</field>
+        </record>
+        
+          <record model="bds.url" id="url_bds_quan_6">
+            <field name="description">bds.com.vn 6</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-rieng-quan-6</field>
+        </record>
+          <record model="bds.url" id="url_bds_quan_8">
+            <field name="description">bds.com.vn 8</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-rieng-quan-8</field>
+        </record>
+
+        <record model="bds.url" id="url_bds_quan_all">
+            <field name="description">nhà bán all hcm</field>
+            <field name="sell_or_rent">sell</field>
+            <field name="url">https://batdongsan.com.vn/ban-nha-dat-tp-hcm</field>
+        </record>
+
+        <!-- nhà đất cho thuê -->
+        
+        <record model="bds.url" id="url_bds_quan_all_thue">
+            <field name="description">Cho thuê nhà hcm all</field>
+            <field name="sell_or_rent">rent</field>
+            <field name="url">https://batdongsan.com.vn/nha-dat-cho-thue-tp-hcm</field>
+        </record>
+
+        <record model="bds.url" id="url_bds_quan_all_thue">
+            <field name="description">Cho thuê nhà all toàn quốc tq</field>
+            <field name="sell_or_rent">rent</field>
+            <field name="url">https://batdongsan.com.vn/nha-dat-cho-thue</field>
+        </record>
+
+
+
+        <record model="bds.url" id="url_bds_quan_all_need_buy">
+            <field name="description">bds Cần mua nhà toàn quốc</field>
+            <field name="sell_or_rent">need_to_buy</field>
+            <field name="url">https://batdongsan.com.vn/nha-dat-can-mua</field>
+        </record>
+
+        <record model="bds.url" id="url_bds_toan_quoc_ban_nha">
+            <field name="description">bds all Bán nhà toàn quốc</field>
+            <field name="url">https://batdongsan.com.vn/nha-dat-ban</field>
+        </record>
+        
+        <!-- Lấy dự án-->
+
+        <record model="bds.url" id="url_bds_duan_hcm">
+            <field name="description">bds dự án chung cư hcm</field>
+            <field name="url">https://batdongsan.com.vn/can-ho-chung-cu-tp-hcm</field>
+            <field name="fetch_mode">dự án</field>
+        </record>
+
+
+</odoo>

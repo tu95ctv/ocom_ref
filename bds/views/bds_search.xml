@@ -1,0 +1,144 @@
+<odoo>
+  <record id="bds_search" model="ir.ui.view">
+    <field name="name">sale.order.list.select</field>
+    <field name="model">bds.bds</field>
+    <field name="priority">5</field>
+    <field name="arch" type="xml">
+      <search string="bds search">
+        <field name="id" />
+        <field name="title" />
+        <field name="gia"  string="Tạo cách đây bn phút" filter_domain="[('create_date','&gt;', (datetime.datetime.utcnow() -  datetime.timedelta(minutes=self)).strftime('%Y-%m-%d %H:%M:%S'))]"   />
+        <field name="gia"  string="Update cách đây bn phút" filter_domain="[('update_date','&gt;', (datetime.datetime.utcnow() -  datetime.timedelta(minutes=self)).strftime('%Y-%m-%d %H:%M:%S'))]"   />
+        <field name="gia"  string="giá bé hơn" filter_domain="[('gia','&lt;',self)]"/>
+        <field name="gia"  string="giá  lớn hơn" filter_domain="[('gia','&gt;',self)]"/>
+        <field name="count_post_all_site"  string="count_post_all_site  bé hơn" filter_domain="[('count_post_all_site','&lt;',self)]"/>
+        <field name="link" />
+        <field name="html_khong_dau" />
+        <field name="siteleech_id" />
+        <field name="district_id" />
+        <field name="poster_id" />
+        <field name= "muc_gia" />
+        <field name= "trich_dia_chi" />
+        <field name= "url_id" />
+        <field name= "cate" />
+        <field name= "sell_or_rent" />
+        <field name="du_doan_cc_or_mg" />
+        <field name= "detail_du_doan_cc_or_mg" />
+        <field name="district_id_selection" filter_domain="[('district_id','=',self)]"/>
+        <field name="siteleech_id_selection" filter_domain="[('siteleech_id','=',self)]"/>
+        <field  name="greater_day" string="số ngày đăng bé hơn"  filter_domain="[ ('public_datetime','&gt;=', ((context_today()-datetime.timedelta(days=self)).strftime('%Y-%m-%d'))) ]"/>
+        <field  name="greater_day" string="số ngày tạo bé hơn"  filter_domain="[ ('create_date','&gt;=', ((context_today()-datetime.timedelta(days=self)).strftime('%Y-%m-%d'))) ]"/>
+        <field name="chotot_moi_gioi_hay_chinh_chu" />
+        <field name="trich_dia_chi" filter_domain ="['|',('trich_dia_chi','ilike',self), ('mat_tien_address','ilike',self)]"/>
+        <field name="html" filter_domain ="['|','|', ('html','ilike',self), ('html_khong_dau','ilike',self), ('title','ilike',self)]"/>
+        <separator />
+        <filter  name="quan_trung_tam" string="Quận Trung Tâm"  domain="[('district_id.name', 'in',['Quận 1','Quận 3', 'Quận 5', 'Quận 10', 'Quận Tân Bình', 'Quận Tân Phú', 'Quận Phú Nhuận', 'Quận Bình Thạnh'])]"/>
+        <separator />
+        <filter name="co_trich_dia_chi" domain ="[('trich_dia_chi','!=',False)]"></filter>
+        <filter name="Có địa chỉ mặt tiền" domain ="[('mat_tien_address','!=',False)]"></filter>
+        <separator />
+        <filter name="co_trich_dia_chi hẻm hoặc mặt tiền" domain ="['|',('trich_dia_chi','!=',False), ('mat_tien_address','!=',False)]"></filter>
+        <separator />
+        <filter name="Dự đoán tin của cò" domain ="[('dd_tin_cua_co','!=',False)]"></filter>
+        <separator />
+        <filter name="kw_co_break" domain ="[('kw_co_break','!=',False)]"></filter>
+        <separator />
+        <filter name="Có keyword đầu tư" domain ="[('dd_tin_cua_dau_tu','!=',False)]"></filter>
+        <separator />
+        <filter name="dự đoán đầu tư" domain ="[('du_doan_cc_or_mg','=','dd_dt')]"></filter>
+        <separator />
+        <filter name="dự đoán chính chủ" domain ="[('du_doan_cc_or_mg','=','dd_cc')]"></filter>
+        <separator />
+        <filter name="chotot_moi_gioi_hay_chinh_chu" string="chợt tốt Cá nhân" domain ="[('chotot_moi_gioi_hay_chinh_chu','=','chinh_chu')]"/>
+        <separator />
+        <!-- <filter  name="gia" string="giá từ 0.1 tới 2"  domain="[ ('gia','&gt;=', 0.1), ('gia','&gt;=', 2) ]"/>
+        <filter  name="gia" string="giá từ 2 tới 4"  domain="[ ('gia','&gt;=', 2), ('gia','&gt;=', 4) ]"/>
+        <filter  name="gia" string="giá từ 4 tới 6"  domain="[ ('gia','&gt;=', 4), ('gia','&gt;=', 6) ]"/>
+        <separator /> -->
+        <filter name="user_read_mark_ids" string="đánh dấu đọc của user hiện tại" domain ="[('user_read_mark_ids.user_id','=',uid)]"></filter>
+        <separator /> 
+        <filter name="not_user_read_mark_ids" string="đánh dấu chưa đọc của user hiện tại" domain ="[1]" context="{'search_user_not_read':True}"></filter>
+        <separator /> 
+        <filter name="user_quantam_mark_ids" string="đánh dấu quan tâm của user hiện tại" domain ="[('user_quantam_mark_ids.user_id','=',uid)]"></filter>
+        <separator />
+          <filter name="create today" string="Tạo trong ngày" 
+        domain="[('create_date','&gt;=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 17:00:00')))]" />
+        <separator />
+        <filter name="tao_cach_day_5_phut" string="Tạo cách đâ 5 phút" domain="[('create_date','&gt;', (datetime.datetime.utcnow() -  datetime.timedelta(minutes=5)).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+        <separator />
+        <!-- <filter name="dự đoán tin của cò" domain ="[('dd_tin_cua_co','!=',False)]"></filter>
+        <separator /> -->
+        <filter name="today" string="Đăng trong ngày" domain="[('public_datetime','&gt;=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 17:00:00')))]"  />
+        <separator />
+        <filter name="chưa đọc" string="Chưa đọc" domain="[('is_read','=',False)]"></filter>
+        <filter name="quan_tam" string="Quan tâm 1 ngày gần đây" domain="[('quan_tam','&gt;=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 17:00:00')))]"  />
+          <separator />
+        <filter name="ngay_update_gia" string="co ngay_update_gia" domain="[('ngay_update_gia','!=',False)]" help="Pickings that are late on scheduled time" />
+          <separator />
+        <filter name="thismonth" string="public  Month" domain="[('public_datetime','&lt;',(context_today()+ datetime.timedelta(days=1)).strftime('%Y-%m-%d')), ('public_datetime','&gt;=',time.strftime('%Y-%m-01'))]"  />
+        <filter name="thisyear" string="public Year" domain="[('public_datetime','&lt;',(context_today()+relativedelta(years=1)).strftime('%Y-%m-01')), ('public_datetime','&gt;=',time.strftime('%Y-%m-01'))]" />
+        <separator />
+        
+        <group expand="0" string="Group By">
+            <filter name="muc_gia" string="Mức giá" domain="[]" context="{'group_by':'muc_gia'}" />
+            <separator />
+            <filter name="district_id" string="Quận" domain="[]" context="{'group_by':'district_id'}" />
+            <filter name="poster_id" string="Poster" domain="[]" context="{'group_by':'poster_id'}" />
+            <filter name="muc_don_gia" string="Mức đơn giá" domain="[]" context="{'group_by':'muc_don_gia'}" />
+            <filter name="ti_le_don_gia" string="Tỉ lệ đơn giá" domain="[]" context="{'group_by':'ti_le_don_gia'}" />
+            <filter name="siteleech_id" string="Site" domain="[]" context="{'group_by':'siteleech_id'}" />
+            <separator />
+            <filter name="Dự đoán CC hay MG" string="Dự đoán CC hay MG" domain="[]" context="{'group_by':'du_doan_cc_or_mg'}" />
+            <filter name="Detail Dự đoán CC hay MG" string="Detail Dự đoán CC hay MG" domain="[]" context="{'group_by':'detail_du_doan_cc_or_mg'}" />
+            <filter name="cate" string="cate" domain="[]" context="{'group_by':'cate'}" />
+            <filter name="loai_nha" domain="[]" context="{'group_by':'loai_nha'}" />
+            <filter name="district_id" string="group_quan" domain="[]" context="{'group_by':'district_id'}" />
+            <separator />
+            <!-- <filter name="dd_tin_cua_co" string="is kw cò cấp 1" domain="[]" context="{'group_by':'dd_tin_cua_co'}" />
+            <filter name="kw_mg" string="keyword cò c1" domain="[]" context="{'group_by':'kw_mg'}" />
+            <separator />
+            <filter name="is_kw_mg_cap_2" string="is kw cò cấp 2" domain="[]" context="{'group_by':'is_kw_mg_cap_2'}" />
+            <filter name="kw_mg_cap_2" string="keyword cò c2" domain="[]" context="{'group_by':'kw_mg_cap_2'}" />
+            <separator />
+            <filter name="dd_tin_cua_dau_tu" string="Có kw đầu tư" domain="[]" context="{'group_by':'dd_tin_cua_dau_tu'}" />
+            <filter name="kw_hoa_hong" string="kw_hoa_hong" domain="[]" context="{'group_by':'kw_hoa_hong'}" />
+            <separator />
+            <filter name="chotot_moi_gioi_hay_chinh_chu" string="chotot_moi_gioi_hay_chinh_chu" domain="[]" context="{'group_by':'chotot_moi_gioi_hay_chinh_chu'}" />
+            <separator />
+            <filter name="so_lau" string="số lầu" domain="[]" context="{'group_by':'so_lau'}" />
+            <filter name="kw_co_break" string="kw_co_break" domain="[]" context="{'group_by':'kw_co_break'}" />
+            <filter name="kw_co_special_break" string="kw_co_special_break" domain="[]" context="{'group_by':'kw_co_special_break'}" /> -->
+            <separator />
+            <!-- <filter name="hem_rong" string="hẻm rộng" domain="[]" context="{'group_by':'hem_rong'}" />
+            <filter name="loai_hem_selection" string="loai_hem_selection" domain="[]" context="{'group_by':'loai_hem_selection'}" />
+            <filter name="mat_tien" string="mat_tien" domain="[]" context="{'group_by':'mat_tien'}" />
+            <filter name="full_mat_tien" string="full_mat_tien" domain="[]" context="{'group_by':'full_mat_tien'}" />
+            <filter name="is_mat_tien" string="is_mat_tien" domain="[]" context="{'group_by':'is_mat_tien'}" /> -->
+            <separator />
+            <!-- <filter name="hoa_la_canh" string="hoa_la_canh" domain="[]" context="{'group_by':'hoa_la_canh'}" />
+            <filter name="t1l1" string="t1l1" domain="[]" context="{'group_by':'t1l1'}" />
+            <filter name="so_phong_ngu" string="so_phong_ngu" domain="[]" context="{'group_by':'so_phong_ngu'}" />
+            <filter name="kw_hoa_hong" string="kw_hoa_hong" domain="[]" context="{'group_by':'kw_hoa_hong'}" />
+            <filter name="dtsd" string="dtsd" domain="[]" context="{'group_by':'dtsd'}" />
+            <filter name="dtsd_combine" string="dtsd_combine" domain="[]" context="{'group_by':'dtsd_combine'}" />
+            <filter name="gia_xac_nha" string="gia_xac_nha" domain="[]" context="{'group_by':'gia_xac_nha'}" />
+            <filter name="gia_dat_con_lai" string="gia_dat_con_lai" domain="[]" context="{'group_by':'gia_dat_con_lai'}" />
+            <filter name="don_gia_dat_con_lai" string="don_gia_dat_con_lai" domain="[]" context="{'group_by':'don_gia_dat_con_lai'}" />
+            <filter name="loai_hem_combine" string="loai_hem_combine" domain="[]" context="{'group_by':'loai_hem_combine'}" />
+            <filter name="ti_le_don_gia_dat_con_lai" string="ti_le_don_gia_dat_con_lai" domain="[]" context="{'group_by':'ti_le_don_gia_dat_con_lai'}" />
+            <filter name="don_gia_quan" string="don_gia_quan" domain="[]" context="{'group_by':'don_gia_quan'}" /> -->
+            <separator />
+            <filter name="is_mat_tien_or_trich_dia_chi" string="is_mat_tien_or_trich_dia_chi" domain="[]" context="{'group_by':'is_mat_tien_or_trich_dia_chi'}" />
+            <filter name="mat_tien_or_trich_dia_chi" string="mat_tien_or_trich_dia_chi" domain="[]" context="{'group_by':'mat_tien_or_trich_dia_chi'}" />
+            <filter name="mat_tien_address" string="mat_tien_address" domain="[]" context="{'group_by':'mat_tien_address'}" />
+            <filter name="trich_dia_chi" string="trich_dia_chi" domain="[]" context="{'group_by':'trich_dia_chi'}" />
+            <separator />
+            <filter name="muc_gia" string="muc_gia" domain="[]" context="{'group_by':'muc_gia'}" />
+            <filter name="muc_dt" string="muc_dt" domain="[]" context="{'group_by':'muc_dt'}" />
+            <filter name="muc_don_gia" string="muc_don_gia" domain="[]" context="{'group_by':'muc_don_gia'}" />
+            <filter name="muc_ti_le_don_gia" string="muc_ti_le_don_gia" domain="[]" context="{'group_by':'muc_ti_le_don_gia'}" />
+        </group>
+      </search>
+    </field>
+  </record>
+</odoo>

@@ -5,11 +5,11 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button string="test_abc1" name="test_abc1" type="object" class="oe_highlight"/>
+                    <button string="test" name="test" type="object" class="oe_highlight"/>
+                    <button string="test_abc" name="test_abc" type="object" class="oe_highlight"/>
                     <button string="test_queue" name="test_queue" type="object" class="oe_highlight"/>
                     <button string="test_queue_create" name="test_queue_create" type="object" class="oe_highlight"/>
                     <button string="print_out_in_date" name="print_out_in_date" type="object" class="oe_highlight"/>
-                    <button string="test" name="test" type="object" class="oe_highlight"/>
                 </header>
                 <group>
                     <group>

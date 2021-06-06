@@ -1,0 +1,13 @@
+build-job:
+  stage: build
+  only:
+    - master
+  script:
+    - echo '========Pull Latest Source Code========'
+       && cd /opt/odoo14/odoo-custom-addons
+       && sudo su
+       && sudo systemctl stop odoo14
+       && sudo git pull https://tu95ctv:Tu228787@gitlab.com/tu95ctv/ocom_ref master
+      #  && sudo click-odoo-update -c /home/sv/oconf/crm-server.conf -d ${DATABASE_TEST} --i18n-overwrite
+  after_script:
+    - sudo systemctl start odoo-crm

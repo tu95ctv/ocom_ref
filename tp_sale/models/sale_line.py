@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+
 class SaleLine(models.Model):
     _name = 'tp.sale.line'
     _description = 'TP sale'
@@ -13,8 +14,4 @@ class SaleLine(models.Model):
     def _compute_price(self):
         for record in self:
             record.price = record.qty * record.price_unit
-    # @api.model
-    # def create(self, vls):
-    #     raise ValueError('akdfkdkf')
-
-            
+ 

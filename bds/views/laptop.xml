@@ -1,0 +1,116 @@
+<odoo>
+     <record model="ir.ui.view" id="laptop_list">
+            <field name="name">bds list</field>
+            <field name="model">bds.bds</field>
+            <field name ="priority">5</field>
+            <field name="arch" type="xml">
+                <tree  editable="bottom"   >
+                    <button name="open_something" type="object"/>
+                    <field name="thumb" widget="image_url"></field>
+                    <field name="is_read"></field>
+                    <field name="quan_tam"></field>
+                    <field name="id"></field>
+                    <field name="gia_trieu"/>
+                    <field name="html_show"  string="Htmmmmmmmmmmmmmmllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll" readonly="0"/>
+                   	<field name="trich_dia_chi" />
+                   	<field name="chotot_moi_gioi_hay_chinh_chu" />
+                    <field name="count_post_all_site" />
+                    <field name="date_text" />
+                    <field name="create_date" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="other_list">
+            <field name="name">bds list</field>
+            <field name="model">bds.bds</field>
+            <field name ="priority">5</field>
+            <field name="arch" type="xml">
+                <tree default_order="public_datetime DESC" editable="bottom"   >
+                    <button name="open_something" type="object"/>
+                    <field name="is_read"></field>
+                    <field name="quan_tam"></field>
+                    <field name="cate"></field>
+                    <field name="loai_nha"></field>
+                    <field name="gia_trieu"/>
+                    <field name="html_show"  string="Htmmmmmmmmmmmmmmllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll" readonly="0"/>
+                   	<field name="trich_dia_chi" />
+                   	<field name="chotot_moi_gioi_hay_chinh_chu" />
+                    <field name="count_post_all_site" />
+                    <field name="date_text" />
+                    <field name="create_date" />
+                </tree>
+            </field>
+        </record>
+
+    <record id="laptop_search" model="ir.ui.view">
+            <field name="name">laptop_search</field>
+            <field name="model">bds.bds</field>
+            <field name="arch" type="xml">
+                <search string="laptop search">
+                
+                    <field name="title" />
+                    <field name="gia"  string="Tạo cách đây bn phút" filter_domain="[('create_date','&gt;', (datetime.datetime.now() -  datetime.timedelta(hours=7,minutes=self)).strftime('%Y-%%m-%%d %%H:%%M:%%S'))]"   />
+                    <field name="gia"  string="giá bé hơn" filter_domain="[('gia','&lt;',self)]"/>
+                    <field name="gia"  string="giá  lớn hơn" filter_domain="[('gia','&gt;',self)]"/>
+                    <field name="count_post_all_site"  string="count_post_all_site  bé hơn" filter_domain="[('count_post_all_site','&lt;',self)]"/>
+                    <field name="html" />
+                    <field name="html_khong_dau" />
+                  	<filter name="recently_change" string="Tạo gần đây" domain="[('write_date','&gt;', (datetime.datetime.now() -  datetime.timedelta(hours=1,minutes=35)).strftime('%Y-%%m-%%d %%H:%%M:%%S'))]" help="Pickings that are late on scheduled time" />
+
+                  	<filter name="chinh_chu" string="Chính chủ" domain="[('chotot_moi_gioi_hay_chinh_chu','=', 'chinh_chu')]"  />
+                  	<filter name="mo_gioi" string="Mô giới" domain="[('chotot_moi_gioi_hay_chinh_chu','=', 'moi_gioi')]"  />
+                    <separator />
+                    <filter name="is_read" string="Chưa đọc" domain="[('is_read','=',False)]"></filter>
+                    <group expand="0" string="Group By">
+                        <filter name="chotot_moi_gioi_hay_chinh_chu" string="chotot_moi_gioi_hay_chinh_chu" domain="[]" context="{'group_by':'chotot_moi_gioi_hay_chinh_chu'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+    <record id="other_search" model="ir.ui.view">
+        <field name="name">sale.order.list.select</field>
+        <field name="model">bds.bds</field>
+        <field name="priority">5</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="bds_search"/>
+        <field name="arch" type="xml">
+             <filter name="co_trich_dia_chi" position="after">
+                <filter name="may_ban" string="máy bàn" domain ="[('loai_nha','=','máy tính để bàn')]"></filter>
+             </filter>
+        </field>
+    </record> 
+    <record model="ir.actions.act_window" id="bds.action_window_laptop">
+        <field name="name">Laptop</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','laptop')]</field>
+        <field name="view_id" ref="laptop_list"></field>
+        <!-- <field name="search_view_id" ref="bds_search"></field> -->
+
+    </record>
+
+    <record model="ir.actions.act_window" id="phone_action">
+        <field name="name">Phone</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','phone')]</field>
+        <field name="view_id" ref="laptop_list"></field>
+        <!-- <field name="search_view_id" ref="bds_search"/> -->
+    </record>
+
+     <record model="ir.actions.act_window" id="product_other_action">
+        <field name="name">Other Product</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','!=','bds'), ('cate','!=','laptop')]</field>
+        <field name="view_id" ref="other_list"></field>
+        <field name="search_view_id" ref="other_search"/> 
+    </record> 
+
+
+
+
+</odoo>

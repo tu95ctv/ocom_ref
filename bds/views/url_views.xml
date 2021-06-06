@@ -1,0 +1,103 @@
+<odoo>
+    <record id="url_form" model="ir.ui.view">
+        <field name="name">bds.url.form</field>
+        <field name="model">bds.url</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>   
+                    <button name="fetch_this" string="fetch this" type="object" class="btn-primary" />
+                    <button name="set_0" string="set_0" type="object" class="btn-primary" />
+
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="url" />
+                            <field name="sell_or_rent" />
+                            <field name="description" />
+                            <field name="siteleech_id" />
+                            <field name="priority" />
+                        </group>
+                      
+                    </group>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="url_list" model="ir.ui.view">
+        <field name="name">bds.url.tree</field>
+        <field name="model">bds.url</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <button name="fetch_this" string="fetch this" type="object" class="btn-primary" />
+                <button name="set_0" string="set_0" type="object" class="btn-primary" />
+                <field name="id" />
+                <field name="url" />
+                <field name="description" />
+                <field name="cate" />
+                <field name="sell_or_rent" />
+                <field name="siteleech_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="url_search" model="ir.ui.view">
+        <field name="name">ulr search</field>
+        <field name="model">bds.url</field>
+        <field name="arch" type="xml">
+            <search string="url search">
+                <field name="description" string="description hoặc description không dấu" filter_domain="['|',('description','ilike',self), ('description_unidecode','ilike',self)]"/>
+                <field name="description"/>
+                <field name="url"/>
+                <filter name="priority" string="priority 1" domain="[('priority','=',1)]" />
+                <filter name="priority" string="priority 2" domain="[('priority','=',2)]" />
+                <filter name="siteleech_id" string="groupby siteleech_id" domain="[]" context="{'group_by':'siteleech_id'}" />
+            </search>
+        </field>
+    </record>
+        
+    <record model="ir.actions.act_window" id="url_action">
+        <field name="name">URL</field>
+        <field name="res_model">bds.url</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+        
+        
+    <record id="bds_siteleech_form" model="ir.ui.view">
+        <field name="name">bds.siteleech.form</field>
+        <field name="model">bds.siteleech</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="name_viet_tat" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="bds_siteleech_tree" model="ir.ui.view">
+        <field name="name">bds.siteleech.tree</field>
+        <field name="model">bds.siteleech</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                    <field name="name_viet_tat" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="siteleech_action">
+        <field name="name">bds.siteleech.action</field>
+        <field name="res_model">bds.siteleech</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

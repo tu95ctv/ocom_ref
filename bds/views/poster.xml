@@ -1,0 +1,116 @@
+<odoo>
+    <data>
+        <!-- POSTER -->
+        <record id="poster_search" model="ir.ui.view">
+            <field name="name">bds poster</field>
+            <field name="model">bds.poster</field>
+            <field name="arch" type="xml">
+                <search string="poster search">
+                    <field name="name" />
+                    <field name="count_post_all_site" string='count_post_all_site lon hon' filter_domain ="[('count_post_all_site','&gt;=',self)]"/>
+                    <field name="count_post_all_site" string='count_post_all_site be hon' filter_domain ="[('count_post_all_site','&lt;=',self)]"/>
+                    <field name="phone" />
+                    <field name="nha_mang" />
+                    <field name="login" />
+                    <field name="post_ids" />
+                    <field name="du_doan_cc_or_mg" />
+                    <filter name="tao_cach_day_1_phut" string="Tạo cách đâ 1 phút" domain="[('create_date','&gt;', (datetime.datetime.utcnow() - datetime.timedelta(minutes=1)).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="nha_mang" string="groupby nha mang" domain="[]" context="{'group_by':'nha_mang'}" />
+                        <filter name="detail_du_doan_cc_or_mg" string="detail_du_doan_cc_or_mg" domain="[]" context="{'group_by':'detail_du_doan_cc_or_mg'}" />
+                        <filter name="du_doan_cc_or_mg" string="du_doan_cc_or_mg" domain="[]" context="{'group_by':'du_doan_cc_or_mg'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="poster_form" model="ir.ui.view">
+            <field name="name">poster form</field>
+            <field name="model">bds.poster</field>
+            <field name="priority" eval="1" />
+            <field name="arch" type="xml">
+                <form>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nha_mang" />
+                                <field name="count_post_all_site" />
+                                <field name="address_topic_number" />
+                                <field name="du_doan_cc_or_mg" />
+                                <field name="detail_du_doan_cc_or_mg" />
+                                <field name="site_post_count" />
+                            </group>
+                            <group>
+                                <field name="poster_line_ids">
+                                    <tree>
+                                        <field name="username_in_site" />
+                                        <field name="site_id" />
+                                    </tree>
+                                </field>
+                                <field name="phone" />
+                                <field name="login" />
+                            </group>
+                        </group>
+
+                        <group>
+                            <field name="post_ids" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="poster_list">
+            <field name="name">poster list</field>
+            <field name="model">bds.poster</field>
+            <field name="priority">3</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" />
+                    <field name="name" readonly="0"/>
+                    <button name="open_something" type="object"/>
+                    <field name="site_post_count" />
+                    <field name="len_site" />
+                    <field name="guess_count" />
+                    <field name="count_post_all_site" />
+                    <field name="count_post_of_onesite_max" />
+                    <field name="siteleech_max_id" />
+                    <field name="address_topic_number" />
+                    <field name="address_rate" />
+                    <field name="dd_tin_cua_co_rate" />
+                    <field name="dd_tin_cua_dau_tu_count" />
+                    <field name="dd_tin_cua_dau_tu_rate" />
+                    <field name="chotot_count" />
+                    <field name="chotot_mo_gioi_count" />
+                    <field name="create_date" />
+                    <field name="write_date" />
+                    <field name="chotot_chinh_chu_count" />
+                    <field name="du_doan_cc_or_mg" />
+                    <field name="detail_du_doan_cc_or_mg" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="poster_action">
+            <field name="name">poster window</field>
+            <field name="res_model">bds.poster</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'yesterday': (context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d')}</field>
+        </record>
+        <record id="users_form_for_action_d4" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="poster_form" />
+            <field name="act_window_id" ref="bds.poster_action" />
+        </record>
+        <record id="users_tree_for_action_d4" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="poster_list" />
+            <field name="act_window_id" ref="bds.poster_action" />
+        </record>
+        <!-- !POSTER -->
+    </data>
+</odoo>

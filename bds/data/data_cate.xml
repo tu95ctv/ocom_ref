@@ -1,0 +1,98 @@
+<odoo>
+	<data>
+
+		<record model="bds.cate" id="Cac_loai_nha_ban">
+			<field name="description">batdongsan</field>
+			<field name="name">Các loại nhà</field>
+		</record>
+		<record model="bds.cate" id="Cac_loai_dat_ban">
+			<field name="description">batdongsan</field>
+			<field name="name">Các loại đất</field>
+		</record>
+
+
+		<!-- <record model="bds.cate" id="Nha_mat_pho">
+			<field name="description">batdongsan</field>
+			<field name="name">Nhà mặt phố</field>
+		</record>
+		<record model="bds.cate" id="Nha_rieng">
+			<field name="description">batdongsan</field>
+			<field name="name">Nhà riêng</field>
+		</record> -->
+		<record model="bds.cate" id="Nha_mat_pho">
+			<field name="description">batdongsan</field>
+			<field name="name">Nhà mặt phố</field>
+			<field name="parent_id" ref="Cac_loai_nha_ban" />
+		</record>
+		<record model="bds.cate" id="Nha_rieng">
+			<field name="description">batdongsan</field>
+			<field name="name">Nhà riêng</field>
+			<field name="parent_id" ref="Cac_loai_nha_ban" />
+		</record>
+		<record model="bds.cate" id="Nha_biet_thu_lien_ke">
+			<field name="description">batdongsan</field>
+			<field name="name">Nhà biệt thự, liền kề</field>
+			<field name="parent_id" ref="Cac_loai_nha_ban" />
+		</record>
+		<record model="bds.cate" id="Can_ho_chung_cu">
+			<field name="description">batdongsan</field>
+			<field name="name">Căn hộ chung cư</field>
+		</record>
+		<record model="bds.cate" id="Dat_nen_du_an">
+			<field name="description">batdongsan</field>
+			<field name="name">Đất nền dự án</field>
+			<field name="parent_id" ref="Cac_loai_dat_ban" />
+		</record>
+		<record model="bds.cate" id="Dat">
+			<field name="description">batdongsan</field>
+			<field name="name">Đất</field>
+			<field name="parent_id" ref="Cac_loai_dat_ban" />
+		</record>
+		<record model="bds.cate" id="Trang_trai_khu_nghi_duong">
+			<field name="description">batdongsan</field>
+			<field name="name">Trang trại, khu nghỉ dưỡng</field>
+		</record>
+		<record model="bds.cate" id="Kho_nha_xuong">
+			<field name="description">batdongsan</field>
+			<field name="name">Kho, nhà xưởng</field>
+		</record>
+		<record model="bds.cate" id="Loai_bat_dong_san_khac">
+			<field name="description">batdongsan</field>
+			<field name="name">Loại bất động sản khác</field>
+		</record>
+
+		<!-- 
+
+
+							<odoo>
+				<data>
+				<record model="bds.cate" id="Nha_rieng">
+				<field name="description">batdongsan</field>
+				<field name="name">Nhà riêng</field>
+				</record>
+				<record model="bds.cate" id="Nha_biet_thu_lien_ke">
+				<field name="description">batdongsan</field>
+				<field name="name">Nhà biệt thự, liền kề</field>
+				</record>
+				<record model="bds.cate" id="Nha_mat_pho">
+				<field name="description">batdongsan</field>
+				<field name="name">Nhà mặt phố</field>
+				</record>
+				<record model="bds.cate" id="Nha_o">
+				<field name="description">chotot</field>
+				<field name="name">Nhà ở</field>
+				</record>
+				<record model="bds.cate" id="Dat">
+				<field name="description">chotot</field>
+				<field name="name">Đất</field>
+				</record>
+				<record model="bds.cate" id="Can_ho_Chung_cu">
+				<field name="description">chotot</field>
+				<field name="name">Căn hộ/Chung cư</field>
+				</record>
+				</data>
+				</odoo>
+		-->
+
+	</data>
+</odoo>

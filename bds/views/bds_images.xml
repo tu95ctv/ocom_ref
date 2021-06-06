@@ -1,0 +1,66 @@
+<odoo>
+    <!-- Images -->
+    <record id="images_search" model="ir.ui.view">
+        <field name="name">images</field>
+        <field name="model">bds.images</field>
+        <field name="arch" type="xml">
+            <search string="images  search">
+                <field name="url"  />
+            </search>
+        </field>
+    </record>
+    <record id="images_form" model="ir.ui.view">
+        <field name="name">images</field>
+        <field name="model">bds.images</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="url" widget="image_url"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="images_list" model="ir.ui.view">
+        <field name="name">image list</field>
+        <field name="model">bds.images</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="url" widget="image_url"/>
+                <!-- <field name="thumb_view" widget="image" height="600" /> -->
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="images_action">
+        <field name="name">bds images</field>
+        <field name="res_model">bds.images</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- !images -->
+        
+        
+       
+       
+        
+        
+       
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+</odoo>

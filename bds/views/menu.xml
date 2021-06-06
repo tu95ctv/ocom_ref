@@ -1,0 +1,44 @@
+<odoo>
+    <menuitem name="BDS" id="bds_icon" web_icon="bds,static/src/image/bds.png" />
+
+    <menuitem name="Chưa xài" id="not_use_menu" parent="bds_icon" groups="bds.tap_hoa_group" sequence="7"/>
+    <!-- <menuitem name="BDS" id="bds_menu" parent="not_use_menu" action="full_bds_action" /> -->
+    <menuitem name="Get Poster" id="getphoneposter__menu" parent="not_use_menu" action="bds.getphoneposter_action" />
+    <menuitem name="images_menu" id="images_menu" parent="not_use_menu" action="bds.images_action" />
+
+
+
+    <menuitem name="BDS Sell" id="main_bds_menu" parent="bds_icon" action="main_bds_action"  sequence="1"/>
+    <menuitem name="BDS Sell Short" id="main_bds_menu_short" parent="bds_icon" action="main_bds_action_short"  sequence="1"/>
+
+    <menuitem name="Laptop" id="bds_menu_laptop" parent="bds_icon" action="bds.action_window_laptop"  sequence="2" groups="bds.tap_hoa_group"/>
+    <!-- <menuitem name="Tạp Hóa" id="demo_tap_hoa_menu" parent="bds_icon" action="demo_tap_hoa_action"  sequence="1" groups="bds.tap_hoa_group"/> -->
+    <menuitem name="BDS Rent" id="rent_bds_menu" parent="bds_icon" action="rent_bds_action"  sequence="1"/>
+    <menuitem name="BDS Cần Mua" id="need_to_buy_bds_menu" parent="bds_icon" action="need_bds_action"  sequence="1" groups="bds.tap_hoa_group"/>
+    <menuitem name="Fetch" id="fetch_menu" parent="bds_icon" action="bds.fetch_action"  sequence="2"/>
+    <menuitem name="Poster" id="poster_menu" parent="bds_icon" action="bds.poster_action"  sequence="3"/>
+    <menuitem name="Stuff" id="stuff_menu" parent="bds_icon" sequence="6" />
+    <menuitem name="Schedule" id="schedule_menu" parent="bds_icon" action="base.ir_cron_act" sequence="5" />
+	<menuitem name="Cron Fetch" id="cron_fetch_menu" parent="bds_icon" action="loop_fetch_cron_action"  sequence="5"/>
+	<menuitem name="Dự án" id="bds_project_menu" parent="bds_icon" action="project_action"  sequence="5"/>
+    <menuitem id="menu_bds_config_settings" name="Configuration" parent="bds_icon"
+            sequence="100" />
+    
+    
+    
+    <menuitem id="menu_bds_general_settings" name="Settings" parent="menu_bds_config_settings"
+        sequence="0" action="action_bds_config_settings" />
+    
+    <menuitem name="abc" sequence="1" id="user_read_mark_menu" parent="stuff_menu" action="user_read_mark_action" />
+    <menuitem name="Error" id="error_menu1" parent="stuff_menu" action="bds.error_action" />
+    <menuitem name="Quận" id="quan_menu" parent="stuff_menu" action="quan_action" />
+    <menuitem name="Site Leech" id="siteleech_menu" parent="stuff_menu" action="siteleech_action" />
+    <menuitem name="urlbds" id="url_menu" parent="stuff_menu" action="url_action" />
+    <menuitem name="Phone" id="phone_menu" parent="stuff_menu" action="phone_action" />
+    <menuitem name="Other Product" id="product_other_menu" parent="stuff_menu" action="product_other_action" />
+    <!-- <menuitem name="Address" id="bds_address_menu" parent="stuff_menu" action="address_action" /> -->
+    <menuitem name="Tiêu Chí" id="tieuchi_menu" parent="stuff_menu" action="tieuchi_action" />
+   
+
+
+</odoo>

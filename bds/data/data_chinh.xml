@@ -1,0 +1,90 @@
+<odoo>
+    <data>
+        <record model="bds.url" id="url_chotot_toan_quoc_sell">
+            <field name="description">Chotot Toàn Quốc sell</field>
+            <field name="sell_or_rent">sell</field>
+            <field name="url">https://gateway.chotot.com/v1/public/ad-listing?cg=1000&amp;limit=20&amp;o=40&amp;st=s,k&amp;page=3</field>
+        </record>
+
+        <record model="bds.url" id="url_chotot_toan_quoc_duan">
+            <field name="description">Du an</field>
+            <field name="sell_or_rent">duan</field>
+            <field name="url">https://gateway.chotot.com/v1/public/xproperty/projects/_search?offset=10&amp;status=active</field>
+        </record>
+
+        <record model="bds.url" id="url_laptop_saigon">
+        <field name="description">Laptop Sài Gòn</field>
+        <field name="url">https://gateway.chotot.com/v1/public/ad-listing?region_v2=13000&amp;cg=5030&amp;w=1&amp;limit=20&amp;o=20&amp;st=s,k</field>
+        <field name="cate">laptop</field>
+    </record>
+
+        <!-- <record model="bds.url" id="url_chotot_duan">
+            <field name="description">Dự án</field>
+            <field name="sell_or_rent">du_an</field>
+            <field name="url">https://gateway.chotot.com/v1/public/xproperty/projects/_search?offset=10&amp;status=active</field>
+        </record> -->
+    </data>
+
+    <record model="bds.url" id="url_bds_quan_all">
+        <field name="description">nhà bán all hcm</field>
+        <field name="sell_or_rent">sell</field>
+        <field name="url">https://batdongsan.com.vn/ban-nha-dat-tp-hcm</field>
+    </record>
+
+
+    <record model="bds.url" id="url_bds_chcu_tq">
+        <field name="description">chcu tq</field>
+        <field name="sell_or_rent">sell</field>
+        <field name="url">https://batdongsan.com.vn/ban-can-ho-chung-cu</field>
+    </record>
+
+
+    <record model="bds.url" id="url_Các_loại_đất_bán">
+        <field name="description">Các loại đất bán</field>
+        <field name="sell_or_rent">sell</field>
+        <field name="url">https://batdongsan.com.vn/ban-dat-dat-nen</field>
+    </record>
+
+
+    <record model="bds.url" id="url_ban-trang-trai-khu-nghi-duong">
+        <field name="description">Bán trang trại, khu nghỉ dưỡng tại Việt Nam</field>
+        <field name="sell_or_rent">sell</field>
+        <field name="url">https://batdongsan.com.vn/ban-trang-trai-khu-nghi-duong</field>
+    </record>
+
+
+    <record model="bds.url" id="url_ban-kho-nha-xuong">
+        <field name="description">Bán kho, nhà xưởng tại Việt Nam</field>
+        <field name="sell_or_rent">sell</field>
+        <field name="url">https://batdongsan.com.vn/ban-kho-nha-xuong</field>
+    </record>
+
+
+    <record model="bds.url" id="url_ban-kho-nha-xuong">
+        <field name="description">Bán kho, nhà xưởng tại Việt Nam</field>
+        <field name="sell_or_rent">sell</field>
+        <field name="url">https://batdongsan.com.vn/ban-kho-nha-xuong</field>
+    </record>
+
+
+    <record model="bds.url" id="url_ban-loai-bat-dong-san-khac">
+        <field name="description">Bán loại bất động sản khác tại Việt Nam</field>
+        <field name="sell_or_rent">sell</field>
+        <field name="url">https://batdongsan.com.vn/ban-loai-bat-dong-san-khac</field>
+    </record>
+
+
+
+
+    <record model="bds.url" id="url_bds_toan_quoc_all">
+        <field name="description">nhà bán đất tq toàn quốc</field>
+        <field name="sell_or_rent">sell</field>
+        <field name="url">https://batdongsan.com.vn/ban-nha-dat</field>
+    </record>
+
+
+    <record model="bds.url" id="url_muaban_all_hcm">
+        <field name="description">Mua bán HCM all nhà phố, hẻm, vila tất cả</field>
+        <field name="url">https://muaban.net/ban-nha-ho-chi-minh-l59-c32?cp=14</field>
+    </record>
+</odoo>

@@ -1,0 +1,75 @@
+<odoo>
+    <data>
+        <!-- BDS -->
+        <record id="bds_form" model="ir.ui.view">
+            <field name="name">bds.form</field>
+            <field name="model">bds.bds</field>
+            <field name="arch" type="xml">
+                <form>
+                            <group>
+                                <group>
+                                    <!-- <field name="thumb_view" widget="image_url" /> -->
+                                    <field name="thumb" widget="image_url"/>
+                                    <field name="title" />
+                                    <field name="quan_tam"></field>
+                                    <field name="link" />
+                                    <field name="gia" />
+                                    <field name="gia_trieu" />
+                                    <field name="muc_gia" />
+                                    <field name="area" />
+                                    <field name="muc_dt" />
+                                    <field name="don_gia" />
+                                    <field name="muc_don_gia" />
+                                    <field name="ti_le_don_gia" />
+                                    <field name="muc_ti_le_don_gia" />
+                                    <field name="date_text" />
+                                    <field name="public_datetime" />
+                                    <field name="address" />
+                                    <field name="district_id" />
+                                    <field name="ward_id" />
+                                    <field name="cho_tot_link_fake" />
+                                    <field name="siteleech_id" />
+                                    <field name="ngay_update_gia" />
+                                </group>
+                                <group>
+                                    <field name="poster_id" />
+                                    <field name="count_post_all_site" />
+                                    <field name="trich_dia_chi" />
+                                    <field name="html" />
+                                </group>
+                            </group>
+                            <group>
+                                <field name="images_ids"/>
+
+                                <field name="gialines_ids">
+                                    <tree>
+                                        <field name="gia"></field>
+                                        <field name="gia_cu"></field>
+                                        <field name="diff_gia"></field>
+                                        <field name="create_date"></field>
+                                    </tree>
+                                </field>
+                                
+                                <field name="publicdate_ids">
+                                    <tree>
+                                        <field name="public_datetime"></field>
+                                        <field name="public_datetime_cu"></field>
+                                        <field name="diff_public_datetime"></field>
+                                        <field name="public_date"></field>
+                                        <field name="public_date_cu"></field>
+                                        <field name="diff_public_date"></field>
+                                    </tree>
+                                </field>
+                                <!-- <field name="same_address_bds_ids" /> -->
+
+                                <field name="post_ids_of_user" />
+                            </group>
+                        <!-- </page>
+                    </notebook> -->
+                </form>
+            </field>
+        </record>
+        
+        
+    </data>
+</odoo>

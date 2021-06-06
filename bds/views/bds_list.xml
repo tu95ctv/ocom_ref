@@ -1,0 +1,151 @@
+<odoo>
+    <record model="ir.ui.view" id="bds_list_main">
+        <field name="name">bds list</field>
+        <field name="model">bds.bds</field>
+        <field name ="priority">1</field>
+        <field name="arch" type="xml">
+            <tree  editable="bottom" decoration-info="quan_tam!=False"
+            decoration-danger="ko_quan_tam!=False" >
+                <button name="open_something" type="object" string="open"/>
+                <field name="quan_tam"></field>
+                <field name="thumb" widget="image_url"></field>
+                <field name="is_read"></field>
+                <field name="is_user_read_mark"></field>
+                <field name="is_user_quantam_mark"></field>
+                <field name="id"></field>
+                <field name="loai_nha"/>
+                <field name="cate_id"/>
+                <field name="sell_or_rent"/>
+                <field name="gia"/>
+                <field name="gia_trieu"/>
+                <field name="price"/>
+                <field name="price_unit"/>
+                <!-- <field name="thumb"/> -->
+                <field name="district_id"/>
+                <field name="state_id"/>
+                <field name="state_district_ward_nok"/>
+                <field name="public_datetime" />
+                <field name="public_date" />
+                <field name="images_ids"/>
+                <field name="area"/>
+                <field name="choose_area"/>
+                <field name="don_gia_dat_con_lai" />
+                <field name="don_gia" />
+                <field name="muc_gia_quan" />
+                <field name="so_lau" />
+                <field name="so_lau_he_so" />
+                <field name="so_phong_ngu" />
+                <!-- <field name="html_khong_dau" /> -->
+                <field name="mat_tien" />
+                <field name="hem_rong" />
+                <field name="loai_hem_combine" />
+                <field name="html_show"  string="Htmmmmmmmmmmmmmmllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll" readonly="0"/>
+                <field name="diff_gia" />
+                <field name="diff_public_datetime" />
+             
+                <field name="du_doan_cc_or_mg" />
+                <field name="mat_tien_or_trich_dia_chi" />
+                <field name="trich_dia_chi" />
+                <field name="mat_tien_address" readonly="0" />
+                <field name="kw_mg"/>
+                <field name="kw_mg_cap_2"/>
+                <field name="kw_hoa_hong"/>
+                <field name="t1l1" />
+                <field name="hoa_la_canh" />
+                <!-- <field name="so_lau_char" /> -->
+                <!-- <field name="hem_rong_char" /> -->
+                <field name="auto_ngang" />
+                <field name="auto_doc" />
+                <field name="address" />
+                <field name="ti_le_dien_tich_web_vs_auto_dien_tich" />
+                <field name="date_text" />
+                <field name="create_date" />
+                
+                <field name="diff_public_days_from_now" />
+                <!-- <field name="cate"/> -->
+                <field name="number_char"/>
+                <!-- <field name="kw_co_date"/> -->
+                <field name="kw_co_special_break"/>
+                <field name="kw_co_break"/>
+                <field name="kw_so_tien_hoa_hong"/>
+                <field name="dd_tin_cua_co"/>
+                <field name="kw_mg"/>
+                <field name="dd_tin_cua_dau_tu_rate"/>
+                <field name="du_doan_cc_or_mg" />
+                <field name="chotot_moi_gioi_hay_chinh_chu" />
+                <field name="detail_du_doan_cc_or_mg" /><!-- groups="bds.detail_guest"-->
+                <field name="ko_quan_tam"/>
+                <field name="count_post_all_site" />
+                <field name="ngay_update_gia" />
+                <field name="diff_public_datetime" />
+
+                <field name="so_lan_diff_public_update" />
+                <field name="so_lan_gia_update" />
+
+                <field name="area" />
+                <field name="choose_area" />
+                <field name="ti_le_dien_tich_web_vs_auto_dien_tich" />
+                <field name="loai_nha" />
+                <field name="mat_tien" />
+                <field name="full_mat_tien" />
+                <field name="vip" />
+                <field name="dtsd" />
+                <field name="dtsd_tu_so_lau" />
+                <field name="ti_le_dtsd" />
+                <field name="dtsd_combine" />
+                <field name="gia_xac_nha" />
+                <field name="gia_dat_con_lai" />
+                <field name="ti_le_don_gia" />
+                <field name="ti_le_don_gia_dat_con_lai" />
+                <field name="don_gia_quan" />
+                <field name="muc_don_gia" />
+                <field name="muc_ti_le_don_gia" />
+                <field name="write_date" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="rent_bds_list">
+        <field name="name">bds list</field>
+        <field name="model">bds.bds</field>
+        <field name="inherit_id" ref="bds_list_main"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="gia" position="replace">
+                <field name="gia_trieu"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="main_bds_action">
+        <field name="name">Sell</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','bds'), ('sell_or_rent','=','sell')]</field>
+        <field name="view_id" ref="bds_list_main"></field>
+        <field name="search_view_id" ref="bds_search"/>
+    </record>
+
+    <record model="ir.actions.act_window" id="rent_bds_action">
+        <field name="name">Rent</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','bds'), ('sell_or_rent','=','rent')]</field>
+        <field name="view_id" ref="bds_list_main"></field>
+        <field name="search_view_id" ref="bds_search"/>
+    </record>
+
+    <record model="ir.actions.act_window" id="need_bds_action">
+        <field name="name">Cần mua</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','bds'), ('sell_or_rent','=','need_to_buy')]</field>
+        <field name="view_id" ref="bds_list_main"></field>
+        <field name="search_view_id" ref="bds_search"/>
+    </record>
+
+
+
+
+    
+</odoo>

@@ -47,6 +47,56 @@ class Sale(models.Model):
     order_date_input = fields.Date()
     customer_ids = fields.Many2many('res.partner', 'tp_sale_res_partner_relation', 'tp_sale_id', 'customer_id')
     
+
+    def _update_nogap(self, number_increment):
+        number_increment = 1
+        number_next = self.number_next
+        self._cr.execute("SELECT number_next FROM %s WHERE id=%%s FOR UPDATE NOWAIT" % self._table, [self.id])
+        self._cr.execute("UPDATE %s SET number_next=number_next+%%s WHERE id=%%s " % self._table, (number_increment, self.id))
+        self.invalidate_cache(['number_next'], [self.id])
+        return number_next
+
+    
+    def test(self):
+
+        # with api.Environment.manage():
+        #     print ('with manage 1')
+        #     self = self.with_context(a=1)
+        #     print ('!with manage 1')
+
+        # with api.Environment.manage():
+        #     print ('with manage 2')
+        #     self = self.with_context(a=1)
+        #     print ('!with manage 2')
+
+        self.common_f()
+
+
+    def test_abc(self):
+
+        self.common_f(luong='abc')
+
+    def common_f(self, luong=1):
+        # qr = 'select id from res_partner where id = 1 for update nowait'
+        # self._cr.execute(qr)
+        # rs = self._cr.fetchone()
+        # print (rs)
+        # for i in range(10):
+        #     sleep(1)
+        #     print (i)
+
+        # sq_id = self.env['ir.sequence'].search([('code','=','crm.lead.deal.ref')])
+        print ('******************sq_id:%s********************'%luong)
+        # self._cr.execute("SELECT id FROM %s WHERE id=%%s FOR UPDATE NOWAIT" % 'ir_sequence', [23])
+        # rs = self._cr.fetchone()
+        # print ('*************tìm kiếm********************', rs)
+        rs = 'akakaa'
+        # rs = self.env['ir.sequence'].next_by_code('crm.lead.deal.ref')
+        print ('**đây là mấy ',luong, 'after next_by_code', rs)
+        for i in range(10):
+            print ('rs:%s'%luong, i)
+            sleep(1)
+
     def create_tp_sale_raise_tp_sale_line(self):
         data = {
             'name': 'test1',
@@ -54,15 +104,9 @@ class Sale(models.Model):
         }
         self.create([data])
 
-    def test_abc(self):
-        
-        print ('abc')
+    
 
-    def test_abc1(self):
-        try:
-            self.create_crm_lead_one()
-        except:
-            pass
+
     
     def create_crm_lead_one_with_day_month(self,month, day):
         print ('*create_crm_lead_one_with_day_month*')
@@ -153,21 +197,7 @@ class Sale(models.Model):
         except:
             pass
 
-    def test(self):
-        # in ra tên khách hàng của tp.sale có id là 3, bài tập về relation nha
-        tp_sale_3 = self.env['tp.sale'].browse([3])
-        print (tp_sale_3.customer_id.name)
-
-        # search những đơn hàng  của khách hàng có tên là 'abc'
-
-        rs = self.env['tp.sale'].search([('customer_id.name','=','abc')])
-        _logger.info('Hóa đơn của khách abc: %s'%rs)
-
-
-        # search những đơn hàng  của khách hàng đến từ Hà Nội
-
-        rs = self.env['tp.sale'].search([('customer_id.state_id.name','=','Hà Nội')])
-        _logger.info('hóa đơn từ Hà Nội %s'%rs)
+    
 
 
 # class TPsaleInherit(models.Model):

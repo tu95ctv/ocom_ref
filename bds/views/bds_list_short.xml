@@ -1,0 +1,83 @@
+<odoo>
+    <record model="ir.ui.view" id="bds_list_main_short">
+        <field name="name">bds list</field>
+        <field name="model">bds.bds</field>
+        <field name ="priority">1</field>
+        <field name="arch" type="xml">
+            <tree  editable="bottom" >
+                <button name="open_something" type="object"/>
+                <field name="id"></field>
+                <field name="loai_nha"/>
+                <field name="sell_or_rent"/>
+                <field name="gia"/>
+                <field name="gia_trieu"/>
+                <field name="price"/>
+                <field name="price_unit"/>
+                <!-- <field name="thumb"/> -->
+                <field name="district_id"/>
+                <field name="state_id"/>
+                <field name="public_datetime" />
+                <!-- <field name="area"/> -->
+                <field name="choose_area"/>
+                <field name="don_gia_dat_con_lai" />
+                <field name="html_show"  string="Htmmmmmmmmmmmmmmllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll" readonly="0"/>
+                <field name="write_date" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="main_bds_action_short">
+        <field name="name">Sell</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','bds'), ('sell_or_rent','=','sell')]</field>
+        <field name="view_id" ref="bds_list_main_short"></field>
+        <field name="search_view_id" ref="bds_search"/>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="rent_bds_list">
+        <field name="name">bds list</field>
+        <field name="model">bds.bds</field>
+        <field name="inherit_id" ref="bds_list_main"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="gia" position="replace">
+                <field name="gia_trieu"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="main_bds_action">
+        <field name="name">Sell</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','bds'), ('sell_or_rent','=','sell')]</field>
+        <field name="view_id" ref="bds_list_main"></field>
+        <!-- <field name="search_view_id" ref="bds_search"/> -->
+    </record>
+
+    <record model="ir.actions.act_window" id="rent_bds_action">
+        <field name="name">Rent</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','bds'), ('sell_or_rent','=','rent')]</field>
+        <field name="view_id" ref="bds_list_main"></field>
+        <!-- <field name="search_view_id" ref="bds_search"/> -->
+    </record>
+
+    <record model="ir.actions.act_window" id="need_bds_action">
+        <field name="name">Cần mua</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','bds'), ('sell_or_rent','=','need_to_buy')]</field>
+        <field name="view_id" ref="bds_list_main"></field>
+        <!-- <field name="search_view_id" ref="bds_search"/> -->
+    </record>
+
+
+
+
+    
+</odoo>
