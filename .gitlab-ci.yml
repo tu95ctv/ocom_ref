@@ -11,3 +11,5 @@ build-job:
       #  && sudo click-odoo-update -c /home/sv/oconf/crm-server.conf -d ${DATABASE_TEST} --i18n-overwrite
   after_script:
     - sudo systemctl start odoo-crm
+
+  
