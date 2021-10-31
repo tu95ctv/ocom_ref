@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Bán hàng",
+    'name': "tp sale",
     'summary':"",
     'version': '0.1',
     'website': "http://www.vidoo.vn",
@@ -9,10 +9,13 @@
     'depends': ['base','product','sale','website','website_form','report_xlsx'],
     'data': [
         'security/ir.model.access.csv',
+        'data/email.xml',
+
         # 'views/demo_view.xml',
         'views/tp_sale.xml',
+        'views/tp_sale2.xml',
+
         'views/tp_sale_line_views.xml',
-        'views/sale.xml',
         'views/menu.xml',
         'views/product_template.xml',
         'views/website_template.xml',

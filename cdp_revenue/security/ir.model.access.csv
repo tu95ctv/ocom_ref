@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cdp_revenue_cdp_revenue,cdp_revenue.cdp_revenue,model_cdp_revenue_cdp_revenue,base.group_user,1,1,1,1

@@ -1,50 +1,97 @@
 <odoo>
    <record id="tp_sale_form" model="ir.ui.view">
-        <field name="name">tp.sale.form</field>
-        <field name="model">tp.sale</field>
+        <field name="name">tp.sale.order.form</field>
+        <field name="model">tp.sale.order</field>
         <field name="arch" type="xml">
             <form>
                 <header>
                     <button string="test" name="test" type="object" class="oe_highlight"/>
+                    <!-- <button string="test" name="test" type="object" class="oe_highlight"/>
                     <button string="test_abc" name="test_abc" type="object" class="oe_highlight"/>
                     <button string="test_queue" name="test_queue" type="object" class="oe_highlight"/>
                     <button string="test_queue_create" name="test_queue_create" type="object" class="oe_highlight"/>
-                    <button string="print_out_in_date" name="print_out_in_date" type="object" class="oe_highlight"/>
+                    <button string="print_out_in_date" name="print_out_in_date" type="object" class="oe_highlight"/> -->
                 </header>
+                <sheet>
+                <div class="oe_title" style="max-width: 100% !important">
+                    <h1 class="o_row no-gutters align-items-start">
+                        <div class="col" style="width: 200px !important">
+                            <div class="o_row">
+                                <field name="name" class="oe_inline" readonly="1" required="0"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                This is title
+                            </div>
+                            <!-- <div class="o_row d-flex">
+                                <field name="name" placeholder="Name" class="oe_inline" required="1"/>
+                            </div> -->
+                        </div>
+                    </h1>
+                </div>
                 <group>
                     <group>
                         <field name="image_test" widget="image"/>
-                        <field name="name" />
-                        <!-- <field name="xyz" /> -->
+                        <!-- <field name="name" /> -->
                         <field name="customer_id" />
                         <field name="number" />
-                        <field name="customer_ids" />
+                        <!-- <field name="dt" /> -->
                     </group>
                     <group>
                         <field name="order_date" />
-                        <field name="order_date_input" />
+                        <field name="a" />
+                        <field name="b" />
+                        <field name="c" />
+
                     </group>
                 </group>
                 <notebook>
                     <page name="Sale lines" string="Sale lines">
-                        <field name="sale_line_ids" >
-                            
-                            
+                        <field name="line_ids" context="{'form_view_ref':'tp_sale.tp_sale_line_form2'}" >
+                        </field>
+                        <!-- <field name="amount" /> -->
+                    </page>
+
+                     <page name="Sale lines" string="Sale lines">
+                        <field name="m2m_line_ids" >
                         </field>
                     </page>
+                    
+
+                    <page name="ref_line_ids" string="Ref Sale lines">
+                        <field name="ref_line_ids" context="{'default_res_model':'tp.sale.order'}" >
+                        </field>
+                    </page>
+
+                    <!-- <page name="attachment_ids" string="Ref Sale lines">
+                        <field name="attachment_ids" context="{'default_res_model':'tp.sale.order'}" >
+                        </field>
+                    </page> g-->
+
+                    <page name="attachment_ids" string="Ref Sale lines">
+                        <group>
+                        <field name="attachment_ids" context="{'default_res_model':'tp.sale.order'}" 
+                        widget="many2many_tags">
+                        </field>
+                        </group>
+                    </page>
+                    
                 </notebook>
-                <group>
-                    <field name="amount" />
-                </group>
+              
+            </sheet>
+          
             </form>
+
         </field>
     </record>
 
     <record id="tp_sale_list" model="ir.ui.view">
-        <field name="name">tp.sale.list</field>
-        <field name="model">tp.sale</field>
+        <field name="name">tp.sale.order.list</field>
+        <field name="model">tp.sale.order</field>
         <field name="arch" type="xml">
             <tree>
+                <!-- <field name="xmliab" /> -->
                 <field name="name" />
                 <field name="customer_id" />
                 <field name="order_date" />
@@ -53,8 +100,8 @@
     </record>
 
     <record id="tp_sale_search" model="ir.ui.view">
-        <field name="name">tp.sale.search</field>
-        <field name="model">tp.sale</field>
+        <field name="name">tp.sale.order.search</field>
+        <field name="model">tp.sale.order</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name" />
@@ -68,7 +115,7 @@
 
     <record id="tp_sale_action" model="ir.actions.act_window">
         <field name="name">Sale Demo</field>
-        <field name="res_model">tp.sale</field>
+        <field name="res_model">tp.sale.order</field>
         <field name="view_mode">tree,form</field>
         <field name="target">current</field>
     </record>

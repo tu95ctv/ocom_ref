@@ -21,5 +21,6 @@ access_bds_fetch_item_history,access_bds_fetch_item_history,model_bds_fetch_item
 access_bds_address,access_bds_address,model_bds_address,,1,1,1,1
 access_bds_cate,access_bds_cate,model_bds_cate,,1,1,1,1
 access_bds_project,access_bds_project,model_bds_project,,1,1,1,1
+access_bds_cpu,access_bds_cpu,model_bds_cpu,,1,1,1,1
 
 

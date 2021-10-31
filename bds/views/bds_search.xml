@@ -57,7 +57,7 @@
         <separator /> -->
         <filter name="user_read_mark_ids" string="đánh dấu đọc của user hiện tại" domain ="[('user_read_mark_ids.user_id','=',uid)]"></filter>
         <separator /> 
-        <filter name="not_user_read_mark_ids" string="đánh dấu chưa đọc của user hiện tại" domain ="[1]" context="{'search_user_not_read':True}"></filter>
+        <filter name="not_user_read_mark_ids" string="đánh dấu chưa đọc của user hiện tại" domain ="[]" context="{'search_user_not_read':True}"></filter>
         <separator /> 
         <filter name="user_quantam_mark_ids" string="đánh dấu quan tâm của user hiện tại" domain ="[('user_quantam_mark_ids.user_id','=',uid)]"></filter>
         <separator />

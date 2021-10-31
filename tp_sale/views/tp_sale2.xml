@@ -1,0 +1,26 @@
+<odoo>
+   <record id="tp_sale_form2" model="ir.ui.view">
+        <field name="name">tp.sale.order.form</field>
+        <field name="model">tp.sale.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name" />
+                        <field name="number" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="tp_sale_action2" model="ir.actions.act_window">
+        <field name="name">Sale Demo</field>
+        <field name="res_model">tp.sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="tp_sale_form2" />
+        <field name="target">current</field>
+    </record>
+
+
+</odoo>

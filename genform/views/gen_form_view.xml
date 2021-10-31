@@ -1,0 +1,140 @@
+<odoo>
+    <record id="gen_form_form" model="ir.ui.view">
+        <field name="name">gen.form</field>
+        <field name="model">gen.form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="gen_form" type="object" class="btn btn-primary" string="Gen Form" />
+                    <button name="button_get_all_field_of_model" type="object" class="btn btn-primary" string="button_get_all_field_of_model" />
+                    <button name="button_clear_gen_field_ids" type="object" class="btn btn-primary" string="button_clear_gen_field_ids" />
+                    <button name="button_clear_model_field" type="object" class="btn btn-primary" string="button_clear_model_field" />
+                    <button name="add_model_from_search_box" type="object" class="btn btn-primary" string="add_model_from_search_box" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="search_box" />
+                            <field name="is_exclude_magic_field" />
+                            <field name="is_exclude_id_field" />
+                            <field name="is_wrap_comment" />
+                        </group>
+                        <group>
+                            <field name="search_model_list_box_paste" />
+                            <field name="search_model_list_box" />
+                        </group>
+
+                        <group string="Tree">
+                            <field name="is_tree" />
+                            <field name="editable" />
+                        </group>
+                        <group>
+                            <field name="is_form" />
+                        </group>
+
+                        <group string="action">
+                            <field name="is_action" />
+                            <field name="view_mode" />
+                        </group>
+                        <group string="menu">
+                            <field name="is_menu" />
+                        </group>
+
+
+
+
+                    </group>
+                    <notebook>
+                        <page name="gen_model_field_ids_page" string="Model Fields">
+                            <field name="gen_model_field_ids">
+                                <tree>
+                                    <field name="model_id"/>
+                                    <field name="gen_field_ids" widget="many2many_tags"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group>
+                        <field name="out_put" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="gen_form_tree" model="ir.ui.view">
+        <field name="name">gen.form.list</field>
+        <field name="model">gen.form</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="out_put" />
+                <field name="model_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="gen_model_field_form" model="ir.ui.view">
+        <field name="name">gen.model.field</field>
+        <field name="model">gen.model.field</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model_id" />
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page name="gen_field_ids_page" string="fields_ids">
+                            <field name="gen_field_ids">
+                                <tree editable="bottom">
+                                    <field name="field_id" domain="[('model_id','=',parent.model_id)]"/>
+                                    <field name="group" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <group>
+                        <group>
+                            <field name="model_id" />
+                        </group>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- <record id="gen_model_field_tree" model="ir.ui.view">
+        <field name="name">gen.model.field</field>
+        <field name="model">gen.model.field</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="field_id" />
+            </tree>
+        </field>
+    </record> -->
+
+
+
+
+
+    <record id="gen_form_action" model="ir.actions.act_window">
+        <field name="name">gen.form</field>
+        <field name="res_model">gen.form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+    <!---->
+
+
+
+
+    <menuitem id="gen_form_root_menu" name="Gen Form" sequence="1"/>
+    <menuitem id="gen_form_menu" parent="gen_form_root_menu" name="Gen Form" action="gen_form_action" sequence="1"/>
+</odoo>

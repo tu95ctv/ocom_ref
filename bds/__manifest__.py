@@ -50,6 +50,7 @@
         'views/user_bds_mark_read.xml',
         'wizard/trigger_form.xml',
         'views/tieu_chi.xml',
+        'views/cpu.xml',
         'views/menu.xml',
     ],
     

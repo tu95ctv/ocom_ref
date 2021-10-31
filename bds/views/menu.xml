@@ -6,12 +6,10 @@
     <menuitem name="Get Poster" id="getphoneposter__menu" parent="not_use_menu" action="bds.getphoneposter_action" />
     <menuitem name="images_menu" id="images_menu" parent="not_use_menu" action="bds.images_action" />
 
-
-
     <menuitem name="BDS Sell" id="main_bds_menu" parent="bds_icon" action="main_bds_action"  sequence="1"/>
+    <menuitem name="Laptop" id="laptop" parent="bds_icon" action="laptop_action"  sequence="1"/>
     <menuitem name="BDS Sell Short" id="main_bds_menu_short" parent="bds_icon" action="main_bds_action_short"  sequence="1"/>
 
-    <menuitem name="Laptop" id="bds_menu_laptop" parent="bds_icon" action="bds.action_window_laptop"  sequence="2" groups="bds.tap_hoa_group"/>
     <!-- <menuitem name="Tạp Hóa" id="demo_tap_hoa_menu" parent="bds_icon" action="demo_tap_hoa_action"  sequence="1" groups="bds.tap_hoa_group"/> -->
     <menuitem name="BDS Rent" id="rent_bds_menu" parent="bds_icon" action="rent_bds_action"  sequence="1"/>
     <menuitem name="BDS Cần Mua" id="need_to_buy_bds_menu" parent="bds_icon" action="need_bds_action"  sequence="1" groups="bds.tap_hoa_group"/>
@@ -23,8 +21,6 @@
 	<menuitem name="Dự án" id="bds_project_menu" parent="bds_icon" action="project_action"  sequence="5"/>
     <menuitem id="menu_bds_config_settings" name="Configuration" parent="bds_icon"
             sequence="100" />
-    
-    
     
     <menuitem id="menu_bds_general_settings" name="Settings" parent="menu_bds_config_settings"
         sequence="0" action="action_bds_config_settings" />
@@ -38,7 +34,6 @@
     <menuitem name="Other Product" id="product_other_menu" parent="stuff_menu" action="product_other_action" />
     <!-- <menuitem name="Address" id="bds_address_menu" parent="stuff_menu" action="address_action" /> -->
     <menuitem name="Tiêu Chí" id="tieuchi_menu" parent="stuff_menu" action="tieuchi_action" />
-   
-
+    <menuitem name="CPU" id="cpu_menu" parent="stuff_menu" action="cpu_action" />
 
 </odoo>

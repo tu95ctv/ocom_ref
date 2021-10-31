@@ -1,0 +1,47 @@
+<odoo>
+    <record id="bds_cpu_view_form" model="ir.ui.view">
+        <field name="name">bds.cpu.view.form</field>
+        <field name="model">bds.cpu</field>
+        <field name="arch" type="xml">
+            <form string="1">
+                <sheet>
+                    <header>
+                    <button string="parse_cpu_from_html_file" name="parse_cpu_from_html_file" type="object" class="oe_highlight"/>
+                    </header>
+                    <group>
+                        <field name="name" />
+                        <field name="mark" />
+                        <field name="rank" />
+                        <field name="price" />
+                         <field name="cpu_name" />
+                        <field name="ghz" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="bds_cpu_view_tree" model="ir.ui.view">
+        <field name="name">bds.cpu.view.tree</field>
+        <field name="model">bds.cpu</field>
+        <field name="arch" type="xml">
+            <tree string="1">
+                <field name="name" />
+                <field name="mark" />
+                <field name="rank" />
+                <field name="price" />
+                <field name="cpu_name" />
+                <field name="ghz" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="cpu_action" model="ir.actions.act_window">
+        <field name="name">CPU</field>
+        <field name="res_model">bds.cpu</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+      
+    </record>
+
+</odoo>

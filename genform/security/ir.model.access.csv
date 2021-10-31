@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gen_form,access_gen_form,model_gen_form,,1,1,1,1
+access_gen_model_field,access_gen_model_field,model_gen_model_field,,1,1,1,1
+access_gen_field,access_gen_field,model_gen_field,,1,1,1,1
+

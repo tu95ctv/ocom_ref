@@ -94,10 +94,10 @@ class MainFetchCommon(models.AbstractModel):
                 so_lan_diff_public_update = search_bds_obj.so_lan_diff_public_update + 1
                 update_dict.update({
                     'public_datetime': public_datetime, 
-                    'public_datetime_cu':public_datetime_cu,
+                    # 'public_datetime_cu':public_datetime_cu,
                     'diff_public_datetime':diff_public_datetime_in_hours,
                     'public_date':public_date, 
-                    'public_date_cu':public_date_cu,
+                    # 'public_date_cu':public_date_cu,
                     'diff_public_date':diff_public_date, 
                     'so_lan_diff_public_update':so_lan_diff_public_update,
                     'publicdate_ids':[(0,False,{
@@ -875,6 +875,7 @@ class MainFetchCommon(models.AbstractModel):
             json_a_page = json.loads(html_page)
             topic_data_from_pages_of_a_page_origin = json_a_page['ads']
             for ad in topic_data_from_pages_of_a_page_origin:
+                print ('**ad***', ad)
                 topic_data_from_page = {}
                 topic_data_from_page['price_string'] = ad['price_string']
                 topic_data_from_page['price'] = ad['price']
@@ -883,8 +884,8 @@ class MainFetchCommon(models.AbstractModel):
                 topic_data_from_page['link'] = self.make_topic_link_from_list_id(ad['list_id'])
                 topic_data_from_page['html'] = ad.get('body','')
                 topic_data_from_page['title']= ad['subject']
-                topic_data_from_page['region_name'] = ad['region_name']
-                topic_data_from_page['area_name'] = ad['area_name']
+                topic_data_from_page['region_name'] = ad.get('region_name',False)
+                topic_data_from_page['area_name'] = ad.get('area_name',False)
                 try:
                     topic_data_from_page['ward_name'] = ad['ward_name']
                 except:
@@ -939,8 +940,8 @@ class MainFetchCommon(models.AbstractModel):
         ad = topic_html['ad']
         ad_params = topic_html['ad_params']
 
-        update_dict['region_name'] = ad['region_name']
-        update_dict['area_name'] = ad['area_name']
+        update_dict['region_name'] = ad.get('region_name',False)
+        update_dict['area_name'] = ad.get('area_name')
         try:
             update_dict['ward_name'] = ad['ward_name']
         except:

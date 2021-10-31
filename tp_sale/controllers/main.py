@@ -221,17 +221,18 @@ class MyWebsite(http.Controller):
                 raise NotFound()
         else:
             category = Category
-
+        print ('**ppg')
         if ppg:
             try:
                 ppg = int(ppg)
                 post['ppg'] = ppg
             except ValueError:
                 ppg = False
+        print ("request.env['website'].get_current_website().shop_ppg",request.env['website'].get_current_website().shop_ppg)
         if not ppg:
-            ppg = request.env['website'].get_current_website().shop_ppg or 20
+            ppg = request.env['website'].get_current_website().shop_ppg or 25
 
-        ppr = request.env['website'].get_current_website().shop_ppr or 4
+        ppr = request.env['website'].get_current_website().shop_ppr or 5
 
         attrib_list = request.httprequest.args.getlist('attrib')
         attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
@@ -268,7 +269,7 @@ class MyWebsite(http.Controller):
             url = "/shop/category/%s" % slug(category)
 
         product_count = len(search_product)
-        pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
+        pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=10, url_args=post)
         offset = pager['offset']
         products = search_product[offset: offset + ppg]
 

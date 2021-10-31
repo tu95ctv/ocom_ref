@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crawler_crawler,crawler.crawler,model_crawler_crawler,base.group_user,1,1,1,1
+access_crawler_item,crawler.item,model_crawler_item,base.group_user,1,1,1,1

@@ -239,9 +239,10 @@ class bds(models.Model):
             args = []
         if self._context.get('search_user_not_read'):
             user_read_mark = self.env['user.read.mark'].search([('user_id','=',self.env.uid)])
-            user_read_mark_bds_ids = user_read_mark.mapped('bds_id.id')
+            user_read_mark_bds_ids = user_read_mark.mapped('bds_id')
             if user_read_mark_bds_ids:
-                args += [['id', 'not in', user_read_mark_bds_ids.ids]]
+                args += [['id', 'not in', user_read_mark_bds_ids]]
+          
         return super(bds, self).search(args, **kwargs)
 
     @api.model

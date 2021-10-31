@@ -1,3 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ndt_test_model1,access_ndt_test_model1,model_test_model1,,1,1,1,1
-access_ndt_test_line1,access_ndt_test_line1,model_test_line1,,1,1,1,1
+access_tp_sale_2_tp_sale_2,tp_sale_2.tp_sale_2,model_tp_sale_2_tp_sale_2,base.group_user,1,1,1,1

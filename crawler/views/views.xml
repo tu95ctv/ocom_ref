@@ -1,0 +1,602 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="crawler_form">
+      <field name="name">crawler form</field>
+      <field name="model">crawler.crawler</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <button string="count link" name="count_link" type="object" class="oe_highlight"/>
+            <button string="Clear Item " name="clear_item_ids" type="object" class="oe_highlight"/>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="url"/>
+                <field name="use_headers"/>
+                <field name="total_links"/>
+                <field name="note"/>
+                <field name="stt"/>
+                <field name="find_total_links"/>
+                <field name="time_out"/>
+                <field name="is_ran"/>
+                <field name="has_dot_last_part_url"/>
+                <field name="charset"/>
+                <field name="charset_input"/>
+                <field name="phase"/>
+                <field name="type"/>
+                <field name="auto_type"/>
+                <field name="error_code"/>
+                <field name="sumary"/>
+                <!-- <field name="scrawl_script" readonly="0"/> -->
+                <field name="note_rescan_iframe" />
+                <field name="app" />
+                <field name="structure_specs" />
+              </group>
+              <group>
+                <field name="re_url"/>
+                <field name="branch1"/>
+                <field name="path"/>
+                <field name="has_dot_last_part_url"/>
+                <field name="size_content"/>
+                <field name="len_links"/>
+                <field name="fail_log"/>
+                <field name="is_favorite"/>
+
+                <field name="processing"/>
+                <field name="success"/>
+                <field name="fails"/>
+                <field name="canceled"/>
+                <field name="my_note"/>
+                <field name="fix_note"/>
+                <field name="is_add_headers_host"/>
+                <field name="protocol"/>
+                <field name="ext"/>
+                <field name="len_frame"/>
+                <field name="src_frame"/>
+                <field name="redirect" />
+                <!-- <field name="fault_note" /> -->
+                <field name="sql" />
+              </group>
+
+            </group>
+            <notebook>
+              <page name="ItemMatch" string="Item Match">
+                <field name="match_item_ids">
+                  <tree>
+                    <field name="is_match" />
+                    <field name="url" />
+                    <field name="ab_url" />
+                    <field name="title" />
+                  </tree>
+                </field>
+              </page>
+
+              <page name="Item" string="Item">
+                <field name="item_ids">
+                  <tree>
+                    <field name="is_match" />
+                    <field name="url" />
+                    <field name="ab_url" />
+                    <field name="title" />
+                  </tree>
+                </field>
+              </page>
+
+
+              <page name="content" string="Content">
+                <field name="content"/>
+              </page>
+
+              <page name="content2" string="Content (Text)">
+                <field name="content2"/>
+
+              </page>
+
+              <page name="content3" string="Content 3">
+                <group>
+                  <field name="content3"/>
+                  <field name="show_content3" />
+                  <field name="content3" attrs="{'invisible':[('show_content3','=',False)]}"/>
+                </group>
+              </page>
+
+              <page name="headers" string="Headers">
+                <group>
+                  <group>
+                    <field name="exclude_header_keys"/>
+                    <field name="header_for_parse"/>
+                    <field name="default_headers"/>
+                  </group>
+                  <group>
+                    <field name="headers"/>
+                    <field name="load_headers"/>
+
+                  </group>
+                </group>
+              </page>
+
+              <page name="headers" string="Headers">
+                <group>
+                  <group>
+                    <field name="exclude_header_keys"/>
+                    <field name="header_for_parse"/>
+                    <field name="default_headers"/>
+                  </group>
+                  <group>
+                    <field name="headers"/>
+                    <field name="load_headers"/>
+
+                  </group>
+                </group>
+              </page>
+
+              <page name="response_header" string="Response Headers">
+                <group>
+                  <group>
+                    <field name="response_header"/>
+                  </group>
+                  <group>
+                    <field name="respone_status_code"/>
+                    <field name="response_url"/>
+                  </group>
+               
+                </group>
+              </page>
+
+          <page name="fault_note" string="fault_note">
+                <group>
+                  <field name="fault_note"/>
+                </group>
+              </page>
+              <page name="response_header" string="scrawl_script python">
+                <group>
+                  <field name="scrawl_script2"/>
+                </group>
+              </page>
+
+              <page name="response_header" string="scrawl_script python3">
+                <group>
+                  <field name="scrawl_script"/>
+                </group>
+              </page>
+
+              
+              
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="crawler_list">
+      <field name="name">crawler list</field>
+      <field name="model">crawler.crawler</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="stt"/>
+          <field name="domain"/>
+          <field name="url"/>
+          <field name="total_links"/>
+          <!-- <field name="dieu_tra"/> -->
+          <!-- <field name="nhan_xet"/> -->
+          <field name="sumary"/>
+          <field name="giai_phap"/>
+          <field name="find_total_links"/>
+          <field name="len_links"/>
+          <field name="charset" />
+          <field name="charset_decode" />
+          <field name="re_url"/>
+          <field name="path"/>
+          <field name="branch1"/>
+          <field name="len_frame" />
+          <field name="src_frame" optional="hide"/>
+          <field name="redirect" optional="hide"/>
+          <field name="phase"/>
+          <field name="app" />
+          <field name="structure_specs" />
+          <field name="has_dot_last_part_url" optional="hide"/>
+          <field name="time_out" />
+          <field name="note" />
+          <field name="note1" />
+          <field name="note2" />
+          <field name="note3" />
+          <field name="type" optional="hide"/>
+          <field name="first"  optional="hide"/>
+          <field name="last" optional="hide" />
+          <field name="last_double"  optional="hide"/>
+          <field name="is_same_url" />
+          <field name="auto_type" optional="hide"/>
+          <field name="error_code" optional="hide"/>
+          <field name="my_note" optional="hide"/>
+          <field name="note" optional="hide"/>
+          <field name="len_links" optional="hide"/>
+          <field name="is_ran" optional="hide"/>
+          <field name="size_content" optional="hide"/>
+          <field name="fail_log" optional="hide"/>
+          <field name="is_favorite" optional="hide"/>
+          <field name="processing" optional="hide"/>
+          <field name="success" optional="hide"/>
+          <field name="fails" optional="hide"/>
+          <field name="canceled" optional="hide"/>
+          <field name="protocol" optional="hide"/>
+          <field name="ext" optional="hide"/>
+
+
+
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="crawler_list_url">
+      <field name="name">crawler list</field>
+      <field name="model">crawler.crawler</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="stt"/>
+          <field name="domain"/>
+          <field name="url"/>
+          <field name="total_links"/>
+          <!-- <field name="dieu_tra"/> -->
+          <!-- <field name="nhan_xet"/> -->
+          <field name="sumary" optional="hide"/>
+          <field name="giai_phap" optional="hide"/>
+          <field name="find_total_links" optional="hide"/>
+          <field name="charset" optional="hide"/>
+          <field name="re_url"/>
+          <field name="branch1" optional="hide"/> 
+          <field name="len_frame" optional="hide" />
+          <field name="src_frame" optional="hide"/>
+          <field name="redirect" optional="hide" />
+          <field name="phase"/>
+          <field name="path"/>
+          <field name="my_way_path"/>
+          <field name="is_same_url" />
+          <field name="branch"/>
+          <field name="my_way_branch"/>
+          <field name="is_same_branch"/>
+          <field name="note_rescan_iframe" />
+
+          <field name="has_dot_last_part_url" optional="hide"/>
+          <field name="time_out" optional="hide"/>
+          <field name="note" optional="hide" />
+          <field name="type" optional="hide"/>
+          <field name="max_domain_part" />
+          <field name="domain_len" />
+          <field name="first" />
+          <field name="last" />
+          <field name="last_double" />
+
+          <field name="auto_type" optional="hide"/>
+          <field name="error_code" optional="hide"/>
+          <field name="my_note" optional="hide"/>
+          <field name="note" optional="hide"/>
+          <field name="len_links" optional="hide"/>
+          <field name="is_ran" optional="hide"/>
+          <field name="size_content" optional="hide"/>
+          <field name="fail_log" optional="hide"/>
+          <field name="is_favorite" optional="hide"/>
+          <field name="processing" optional="hide"/>
+          <field name="success" optional="hide"/>
+          <field name="fails" optional="hide"/>
+          <field name="canceled" optional="hide"/>
+          <field name="protocol" optional="hide"/>
+          <field name="ext" optional="hide"/>
+
+
+
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="crawler_list_export">
+      <field name="name">crawler list</field>
+      <field name="model">crawler.crawler</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="stt"/>
+          <field name="url"/>
+          <field name="total_links"/>
+          <field name="processing"/>
+          <field name="success"/>
+          <field name="fails"/>
+          <field name="canceled"/>
+          
+          <field name="dieu_tra"/>
+          <field name="nhan_xet"/>
+          <field name="find_total_links"/>
+          <field name="is_same_url" />
+          <field name="time_out" optional="hide"/>
+          <field name="len_links" optional="hide"/>
+          <field name="is_ran" optional="hide"/>
+          <field name="size_content" optional="hide"/>
+          <field name="has_dot_last_part_url" optional="hide"/>
+          <field name="re_url" optional="hide"/>
+          <field name="fail_log" optional="hide"/>
+          <field name="is_favorite" optional="hide"/>
+          <field name="processing" optional="hide"/>
+          <field name="success" optional="hide"/>
+          <field name="fails" optional="hide"/>
+          <field name="canceled" optional="hide"/>
+          <field name="note_rescan_iframe" />
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="crawler_list_find_same_link">
+      <field name="name">crawler list</field>
+      <field name="model">crawler.crawler</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="stt"/>
+          <field name="url"/>
+          <field name="is_same_url" />
+          <field name="response_url" />
+          <field name="len_frame"/>
+
+          <field name="find_total_links"/>
+          <field name="len_links"/>
+          <field name="note_rescan_iframe" />
+          <field name="src_frame" optional="hide"/>
+          <field name="total_links" optional="hide"/>
+          <field name="processing" optional="hide"/>
+          <field name="success" optional="hide"/>
+          <field name="fails" optional="hide"/>
+          <field name="canceled" optional="hide"/>
+          <field name="dieu_tra" optional="hide"/>
+          <field name="nhan_xet" optional="hide"/>
+          <field name="time_out" optional="hide"/>
+          <field name="is_ran" optional="hide"/>
+          <field name="size_content" optional="hide"/>
+          <field name="has_dot_last_part_url" optional="hide"/>
+          <field name="re_url" optional="hide"/>
+          <field name="fail_log" optional="hide"/>
+          <field name="is_favorite" optional="hide"/>
+          <field name="processing" optional="hide"/>
+          <field name="success" optional="hide"/>
+          <field name="fails" optional="hide"/>
+          <field name="canceled" optional="hide"/>
+
+        </tree>
+      </field>
+    </record>
+
+
+    
+
+
+    <record model="ir.ui.view" id="crawler_search">
+      <field name="name">crawler list</field>
+      <field name="model">crawler.crawler</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="url" />
+          <field name="has_dot_last_part_url"/>
+          <field name="re_url"/>
+          <field name="fail_log"/>
+          <field name="is_favorite"/>
+          <field name="nhan_xet"/>
+          <field name="my_note"/>
+          <field name="phase"/>
+          <field name="content3"/>
+          <field name="auto_type" />
+          <field name="note" />
+          <field name="structure_specs" />
+          <filter name="note_is_set" domain="[('note','!=',False)]" />
+          <separator/>
+          <filter name="url_not_elike_html" domain="['!',('url','=like','%html'),'!',('url','=like','%htm'),'!',('url','=like','%htm/')]"/>
+          <filter name="url_elike_html" domain="[('url','=like','%html')]"/>
+          <separator/>
+          <filter name="url_not_elike_htm" domain="[('url','not like','.htm')]" />
+          <separator/>
+          <filter name="total_links_lt_10" domain="[('total_links','&lt;',10)]"/>
+          <separator/>
+          <filter name="url_not_contain_specs" domain="[('url','not like','='),('url','not like','?'),('url','not like','&amp;')]" />
+          <separator/>
+          <filter name="find_total_links_lt_2" domain="[('find_total_links','&lt;',2)]" />
+          <separator/>
+          <filter name="find_total_links_equal_0" domain="[('find_total_links','=',0)]" />
+          <separator/>
+          <filter name="len_links_lt_1" domain="[('len_links','&lt;',1)]" />
+          <separator/>
+          <filter name="len_links_lt_2" domain="[('len_links','&lt;',2)]" />
+          <separator/>
+          <filter name="len_links_lt_3" domain="[('len_links','&lt;',3)]" />
+          <separator/>
+          <filter name="ext_not_in_pdf_xls_xlsx" domain="[('ext','not in',('pdf','xls','xlsx'))]" />
+          <separator/>
+          <filter name="note_rescan_iframe_False" domain="[('note_rescan_iframe','=',False)]" />
+          <separator/>
+          <filter name="len_links_gt_3" domain="[('len_links','&gt;',3)]" />
+          <separator/>
+          <filter name="len_links_lt_4" domain="[('len_links','&lt;',3)]" />
+          <separator/>
+          <filter name="len_frame_gt_0" domain="[('len_frame','&gt;',0)]" />
+          <separator/>
+          <filter name="len_frame_e_0" domain="[('len_frame','=',0)]" />
+          <separator/>
+          <filter name="redirect_is_set" domain="[('redirect','!=',False)]" />
+          <separator/>
+          <filter name="phase_1200" domain="[('phase','=','1200')]" />
+          <separator/>
+          <filter name="phase_388" domain="[('phase','=','2000')]" />
+          <separator/>
+          <filter name="phase_388" domain="[('phase','=','388')]" />
+          <separator/>
+          <filter name="sumary_no_set" domain="['|',('sumary','=',False), ('sumary','=','')]" />
+          <separator/>
+          <filter name="fail_log_is_set" domain="[('fail_log','!=',False)]" />
+          <separator/>
+          <filter name="time_out" domain="[('time_out','=',True)]" />
+          <separator/>
+          <filter name="is_ran" domain="[('is_ran','=',False)]" />
+          <separator/>
+          <filter name="truy_xuat_duoc_in_note" domain="[('note','ilike','truy xuất được'), ('note','not ilike','không truy xuất được')]" />
+          <separator/>
+          <filter name="khong_truy_xuat_duoc_in_note" domain="[('note','ilike','không truy xuất được')]" />
+          <group expand="0" string="Group By">
+          <filter name="is_same_branch" context="{'group_by':'is_same_branch'}" />
+          </group>
+
+
+        </search>
+      </field>
+    </record>
+
+
+
+    <record model="ir.actions.act_window" id="crawler.action_window">
+      <field name="name">crawler window</field>
+      <field name="res_model">crawler.crawler</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="crawler.action_window_export">
+      <field name="name">crawler window Export</field>
+      <field name="res_model">crawler.crawler</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="crawler_list_export"></field>
+    </record>
+
+    <record model="ir.actions.act_window" id="crawler.action_window_url">
+      <field name="name">crawler window Export</field>
+      <field name="res_model">crawler.crawler</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="crawler_list_url"></field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_find_same_link">
+      <field name="name">crawler window Export</field>
+      <field name="res_model">crawler.crawler</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="crawler_list_find_same_link"></field>
+    </record>
+
+
+    <!-- ######## item-->
+    <record model="ir.ui.view" id="crawler_item_form">
+      <field name="name">crawler item form</field>
+      <field name="model">crawler.item</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+          <group>
+             <field name="url" />
+              <field name="ab_url" />
+              <field name="crawler_id" />
+              <field name="is_match" />
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="crawler_item_list">
+      <field name="name">crawler item search</field>
+      <field name="model">crawler.item</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="url" />
+          <field name="ab_url" />
+          <field name="crawler_id" />
+          <field name="is_match" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="crawler_item_search">
+      <field name="name">crawler item search</field>
+      <field name="model">crawler.item</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="crawler_id" />
+          <field name="url" />
+          <field name="ab_url" />
+          <field name="is_match" />
+          <field name="phase" />
+        </search>
+      </field>
+    </record>
+     <record model="ir.actions.act_window" id="action_item">
+      <field name="name">Item</field>
+      <field name="res_model">crawler.item</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="crawler_item_list" />
+    </record>
+
+  
+
+    <!-- 
+    <record model="ir.actions.server" id="crawler.action_server">
+      <field name="name">crawler server</field>
+      <field name="model_id" ref="model_crawler_crawler"/>
+      <field name="binding_model_id" ref="model_crawler_crawler"/>
+      <field name="state">code</field>
+      <field name="code">
+        for r in records:
+          r.count_link()
+      </field>
+    </record>  -->
+
+
+
+    <!-- <record id="action_purchase_send_reminder" model="ir.actions.server">
+        <field name="name">Send Reminder</field>
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name='groups_id' eval="[(4, ref('purchase.group_send_reminder'))]"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                action = records._send_reminder_mail(send_single=True)
+        </field>
+    </record> -->
+
+
+
+    <!-- actions opening views on models -->
+
+
+
+    <!-- server action to the one above -->
+
+    <!-- <record model="ir.actions.server" id="crawler.action_server">
+      <field name="name">crawler server</field>
+      <field name="model_id" ref="model_crawler_crawler"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record> -->
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="crawler" id="crawler.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="crawler.menu_1" parent="crawler.menu_root"/>
+    <menuitem name="Item" id="crawler.menu_2" parent="crawler.menu_root"/>
+    <menuitem name="Item" id="crawler.menu_1_item" parent="crawler.menu_2" action="crawler.action_item"/>
+    <!-- actions -->
+
+
+    <menuitem name="List" id="crawler.menu_1_list" parent="crawler.menu_1" action="crawler.action_window"/>
+    <menuitem name="Export" id="crawler.menu_2_list" parent="crawler.menu_1" action="crawler.action_window_export"/>
+    <menuitem name="For URL" id="crawler.menu_3_list" parent="crawler.menu_1" action="crawler.action_window_url"/>
+    <menuitem name="For Find Same Link" id="crawler.menu_4_list" parent="crawler.menu_1" action="crawler.action_find_same_link"/>
+    <!--<menuitem name="Server to list" id="crawler" parent="crawler.menu_2" action="crawler.action_server"/>
+-->
+  </data>
+</odoo>
