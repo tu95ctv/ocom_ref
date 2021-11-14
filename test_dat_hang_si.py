@@ -114,7 +114,7 @@ def mua_hang():
     rs2.update(rs1)
     rs2.update({'namecity':1, 'district':15, 'address':'13 Truong Hoang Thanh'})
     # print ('rs2', rs2)
-
+    rs2.update({'tong_tien_cat':11000})
     u = 'https://dathangsi.vn/cartdetail.html'
     p_card_deatail = r'C:\Users\nguye\Desktop\crawler\card_detail.html'
     headers, content =\
@@ -143,6 +143,7 @@ def get_payment(is_payment=True):
 def get_link_session_id():
     f=open(r'C:\Users\nguye\Desktop\crawler\shopcart.html','r', encoding="utf-8")
     rs = f.read()
+    f.close()
     parser = html.HTMLParser(recover=True, encoding='utf-8')
     x = etree.fromstring(rs, parser=parser)
     rs2 = x.xpath("//*[contains(@onchange,'update_amount')]")
@@ -150,6 +151,17 @@ def get_link_session_id():
     rs = [re.search('\((.*),', i).group(1) for i in rs3]
     print (rs)
     return rs
+
+def etree_a_source(p):
+    f=open(p,'r', encoding="utf-8")
+    rs = f.read()
+    f.close()
+    parser = html.HTMLParser(recover=True, encoding='utf-8')
+    x = etree.fromstring(rs, parser=parser)
+    rs2 = x.xpath("//div[@class='gia_si_pro']")
+    print (len(rs2))
+    return rs2
+
 # rs = get_link_session_id()
 def delete(session_id):
     p_shopcart = r'C:\Users\nguye\Desktop\crawler\shopcart.html'
@@ -177,23 +189,101 @@ def load_cookies():
     return cookies
 
 
+def lay_file_chinh():
+    u = 'https://dathangsi.vn/san-pham.html'
+    path = r'C:\Users\nguye\Desktop\crawler\tat_ca_san_pham.html'
+    # d = {'username':'ndt', 'password':'1'}
+    response_headers,_ = request_and_save(u, path, headers=HEADERS)
+    return response_headers
+
+    # def favorite():
+    #     {
+    #             ajaxLoad('https://dathangsi.vn/favourite.php?product_id='+product_id,'id_favourite');
+    #         }
+
+def lay_hang_ton_kho():
+    u = 'https://dathangsi.vn/bangia/shop_quantity.php'
+    path = r'C:\Users\nguye\Desktop\crawler\hangtonkho.xls'
+    headers, content =\
+        request_and_save(u, path, headers=HEADERS, cookies=cookies)
+import xlrd
+def doc_hang_ton_kho_tu_o_cung_xls(path):
+    path = r'C:\Users\nguye\Desktop\crawler\hangtonkho.xls'
+    book = xlrd.open_workbook( path )
+    sh = book.sheet_by_index(0)
+    print("{0} {1} {2}".format(sh.name, sh.nrows, sh.ncols))
+    # print("Cell D30 is {0}".format(sh.cell_value(rowx=29, colx=3)))
+    for rx in range(sh.nrows):
+
+        print(sh.row(rx))
+def doc_hang_ton_kho_tu_o_cung_xls(path):
+    path = r'C:\Users\nguye\Desktop\crawler\hangtonkho.xls'
+    fr = read_file(path)
+    book = xlrd.open_workbook(file_contents=fr )
+    sh = book.sheet_by_index(0)
+    print("{0} {1} {2}".format(sh.name, sh.nrows, sh.ncols))
+    # print("Cell D30 is {0}".format(sh.cell_value(rowx=29, colx=3)))
+    for rx in range(sh.nrows):
+        print(sh.row(rx))
+
+
+import openpyxl
+def read_one_file_openpyxl(path):
+    from datetime import datetime
+    content = ''
+    content
+    # df = pd.read_excel(path, sheet_name=None, header=None)
+    wb_obj = openpyxl.load_workbook(path)
+    print ('wb_obj.worksheets',wb_obj.worksheets)
+
+import pandas as pd
+def read_one_file_pd(path):
+    from datetime import datetime
+    content = ''
+    df = pd.read_excel(path, sheet_name=None, header=None, engine='xlrd')
+    # df = _process(path)
+    for key, value in df.items():
+        data_list = value.fillna('').values.tolist()
+        for row in data_list:
+            for col in row:
+                if isinstance(col, datetime):
+                    try:
+                        row[row.index(col)] = col.strftime("%Y/%m/%d")
+                    except:
+                        row[row.index(col)] = str(col)
+                else:
+                    row[row.index(col)] = str(col)
+            content += ' '.join(row) + '\n'
+    return content
+path = r'C:\Users\nguye\Desktop\crawler\hangtonkho.xls'
 if __name__ == "__main__":
     # response_headers = login()
     # cookies = get_cookies(response_headers)
-    # save_cookies(cookies)
-    cookies = load_cookies()
-    print ('**cookies**', cookies)
-    u1 = 'https://dathangsi.vn/9606-bo-5-quan-lot-muji-.html'
-    d1 = get_data_1_sp(u1)
-    u2 = 'https://dathangsi.vn/8381-vi-da-nam-deabolar-.html'
-    d2 = get_data_1_sp(u2)
-    dat_hang(d1)
-    dat_hang(d1)
-    dat_hang(d2)
-    dat_hang(d2)
-    h,content = luu_shopcart()
-    rs1 = get_form_inputs(content,'//input')
-    mua_hang()
-    get_payment(0)
+    # lay_hang_ton_kho()
+    doc_hang_ton_kho_tu_o_cung_xls(1)
+    # read_one_file_pd(path)
+    # read_one_file_openpyxl(path)
+    # # save_cookies(cookies)
+    # # cookies = load_cookies()
+    # print ('**cookies**', cookies)
+    # u1 = 'https://dathangsi.vn/9606-bo-5-quan-lot-muji-.html'
+    # d1 = get_data_1_sp(u1)
+    # u2 = 'https://dathangsi.vn/8381-vi-da-nam-deabolar-.html'
+    # d2 = get_data_1_sp(u2)
+    # dat_hang(d1)
+    # dat_hang(d1)
+    # dat_hang(d2)
+    # # dat_hang(d2)
+    # h,content = luu_shopcart()
+    # rs1 = get_form_inputs(content,'//input')
+    # mua_hang()
+    # get_payment(1)
+    # lay_file_chinh()
+    # p = r'C:\Users\nguye\Desktop\crawler\tat_ca_san_pham.html'
+    # r = etree_a_source(p)
+    # r0 = r[0]
+    # rs =r0.xpath('.//h3')[0]
+    # h3 = rs.text
+    # print (h3)
 
 

@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="ece.list">
+      <field name="name">ece list</field>
+      <field name="model">ece.ece</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="ece.action_window">
+      <field name="name">ece window</field>
+      <field name="res_model">ece.ece</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="ece.action_server">
+      <field name="name">ece server</field>
+      <field name="model_id" ref="model_ece_ece"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="ece" id="ece.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="ece.menu_1" parent="ece.menu_root"/>
+    <menuitem name="Menu 2" id="ece.menu_2" parent="ece.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="ece.menu_1_list" parent="ece.menu_1"
+              action="ece.action_window"/>
+    <menuitem name="Server to list" id="ece" parent="ece.menu_2"
+              action="ece.action_server"/>
+-->
+  </data>
+</odoo>

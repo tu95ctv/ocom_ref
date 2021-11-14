@@ -1,7 +1,43 @@
+def capf(dh):
+    def decor(kkkk):
+        def wf(k):
+            if dh == "viet hoa":
+                k = k.upper()
+            elif dh == "viet thuong":
+                k = k.lower()
+            else:
+                k = k.title()
+            return kkkk(k)
+        return wf
+    return inner
 
+@capf("viet hoa")
+def stra (input_str):
+    return input_str
 
-ck = 'PHPSESSID=pamumm0copph9clkc7n217mi00; cookie_favourite=pamumm0copph9clkc7n217mi00; _ga=GA1.2.1944990829.1635391972; cookie_district=15; _gid=GA1.2.55814734.1635565220; __zi=3000.SSZzejyD7Dy_WlYjp1OKdowViw-O25gHDjpllP8NIDCaolpyW505qI22jF-CN0JJP8gt_y5L0DPbWRpvCJW.1; cookie_namecity=1; cookie_firstname=Tứ+Nguyễn; cookie_address=13+Trương+Hoàng+Thanh; cookie_mobile=0916022787; cookie_email=nguyenductu@gmail.com'
+print (stra("nguyen van nhuan"))
 
-ck = ck.split(';')
-ck = dict([i.strip().split('=') for i in ck])
-print (ck)
+# class textmodify:
+
+#     def __init__(self,thuong_or_hoa):
+#         self.thuong_or_hoa = thuong_or_hoa
+
+#     def __call__(self, func):
+#         dh = self.thuong_or_hoa
+#         def wf(text):
+#             k = func(text)
+#             if dh == "viet hoa":
+#                 k = k.upper()
+#             elif dh == "viet thuong":
+#                 k = k.lower()
+#             else:
+#                 k = k.title()
+#             return k
+#         return wf
+
+# # @textmodify("viet hoa")
+# @textmodify("viet thuong")
+# def stra(k):
+#     return k + ' abc'
+# i = stra("Doni Van De Beek")
+# print(i)

@@ -11,6 +11,7 @@
                     <button string="test_queue" name="test_queue" type="object" class="oe_highlight"/>
                     <button string="test_queue_create" name="test_queue_create" type="object" class="oe_highlight"/>
                     <button string="print_out_in_date" name="print_out_in_date" type="object" class="oe_highlight"/> -->
+                    <button string="test_queue" name="test_queue" type="object" class="oe_highlight" context="{'create':True}"/>
                 </header>
                 <sheet>
                 <div class="oe_title" style="max-width: 100% !important">

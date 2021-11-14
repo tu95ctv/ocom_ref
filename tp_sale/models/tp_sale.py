@@ -4,11 +4,12 @@ from odoo.exceptions import UserError
 from time import sleep
 from odoo.tools import config
 from datetime import date
+from odoo.addons.queue_job.job import job
+
 import logging
 _logger = logging.getLogger(__name__)
 import threading
 import inspect
-from odoo.addons.restful.common import RevenueRecognizeLog
 from odoo.tools import ormcache, ormcache_context
 # class User(models.Model):
 #     _inherit = 'res.users' #tên bàng tp_sale
@@ -70,10 +71,23 @@ class Sale(models.Model):
     dt = fields.Date()
     nr = fields.Integer('Number required', required=True, default=1)
     cr = fields.Char('Char required', required=True,default=1)
+    gr = fields.Char(groups='tp_sale.group_user_tp_sale')
 
     @api.depends('number2')
     def _compute_m2m_a_line_ids(self):
         self.m2m_a_line_ids = False
+
+    @job
+    def create_queue(self, vals):
+        print ("self._context.get('create')", self._context.get('create'))
+        print ("self.env.user", self.env.user)
+        if self._context.get('create'):
+            self.create(vals)
+
+    def test_queue(self):
+        print ("self._context.get('create') 1", self._context.get('create'))
+        self.with_delay().create_queue({'name': 'test queue'})
+
 
 
     # @api.model
