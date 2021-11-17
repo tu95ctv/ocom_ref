@@ -1,0 +1,49 @@
+<odoo>
+  <record id="laptop_search" model="ir.ui.view">
+    <field name="name">sale.order.list.select</field>
+    <field name="model">bds.bds</field>
+    <field name="priority">5</field>
+    <field name="arch" type="xml">
+      <search string="bds search">
+        <field name="id" />
+        <field name="title" />
+        <field name="gia"  string="Tạo cách đây bn phút" filter_domain="[('create_date','&gt;', (datetime.datetime.utcnow() -  datetime.timedelta(minutes=self)).strftime('%Y-%m-%d %H:%M:%S'))]"   />
+        <field name="gia"  string="Update cách đây bn phút" filter_domain="[('update_date','&gt;', (datetime.datetime.utcnow() -  datetime.timedelta(minutes=self)).strftime('%Y-%m-%d %H:%M:%S'))]"   />
+        <field name="gia"  string="giá bé hơn" filter_domain="[('gia_trieu','&lt;',self)]"/>
+        <field name="gia"  string="giá  lớn hơn" filter_domain="[('gia_trieu','&gt;',self)]"/>
+        <field name="link" />
+        <field name="html_khong_dau" />
+        <field name="district_id" />
+        <field name="poster_id" />
+        <field name="chotot_moi_gioi_hay_chinh_chu" />
+        <field name="html" filter_domain ="['|','|', ('html','ilike',self), ('html_khong_dau','ilike',self), ('title','ilike',self)]"/>
+        <filter name="chotot_moi_gioi_hay_chinh_chu" string="chợt tốt Cá nhân" domain ="[('chotot_moi_gioi_hay_chinh_chu','=','chinh_chu')]"/>
+        <separator />
+        <filter name="user_read_mark_ids" string="Đã Đọc của user hiện tại" domain ="[('user_read_mark_ids.user_id','=',uid)]"></filter>
+        <separator /> 
+        <filter name="not_user_read_mark_ids" string="Chưa đọc của user hiện tại" domain ="[]" context="{'search_user_not_read':True}"></filter>
+        <separator /> 
+        <filter name="user_quantam_mark_ids" string="Quan tâm của user hiện tại" domain ="[('user_quantam_mark_ids.user_id','=',uid)]"></filter>
+        <separator />
+          <filter name="create today" string="Tạo trong ngày" 
+        domain="[('create_date','&gt;=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 17:00:00')))]" />
+        <separator />
+        <filter name="tao_cach_day_5_phut" string="Tạo cách đâ 5 phút" domain="[('create_date','&gt;', (datetime.datetime.utcnow() -  datetime.timedelta(minutes=5)).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+        <separator />
+        <filter name="today" string="Đăng trong ngày" domain="[('public_datetime','&gt;=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 17:00:00')))]"  />
+        <separator />
+        <filter name="quan_tam" string="Quan tâm 1 ngày gần đây" domain="[('quan_tam','&gt;=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 17:00:00')))]"  />
+          <separator />
+        <filter name="ngay_update_gia" string="co ngay_update_gia" domain="[('ngay_update_gia','!=',False)]" help="Pickings that are late on scheduled time" />
+        <separator />
+
+         <filter name="gia_lt_10" string="Gia be hon 10" domain="[('gia_trieu','&lt;=',10)]" />
+         <filter name="gia_lt_10_20" string="Gia 10 - 20" domain="[('gia_trieu','&gt;',10),  ('gia_trieu','&lt;',20)]" />
+        <separator />
+
+
+
+      </search>
+    </field>
+  </record>
+</odoo>

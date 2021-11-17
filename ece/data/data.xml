@@ -14,8 +14,8 @@
         </record>
 
         <record id="u1_user" model="res.users">
-            <field name="name">u1</field>
-            <field name="login">u1</field>
+            <field name="name">u1e</field>
+            <field name="login">u1e</field>
             <field name="password">1</field>
             <field name="groups_id" eval="[(4,ref('base.group_system')),(4,ref('sales_team.group_sale_salesman_all_leads'))]"/>
             <field name="active" eval="True"/>
@@ -24,8 +24,8 @@
         </record>
 
         <record id="u2_user" model="res.users">
-            <field name="name">u2</field>
-            <field name="login">u2</field>
+            <field name="name">u2e</field>
+            <field name="login">u2e</field>
             <field name="password">1</field>
             <field name="groups_id" eval="[(4,ref('base.group_system')),(4,ref('sales_team.group_sale_salesman_all_leads'))]"/>
             <field name="active" eval="True"/>

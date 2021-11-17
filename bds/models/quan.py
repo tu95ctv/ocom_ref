@@ -33,7 +33,7 @@ def name_khong_dau_compute(self_):
                 r.name_khong_dau = name_khong_dau
                 r.name_viet_tat = viet_tat(name_khong_dau)
                 
-class KhongDauModel(models.Model):
+class KhongDauModel(models.AbstractModel):
     _name = 'khongdaumodel'
     _auto = False
     name = fields.Char()

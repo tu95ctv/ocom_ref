@@ -26,7 +26,7 @@
         # 'data/data_muaban.xml',
         # 'data/data_bdscomvn.xml',
         # 'data/data_taphoa.xml',
-        # 'data/cronjob_data.xml',
+        'data/cronjob_data.xml',
         'data/email.xml',
         'data/data_config_parameter.xml',
         'views/bds_images.xml',
@@ -43,6 +43,7 @@
         'views/quan.xml',
         'views/error.xml',
         'views/url_views.xml',
+        'views/laptop_search.xml',# bị lỗi
         'views/laptop.xml',# bị lỗi
         'views/get_phone_poster.xml',
         'views/ir_actions_server.xml',
@@ -50,6 +51,7 @@
         'views/user_bds_mark_read.xml',
         'wizard/trigger_form.xml',
         'views/tieu_chi.xml',
+        
         'views/cpu.xml',
         'views/menu.xml',
     ],

@@ -27,13 +27,13 @@ class UserReadMark(models.Model):
     _name = 'user.read.mark'
 
     user_id = fields.Many2one('res.users')
-    bds_id = fields.Char('bds.bds')
+    bds_id = fields.Many2one('bds.bds')
 
 class UserQuanTamMark(models.Model):
     _name = 'user.quantam.mark'
 
     user_id = fields.Many2one('res.users')
-    bds_id = fields.Char('bds.bds')
+    bds_id = fields.Many2one('bds.bds')
 
 # def _compute_slug(name, id):
 #     name = unidecode(name)
@@ -66,7 +66,7 @@ class bds(models.Model):
     so_lan_diff_public_update = fields.Integer()
     so_lan_gia_update = fields.Integer()
     vip = fields.Char()
-    user_read_mark_ids = fields.One2many('user.read.mark','bds_id', auto_join=1)
+    user_read_mark_ids = fields.One2many('user.read.mark','bds_id')
     user_quantam_mark_ids = fields.One2many('user.quantam.mark','bds_id')
     sell_or_rent =  fields.Selection([('sell','sell'), ('rent', 'rent'),
         ('need_to_buy','need_to_buy')], default='sell')
@@ -134,7 +134,8 @@ class bds(models.Model):
 
 
     # compute no store
-    html_show = fields.Text(compute='html_show_',string=u'Nội dung')
+    html_show = fields.Html(compute='html_show_',string=u'Nội dung')
+    html_show_laptop = fields.Html(compute='html_show_laptop_',string=u'Nội dung')
     html_replace = fields.Html(compute='html_replace_')
     link_show =  fields.Char(compute='link_show_')
     cho_tot_link_fake = fields.Char(compute='cho_tot_link_fake_')
@@ -239,7 +240,7 @@ class bds(models.Model):
             args = []
         if self._context.get('search_user_not_read'):
             user_read_mark = self.env['user.read.mark'].search([('user_id','=',self.env.uid)])
-            user_read_mark_bds_ids = user_read_mark.mapped('bds_id')
+            user_read_mark_bds_ids = user_read_mark.mapped('bds_id.id')
             if user_read_mark_bds_ids:
                 args += [['id', 'not in', user_read_mark_bds_ids]]
           
@@ -379,7 +380,14 @@ class bds(models.Model):
             ('\n<br>tỉ lệ keyword đầu tư: %s'%r.poster_id.dd_tin_cua_dau_tu_rate) +\
             ('\n<br>public_date %s'%r.public_date)
             ) if not khong_hien_thi_nhieu_html else '')
+
+    @api.depends('html')
+    def html_show_laptop_(self):
+        for r in self:
+            r.html_show_laptop = 'id:%s <b>%s</b>'%(r.id, r.title if r.title else '') + \
+            ('\n<br>' + r.html if r.html else '') 
             
+                    
     def link_show_(self):
         for r in self:
             if r.siteleech_id.name == 'chotot':

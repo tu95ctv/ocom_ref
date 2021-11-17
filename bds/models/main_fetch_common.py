@@ -877,9 +877,9 @@ class MainFetchCommon(models.AbstractModel):
             for ad in topic_data_from_pages_of_a_page_origin:
                 print ('**ad***', ad)
                 topic_data_from_page = {}
-                topic_data_from_page['price_string'] = ad['price_string']
-                topic_data_from_page['price'] = ad['price']
-                topic_data_from_page['gia'] = ad['price']/1000000000
+                topic_data_from_page['price_string'] = ad.get('price_string')
+                topic_data_from_page['price'] = ad.get('price',0)
+                topic_data_from_page['gia'] = ad.get('price',0)/1000000000
                 topic_data_from_page['date'] = ad['date']
                 topic_data_from_page['link'] = self.make_topic_link_from_list_id(ad['list_id'])
                 topic_data_from_page['html'] = ad.get('body','')
@@ -949,9 +949,9 @@ class MainFetchCommon(models.AbstractModel):
         update_dict['images']= ad.get('images',[])
         update_dict['phone'] = ad['phone']
         update_dict['account_name'] = ad['account_name']
-        update_dict['price_string'] = ad['price_string']
-        update_dict['price'] = ad['price']
-        update_dict['date'] = ad['date']
+        update_dict['price_string'] = ad.get('price_string')
+        update_dict['price'] = ad.get('price')
+        update_dict['date'] = ad.get('date')
         address = ad_params.get('address',{}).get('value',False)
         if address:
             update_dict['address'] = address
