@@ -28,7 +28,7 @@
         'data/data.xml',
         'views/sale.xml',
         'views/product_template.xml',
-        'views/templates.xml',
+        'views/card.xml',
         'views/card_line.xml',
     ],
     # only loaded in demonstration mode

@@ -113,6 +113,58 @@ class TableCompute(object):
 
 class WebsiteSaleWishlist(WebsiteSaleWishlist):
 
+    # @http.route(['/shop/payment'], type='http', auth="public", website=True, sitemap=False)
+    # def payment(self, **post):
+    #     """ Payment step. This page proposes several payment means based on available
+    #     payment.acquirer. State at this point :
+
+    #      - a draft sales order with lines; otherwise, clean context / session and
+    #        back to the shop
+    #      - no transaction in context / session, or only a draft one, if the customer
+    #        did go to a payment.acquirer website but closed the tab without
+    #        paying / canceling
+    #     """
+    #     order = request.website.sale_get_order()
+    #     redirection = self.checkout_redirection(order)
+    #     if redirection:
+    #         return redirection
+
+    #     render_values = self._get_shop_payment_values(order, **post)
+    #     render_values['only_services'] = order and order.only_services or False
+
+    #     if render_values['errors']:
+    #         render_values.pop('acquirers', '')
+    #         render_values.pop('tokens', '')
+
+    # @http.route(['/shop/checkout'], type='http', auth="public", website=True, sitemap=False)
+    # def checkout(self, **post):
+    #     order = request.website.sale_get_order()
+
+    #     redirection = self.checkout_redirection(order)
+    #     if redirection:
+    #         return redirection
+
+    #     if order.partner_id.id == request.website.user_id.sudo().partner_id.id:
+    #         return request.redirect('/shop/address')
+
+    #     for f in self._get_mandatory_billing_fields():
+    #         if not order.partner_id[f]:
+    #             return request.redirect('/shop/address?partner_id=%d' % order.partner_id.id)
+
+    #     values = self.checkout_values(**post)
+
+    #     if post.get('express'):
+    #         return request.redirect('/shop/confirm_order')
+
+    #     values.update({'website_sale_order': order})
+
+    #     # Avoid useless rendering if called in ajax
+    #     if post.get('xhr'):
+    #         return 'ok'
+    #     return request.render("website_sale.checkout", values)
+
+
+
     @http.route()
     def add_to_wishlist(self, product_id, price=False, **kw):
         if not price:
@@ -143,6 +195,48 @@ class WebsiteSaleWishlist(WebsiteSaleWishlist):
 
 
 class WebsiteSale(WebsiteSale):
+
+    # @http.route(['/shop/checkout'], type='http', auth="public", website=True, sitemap=False)
+    # def checkout(self, **post):
+    #     order = request.website.sale_get_order()
+
+    #     redirection = self.checkout_redirection(order)
+    #     if redirection:
+    #         return redirection
+
+    #     if order.partner_id.id == request.website.user_id.sudo().partner_id.id:
+    #         return request.redirect('/shop/address')
+
+    #     for f in self._get_mandatory_billing_fields():
+    #         if not order.partner_id[f]:
+    #             return request.redirect('/shop/address?partner_id=%d' % order.partner_id.id)
+
+    #     values = self.checkout_values(**post)
+
+    #     if post.get('express'):
+    #         return request.redirect('/shop/confirm_order')
+
+    #     values.update({'website_sale_order': order})
+
+    #     # Avoid useless rendering if called in ajax
+    #     if post.get('xhr'):
+    #         return 'ok'
+    #     return request.render("website_sale.checkout", values)
+
+
+    # @http.route(['/shop/payment'], type='http', auth="public", website=True)
+    # def payment(self, **post):
+    #     order = request.website.sale_get_order()
+    #     carrier_id = post.get('carrier_id')
+    #     if carrier_id:
+    #         carrier_id = int(carrier_id)
+    #     if order:
+    #         order._check_carrier_quotation(force_carrier_id=carrier_id)
+    #         if carrier_id:
+    #             return request.redirect("/shop/payment")
+
+    #     return super(WebsiteSaleDelivery, self).payment(**post)
+
 
     @http.route(['/shop/cart'], type='http', auth="public", website=True, sitemap=False)
     def cart(self, access_token=None, revive='', **post):
@@ -190,7 +284,7 @@ class WebsiteSale(WebsiteSale):
         return request.render("website_sale.cart", values)
 
 
-        
+
     @http.route()
     def shop(self, page=0, category=None, search='', ppg=False, **post):
         add_qty = int(post.get('add_qty', 1))

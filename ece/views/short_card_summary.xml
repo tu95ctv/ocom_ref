@@ -1,0 +1,49 @@
+<template id="short_cart_summary" name="Short Cart right column">
+        <div class="card js_cart_summary" t-if="website_sale_order and website_sale_order.website_order_line" >
+            <div class="card-body">
+                <h4 class="d-none d-xl-block">Order Total</h4>
+                <hr class="d-none d-xl-block"/>
+                <div>
+                    <t t-call="website_sale.total">
+                        <t t-set="no_rowspan" t-value="1"/>
+                    </t>
+                    <a role="button" t-if="website_sale_order and website_sale_order.website_order_line" class="btn btn-secondary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">
+                        <span>Process Checkout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+<template id="total">
+        <div id="cart_total" t-att-class="extra_class or ''" t-if="website_sale_order and website_sale_order.website_order_line">
+            <table class="table">
+                  <tr id="empty">
+                      <t t-if='not no_rowspan'><td rowspan="10" class="border-0"/></t>
+                      <td class="col-md-2 col-3 border-0"></td>
+                      <td class="col-md-2 col-3 border-0" ></td>
+                  </tr>
+                  <tr id="order_total_untaxed">
+                      <td class="text-right border-0">Subtotal:</td>
+                      <td class="text-xl-right border-0" >
+                          <span t-field="website_sale_order.amount_untaxed" class="monetary_field" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                      </td>
+                  </tr>
+                  <tr id="order_total_taxes">
+                      <td class="text-right border-0">Taxes:</td>
+                      <td class="text-xl-right border-0">
+                           <span t-field="website_sale_order.amount_tax" class="monetary_field" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
+                      </td>
+                  </tr>
+                  <tr id="order_total">
+                      <td class="text-right"><strong>Total:</strong></td>
+                      <td class="text-xl-right">
+                          <strong t-field="website_sale_order.amount_total" class="monetary_field"
+                              t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
+                      </td>
+                  </tr>
+            </table>
+        </div>
+    </template>
+
+
