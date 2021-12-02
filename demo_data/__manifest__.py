@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "ece",
+    'name': "demo_data",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,19 +20,17 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product','sale','website', 'website_sale'],
+    'depends': ['base','approvals'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'data/data.xml',
-        'views/sale.xml',
-        'views/product_template.xml',
+        'data/email.xml',
+        'data/users.xml',
+        'views/views.xml',
         'views/templates.xml',
-        'views/card_line.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
     ],
 }

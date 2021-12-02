@@ -1,8 +1,9 @@
 <odoo>
-     <record model="ir.ui.view" id="laptop_list">
+     <record model="ir.ui.view" id="laptop_list2">
             <field name="name">bds list</field>
+            <field name="model">bds.bds</field>
             <field name="arch" type="xml">
-                <tree  editable="bottom"   >
+                <tree >
                     <button name="open_something" type="object"/>
                     <field name="thumb" widget="image_url"/>
                     <field name="html_show_laptop"  string="Htmlllllllllllllllllllllllllllllllllllllllllllllllllll" readonly="0"/>
@@ -10,11 +11,49 @@
                     <field name="is_user_read_mark"/>
                     <field name="id" optional="hide"/>
                    	<field name="chotot_moi_gioi_hay_chinh_chu" optional="hide"/>
+                    <field name="poster_id" optional="hide"/>
                    	<field name="link_show" optional="hide"/>
                     <field name="count_post_all_site" optional="hide"/>
                     <field name="date_text" optional="hide"/>
                     <field name="create_date" optional="hide"/>
                     <field name="public_date" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="laptop_list">
+            <field name="name">bds list</field>
+            <field name="model">bds.bds</field>
+            <field name="inherit_id" ref="laptop_list2" />
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="editable">bottom</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="other_list">
+            <field name="name">bds list</field>
+            <field name="model">bds.bds</field>
+            <field name ="priority">5</field>
+            <field name="arch" type="xml">
+                <tree default_order="public_datetime DESC" editable="bottom"   >
+                    <button name="open_something" type="object"/>
+                    <field name="is_read"></field>
+                    <field name="quan_tam"></field>
+                    <field name="cate"></field>
+                    <field name="loai_nha"></field>
+                    <field name="gia_trieu"/>
+                    <field name="html_show"  string="Htmmmmmmmmmmmmmmllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll" readonly="0"/>
+                   	<field name="trich_dia_chi" />
+                   	<field name="chotot_moi_gioi_hay_chinh_chu" />
+                    <field name="count_post_all_site" />
+                    <field name="date_text" />
+                    <field name="create_date" />
                 </tree>
             </field>
         </record>
@@ -65,6 +104,16 @@
         <field name="search_view_id" ref="laptop_search"></field>
 
     </record>
+
+    <record model="ir.actions.act_window" id="laptop_action2">
+        <field name="name">Laptop</field>
+        <field name="res_model">bds.bds</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('cate','=','laptop')]</field>
+        <field name="view_id" ref="laptop_list2"></field>
+        <field name="search_view_id" ref="laptop_search"></field>
+    </record>
+
 
     <record model="ir.actions.act_window" id="phone_action">
         <field name="name">Phone</field>

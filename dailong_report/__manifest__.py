@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "ece",
+    'name': "test_report",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,16 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product','sale','website', 'website_sale'],
+    'depends': ['base','report_xlsx'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'data/data.xml',
-        'views/sale.xml',
-        'views/product_template.xml',
+        'report/xlsx_report.xml',
         'views/templates.xml',
-        'views/card_line.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

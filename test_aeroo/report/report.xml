@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="test_so" model="ir.actions.report">
+        <field name="name">Test so</field>
+        <field name="type">ir.actions.report</field>
+        <field name="model">sale.order</field>
+        <field name="report_name">test_so</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="out_format" model="report.mimetypes"
+               search="[('compatible_types','=','oo-odt')]"/>
+        <field name="report_file">test_aeroo/report/so.odt</field>
+        <field name="tml_source">file</field>
+        <field name="print_report_name">'test so'</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+    </record>
+
+
+     <record id="test_so" model="ir.actions.report">
+        <field name="name">Test so</field>
+        <field name="type">ir.actions.report</field>
+        <field name="model">sale.order</field>
+        <field name="report_name">test_so</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-ods</field>
+        <field name="out_format" model="report.mimetypes"
+               search="[('code','=','oo-xlsx')]"/>
+        <field name="report_file">test_aeroo/report/so.ods</field>
+        <field name="tml_source">file</field>
+        <field name="print_report_name">'test so'</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+    </record>
+    
+</odoo>

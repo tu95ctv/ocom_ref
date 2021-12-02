@@ -8,6 +8,7 @@
 
     <menuitem name="BDS Sell" id="main_bds_menu" parent="bds_icon" action="main_bds_action"  sequence="1"/>
     <menuitem name="Laptop" id="laptop" parent="bds_icon" action="laptop_action"  sequence="1"/>
+    <menuitem name="Laptop 2" id="laptop2" parent="bds_icon" action="laptop_action2"  sequence="1"/>
     <menuitem name="BDS Sell Short" id="main_bds_menu_short" parent="bds_icon" action="main_bds_action_short"  sequence="1"/>
 
     <!-- <menuitem name="Tạp Hóa" id="demo_tap_hoa_menu" parent="bds_icon" action="demo_tap_hoa_action"  sequence="1" groups="bds.tap_hoa_group"/> -->

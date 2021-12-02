@@ -1,0 +1,13 @@
+<odoo>
+  <data>
+    <report
+    id="mrp_production"
+    model="mrp.production"
+    string="In lệnh sản xuất"
+    report_type="xlsx"
+    name="dailong_report.mo"
+    file="lenh_san_xuat"
+    attachment_use="False"
+/>
+  </data>
+</odoo>

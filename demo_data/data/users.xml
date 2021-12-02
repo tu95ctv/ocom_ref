@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="u1_user" model="res.users">
+        <field name="name">approval admin (u1) ductu19871@gmail.com</field>
+        <field name="login">u1</field>
+        <field name="email">ductu19871@gmail.com</field>
+        <field name="password">1</field>
+        <field name="groups_id" eval="[(4,ref('approvals.group_approval_manager'))]"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="u2_user" model="res.users">
+        <field name="name">approval user 1 (u2) nguyenductu@gmail.com </field>
+        <field name="login">u2</field>
+        <field name="email">nguyenductu@gmail.com</field>
+        <field name="password">1</field>
+        <field name="groups_id" eval="[(4,ref('approvals.group_approval_user'))]"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="u3_user" model="res.users">
+        <field name="name">approval admin 2 (u3) ductu8711@gmail.com</field>
+        <field name="login">u3</field>
+        <field name="password">1</field>
+        <field name="email">ductu8711@gmail.com</field>
+        <field name="groups_id" eval="[(4,ref('approvals.group_approval_manager'))]"/>
+        <field name="active" eval="True"/>
+    </record>
+
+
+    <record id="u4_user" model="res.users">
+        <field name="name">approval user 2 (u4) tund@nhanlucsieuviet.com</field>
+        <field name="login">u4</field>
+        <field name="email">tund@nhanlucsieuviet.com</field>
+        <field name="password">1</field>
+        <field name="groups_id" eval="[(4,ref('approvals.group_approval_user'))]"/>
+        <field name="active" eval="True"/>
+    </record>
+
+
+    <record id="u5_user" model="res.users">
+        <field name="name">approval user 3 (u5) ductu8712@gmail.com</field>
+        <field name="login">u5</field>
+        <field name="email">ductu8712@gmail.com</field>
+        <field name="password">1</field>
+        <field name="groups_id" eval="[(4,ref('approvals.group_approval_user'))]"/>
+        <field name="active" eval="True"/>
+    </record>
+
+
+
+
+</odoo>
