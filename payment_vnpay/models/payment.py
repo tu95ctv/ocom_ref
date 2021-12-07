@@ -12,7 +12,7 @@ from odoo import api, fields, models, _
 from odoo.tools.float_utils import float_compare
 from odoo.http import request
 from odoo.addons.payment.models.payment_acquirer import ValidationError
-from odoo.addons.queue_job.job import job
+# from odoo.addons.queue_job.job import job
 
 
 _logger = logging.getLogger(__name__)
@@ -22,7 +22,7 @@ class AcquirerVnpay(models.Model):
     _name = 'payment.acquirer'
     _inherit = 'payment.acquirer'
 
-    provider = fields.Selection(selection_add=[('vnpay', 'VN Pay')])
+    provider = fields.Selection(selection_add=[('vnpay', 'VN Pay')], ondelete={'vnpay': 'cascade'})
     vnpay_website_code = fields.Char('Website code', required_if_provider='vnpay', groups='base.group_user')
     vnpay_type = fields.Selection(selection=[
         ('InternationalCard', 'Thẻ quốc tế'),
@@ -105,6 +105,7 @@ class AcquirerVnpay(models.Model):
 
     def make_payment_url(self,data_query):
         inputData = sorted(data_query.items())
+        print ('**inputData**',inputData)
         queryString = ''
         hasData = ''
         seq = 0
@@ -115,7 +116,7 @@ class AcquirerVnpay(models.Model):
             else:
                 seq = 1
                 queryString = key + '=' + urlencode(inputData[key])
-                hasData = str(key) + '=' + str(val)
+                hasData = str(key) + '=' + str(inputData[key])
         data_hash = (self.vnpay_hash_secret + hasData).encode('utf-8')
         hashValue = hashlib.sha256(data_hash).hexdigest()
         return queryString + '&vnp_SecureHashType=SHA256&vnp_SecureHash=' + hashValue
@@ -242,6 +243,6 @@ class TxVnPay(models.Model):
         return self.write(res)
 
     # @api.multi
-    @job
+    # @job
     def run_job_form_feedback_vnpay(self, post):
         self.sudo().form_feedback(post, 'vnpay')

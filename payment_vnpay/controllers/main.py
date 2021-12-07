@@ -60,8 +60,8 @@ class VNpayController(http.Controller):
         try:
             check_confirm = self.check_confirm_invalid(post)
             if check_confirm.get('code') == 200:
-                request.env['payment.transaction'].sudo().with_delay(eta=300).run_job_form_feedback_vnpay(post)
-                # request.env['payment.transaction'].sudo().form_feedback(post, 'vnpay')
+                # request.env['payment.transaction'].sudo().with_delay(eta=300).run_job_form_feedback_vnpay(post)
+                request.env['payment.transaction'].sudo().form_feedback(post, 'vnpay')
                 return json.dumps({'RspCode': '00', 'Message': 'Confirm Success'})
             else:
                 return json.dumps({
