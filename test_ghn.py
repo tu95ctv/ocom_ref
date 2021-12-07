@@ -1,6 +1,4 @@
-
-
-
+# -*- coding: utf-8 -*-
 import requests
 def fetch_ghn(url, headers, data):
     response = requests.post(url, 
