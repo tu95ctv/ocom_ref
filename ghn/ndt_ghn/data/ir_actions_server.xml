@@ -1,0 +1,34 @@
+<odoo>
+    <record id="action_get_ghn_ward" model="ir.actions.server">
+        <field name="name">Lấy dữ liệu phường</field>
+        <field name="model_id" ref="model_res_country_ward"/>
+        <field name="binding_model_id" ref="ndt_ghn.model_res_country_ward"/>
+        <field name="state">code</field>
+        <field name="code">
+                records.get_ghn_ward()
+        </field>
+    </record>
+
+    <record id="action_get_ghn_district" model="ir.actions.server">
+        <field name="name">Lấy dữ liệu quận/huyện</field>
+        <field name="model_id" ref="model_res_country_district"/>
+        <field name="binding_model_id" ref="ndt_ghn.model_res_country_district"/>
+        <field name="state">code</field>
+        <field name="code">
+                records.get_ghn_district()
+        </field>
+    </record>
+
+    <record id="action_get_ghn_ward_one_district" model="ir.actions.server">
+        <field name="name">Lấy dữ liệu phường/xã của quận (get wards ghn items)</field>
+        <field name="model_id" ref="model_res_country_district"/>
+        <field name="binding_model_id" ref="ndt_ghn.model_res_country_district"/>
+        <field name="state">code</field>
+        <field name="code">
+                records.get_ghn_ward_one_district()
+        </field>
+    </record>
+
+    
+</odoo>
+
