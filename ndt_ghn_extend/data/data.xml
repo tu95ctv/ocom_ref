@@ -64,8 +64,16 @@
             <field name="value">81f253e7-e8da-11ea-84a7-3e05d9a3136e</field>
         </record>
 
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module', '=', 'stock'), ('name', '=', 'warehouse0')]"/>
+            </function>
+            <value eval="{'noupdate': False}" />
+        </function>
+
         <record id="stock.warehouse0" model="stock.warehouse">
             <field name="ghn_shop_id">1295159</field>
         </record>
+        
     </data>
 </odoo>

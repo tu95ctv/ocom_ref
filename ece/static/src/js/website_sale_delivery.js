@@ -73,10 +73,10 @@ odoo.define('ece.checkout', function (require) {
         },
 
         _handleCarrierUpdateResultBadge: function (result) {
-
-            console.log('result in _handleCarrierUpdateResultBadge', result)
-            var $carrierBadge = $('#delivery_carrier input[name="delivery_type"][value=' + result.carrier_id + ']' + '[value='  + result.carrier_id  +   '] ~ .o_wsale_delivery_badge_price');
-            console.log('**$carrierBadge**', $carrierBadge)
+        
+            console.log('result.company_id', result.company_id)
+            var $carrierBadge = $('#delivery_carrier input[name="delivery_type"][company=' + result.company_id + '] ~ .o_wsale_delivery_badge_price');
+    
             if (result.status === true) {
                  // if free delivery (`free_over` field), show 'Free', not '$0'
                  if (result.is_free_delivery) {
