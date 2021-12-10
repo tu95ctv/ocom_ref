@@ -85,10 +85,10 @@ class SaleOrder(models.Model):
     def onchange_cal_domain_delivery_service_type_id(self):
         if self.carrier_id and self.warehouse_id:
             token = self.env['ir.config_parameter'].sudo().get_param('ndt_ghn_extend.ghn_token')
-            shop_id = self.warehouse_id.ghn_shop_id
+            ghn_shop_id = self.warehouse_id.ghn_shop_id
             from_district = int(self.warehouse_id.partner_id.district_id.ghn_id)
             to_district_id = int(self.partner_shipping_id.district_id.ghn_id)
-            ghn_rt = get_service(token, shop_id, from_district, to_district_id)
+            ghn_rt = get_service(token, ghn_shop_id, from_district, to_district_id)
             service_ids = [server['service_type_id'] for server in ghn_rt]
             value = self.env['ndt.delivery.service.type'].search([('code','=',service_ids[-1])])
             return {'domain': {'delivery_service_type_id': [('code', 'in', service_ids)]},

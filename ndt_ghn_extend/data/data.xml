@@ -65,7 +65,7 @@
         </record>
 
         <record id="stock.warehouse0" model="stock.warehouse">
-            <field name="shop_id">1295159</field>
+            <field name="ghn_shop_id">1295159</field>
         </record>
     </data>
 </odoo>
