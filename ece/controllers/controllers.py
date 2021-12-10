@@ -5,7 +5,7 @@ from odoo.addons.website_sale_wishlist.controllers.main import WebsiteSaleWishli
 from odoo.addons.website_sale.controllers.main import WebsiteSale 
 from odoo.addons.website_sale_delivery.controllers.main import WebsiteSaleDelivery 
 from odoo.addons.website_sale_wishlist.controllers.main import WebsiteSaleWishlist 
-
+from odoo.exceptions import UserError
 
 ####
 # -*- coding: utf-8 -*-
@@ -309,7 +309,7 @@ class WebsiteSaleDelivery1(WebsiteSaleDelivery):
 
     @http.route(['/shop/payment'], type='http', auth="public", website=True)
     def payment(self, **post):
-        print ('cos vo day khong')
+        # print ('cos vo day khong')
         order = request.website.sale_get_order()
         carrier_id = post.get('carrier_id')
         if carrier_id:
@@ -333,24 +333,68 @@ class WebsiteSaleDelivery1(WebsiteSaleDelivery):
 
     
 
-    # def _update_website_sale_delivery_return(self, order, **post):
-    #     Monetary = request.env['ir.qweb.field.monetary']
-    #     carrier_id = int(post['carrier_id'])
-    #     currency = order.currency_id
-    #     amount_delivery = order.amount_delivery
-    #     print ('**amount_delivery***', amount_delivery)
-    #     amount_delivery= 2
-    #     if order:
-    #         return {
-    #             'company_id': post['company_id'],
-    #             'status': order.delivery_rating_success,
-    #             'error_message': order.delivery_message,
-    #             'carrier_id': carrier_id,
-    #             'is_free_delivery': not bool(amount_delivery),
-    #             'new_amount_delivery': Monetary.value_to_html(amount_delivery, {'display_currency': currency}),
-    #             'new_amount_untaxed': Monetary.value_to_html(order.amount_untaxed, {'display_currency': currency}),
-    #             'new_amount_tax': Monetary.value_to_html(order.amount_tax, {'display_currency': currency}),
-    #             'new_amount_total': Monetary.value_to_html(order.amount_total, {'display_currency': currency}),
-    #         }
-    #     return {}
+    def _update_website_sale_delivery_return(self, order, **post):
+        Monetary = request.env['ir.qweb.field.monetary']
+        carrier_id = int(post['carrier_id'])
+        currency = order.currency_id
+        amount_delivery = order.amount_delivery
+        # print ('**amount_delivery***', amount_delivery)
+        amount_delivery= 2
+        if order:
+            return {
+                'company_id': post['company_id'],
+                'status': order.delivery_rating_success,
+                'error_message': order.delivery_message,
+                'carrier_id': carrier_id,
+                'is_free_delivery': not bool(amount_delivery),
+                'new_amount_delivery': Monetary.value_to_html(amount_delivery, {'display_currency': currency}),
+                'new_amount_untaxed': Monetary.value_to_html(order.amount_untaxed, {'display_currency': currency}),
+                'new_amount_tax': Monetary.value_to_html(order.amount_tax, {'display_currency': currency}),
+                'new_amount_total': Monetary.value_to_html(order.amount_total, {'display_currency': currency}),
+            }
+        return {}
+
+
+    @http.route(['/shop/carrier_rate_shipment'], type='json', auth='public', methods=['POST'], website=True)
+    def cart_carrier_rate_shipment(self, carrier_id, **kw):
+        order = request.website.sale_get_order(force_create=True)
+        company_id = kw.get('company_id')
+        # print ('**company_id cart_carrier_rate_shipment**',company_id)
+        if not int(carrier_id) in order._get_delivery_methods().ids:
+            raise UserError(_('It seems that a delivery method is not compatible with your address. Please refresh the page and try again.'))
+
+        Monetary = request.env['ir.qweb.field.monetary']
+
+        res = {'carrier_id': carrier_id}
+        carrier = request.env['delivery.carrier'].sudo().browse(int(carrier_id))
+        rate = carrier.rate_shipment(order)
+        if rate.get('success'):
+            tax_ids = carrier.product_id.taxes_id.filtered(lambda t: t.company_id == order.company_id)
+            if tax_ids:
+                fpos = order.fiscal_position_id
+                tax_ids = fpos.map_tax(tax_ids, carrier.product_id, order.partner_shipping_id)
+                taxes = tax_ids.compute_all(
+                    rate['price'],
+                    currency=order.currency_id,
+                    quantity=1.0,
+                    product=carrier.product_id,
+                    partner=order.partner_shipping_id,
+                )
+                if request.env.user.has_group('account.group_show_line_subtotals_tax_excluded'):
+                    rate['price'] = taxes['total_excluded']
+                else:
+                    rate['price'] = taxes['total_included']
+
+            res['status'] = True
+            res['new_amount_delivery'] = Monetary.value_to_html(rate['price'], {'display_currency': order.currency_id})
+            res['is_free_delivery'] = not bool(rate['price'])
+            res['error_message'] = rate['warning_message']
+        else:
+            res['status'] = False
+            res['new_amount_delivery'] = Monetary.value_to_html(0.0, {'display_currency': order.currency_id})
+            res['error_message'] = rate['error_message']
+        res['company_id'] = company_id
+        return res
+
+
 

@@ -26,7 +26,7 @@ class Website(WebsiteSale):
                 elif not order.partner_shipping_id:
                     last_order = request.env['sale.order'].sudo().search([("partner_id", "=", order.partner_id.id)], order='id desc', limit=1)
                     order.partner_shipping_id.id = last_order and last_order.id
-        print ('kakakakak', shippings)
+        # print ('kakakakak', shippings)
         values = {
             'order': order,
             'shippings': shippings,
@@ -57,7 +57,7 @@ class Website(WebsiteSale):
             return request.redirect('/shop/confirm_order')
 
         values.update({'website_sale_order': order})
-        print ('***values***', values)
+        # print ('***values***', values)
 
         # Avoid useless rendering if called in ajax
         if post.get('xhr'):

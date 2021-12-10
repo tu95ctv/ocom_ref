@@ -12,7 +12,7 @@ odoo.define('ece.checkout', function (require) {
     publicWidget.registry.websiteSaleDelivery.include({
         
         start: function () {
-            console.log('1232131231231232((d4))')
+            // console.log('1232131231231232((d4))')
             var self = this;
             var $carriers = $('#delivery_carrier input[name="delivery_type"]');
             var $payButton = $('#o_payment_form_pay');
@@ -32,10 +32,12 @@ odoo.define('ece.checkout', function (require) {
             // Asynchronously retrieve every carrier price
             _.each($carriers, function (carrierInput, k) {
                 self._showLoading($(carrierInput));
+                console.log('*carrierInput.company**',carrierInput.company)
                 self._rpc({
                     route: '/shop/carrier_rate_shipment',
                     params: {
                         'carrier_id': carrierInput.value,
+                        'company_id':carrierInput.company
                     },
                 }).then(self._handleCarrierUpdateResultBadge.bind(self));
             });
@@ -44,7 +46,7 @@ odoo.define('ece.checkout', function (require) {
         },
 
         _handleCarrierUpdateResult: function (result) {
-            console.log('_handleCarrierUpdateResult this', this)
+            // console.log('_handleCarrierUpdateResult this', this)
             // console.log('000000000000000000*** this.event',this.event)
             // console.log('111111111111*** this.event',this.event)
             // console.log('222222222222', this.event.currentTarget)
@@ -74,9 +76,9 @@ odoo.define('ece.checkout', function (require) {
 
         _handleCarrierUpdateResultBadge: function (result) {
         
-            console.log('result.company_id', result.company_id)
-            var $carrierBadge = $('#delivery_carrier input[name="delivery_type"][company=' + result.company_id + '] ~ .o_wsale_delivery_badge_price');
-    
+            // console.log('result.company_id in _handleCarrierUpdateResultBadge************', result.company_id)
+            var $carrierBadge = $('input[name="delivery_type"][value=' + result.carrier_id + ']'+ '[company=' + result.company_id + '] ~ .o_wsale_delivery_badge_price');
+            // console.log('$carrierBadge',$carrierBadge )
             if (result.status === true) {
                  // if free delivery (`free_over` field), show 'Free', not '$0'
                  if (result.is_free_delivery) {
@@ -93,9 +95,9 @@ odoo.define('ece.checkout', function (require) {
 
 
         _onCarrierClick: function (ev) {
-            console.log('ev.currentTarget***', ev.currentTarget)
+            // console.log('ev.currentTarget***', ev.currentTarget)
             var $radio = $(ev.currentTarget).find('input[type="radio"]');
-            console.log('$radio.company',$radio.attr('company'))
+            // console.log('$radio.company',$radio.attr('company'))
             this._showLoading($radio);
             $radio.prop("checked", true);
             var $payButton = $('#o_payment_form_pay');

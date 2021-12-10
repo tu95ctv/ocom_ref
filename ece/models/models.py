@@ -11,7 +11,6 @@ class ece(models.Model):
     def set_noupdate_false(self, xml_id):
         id,_,_ = self.xmlid_lookup(xml_id)
         imd = self.browse(id)
-        print ('imd', imd)
         imd.noupdate = False
 
 class ProductTemplate(models.Model):

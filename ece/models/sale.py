@@ -22,7 +22,6 @@ class Sale(models.Model):
             sol_groups = r.get_sol_group_by_company()
             ece_gr_ids = self.env['ece.gr']
             for c_id,sols in sol_groups.items():
-                print ('**c_id**', c_id, 'sols', sols)
                 gr_obj = self.env['ece.gr'].new({'company_id': c_id,
                      'sol_ids':[(6,0, sols.ids)]})
                 ece_gr_ids |=gr_obj
@@ -36,10 +35,8 @@ class Sale(models.Model):
             company_id = line.product_id.company_id
             lines = sol_groups.setdefault(company_id, self.env['sale.order.line'])
             lines |=line
-            print ('*lines', lines)
             sol_groups[company_id] = lines
 
-        print ('**sol_groups***', sol_groups)
         return sol_groups
 
 
@@ -52,7 +49,6 @@ class Sale(models.Model):
             group[key] = d | l
 
         for c in group:
-            print ('company la gi', c)
             line_group = group[c]
             c = c or self.env['res.company'].browse(1)
             warehouse_id = self.with_user(1).with_company(c)._default_warehouse_id()
@@ -69,7 +65,6 @@ class Sale(models.Model):
     #     pass
     
     def _check_carrier_quotation(self, force_carrier_id=None, company=None):
-        print ('company2************_check_carrier_quotation',company)
         self.ensure_one()
         DeliveryCarrier = self.env['delivery.carrier']
 
@@ -128,7 +123,6 @@ class Sale(models.Model):
         domain=[('order_id', 'in', self.ids), ('is_delivery', '=', True)]
         if  isinstance(company, int):
             domain.append(('company2_id','=', company))
-        print ('**domain**', domain)
         self.env['sale.order.line'].search(domain).unlink()
 
     
