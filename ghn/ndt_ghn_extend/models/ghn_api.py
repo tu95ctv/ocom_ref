@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
-# from odoo.exceptions import UserError
+from odoo.exceptions import UserError
 shop_id_87 = 1295159
 token_87 = '81f253e7-e8da-11ea-84a7-3e05d9a3136e'
 token_090 = '7e079abb-fe1d-11ea-aeaa-9a0707cfe569'
@@ -55,7 +55,10 @@ def fetch_ghn_fee(token, shop_id, to_district_id, to_ward_code,service_type_id,s
             raise UserError('Phải cấu hình GHN shop id trong kho hàng')
         # more_headers = {"shop_id":str(shop_id)}
         if not weight:
-            raise UserError('Trọng lượng phải lớn hơn 0')
+            # raise UserError('Trọng lượng phải lớn hơn 0')
+            weight = 1
+        print ('to_district_id',to_district_id)
+        #1A0112
         data = {    
                     "service_type_id":service_type_id,
                     "to_district_id":to_district_id,
@@ -195,6 +198,4 @@ def get_service(token, shop_id, from_district, to_district):
 
 if __name__ == "__main__":
     from_district =  3135
-    rs = get_service(token, shop_id,from_district,from_district)
-    print (rs)
    

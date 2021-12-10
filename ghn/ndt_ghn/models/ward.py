@@ -51,7 +51,7 @@ class Ward(models.Model):
                     
         
         
-    @api.one
+    # @api.one
     def get_ghn_ward(self):
         str_ghn_district= self.district_id.ghn_id
         ghn_items = fetch_ghn_ward_data(str_ghn_district)

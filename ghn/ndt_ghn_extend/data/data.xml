@@ -6,15 +6,14 @@
             <field name="type">service</field>
         </record>
 
-        <record model="res.partner.hcategory" id ="hcategory_carrier">
+        <!-- <record model="res.partner.hcategory" id ="hcategory_carrier">
             <field name="name">Nhóm vận chuyển</field>
-        </record>
+        </record> -->
 
-        <record model="res.partner" id ="giao_hang_nhanh">
+        <!-- <record model="res.partner" id ="giao_hang_nhanh">
             <field name="name">Đối tác Giao hàng nhanh</field>
-            <field name="hcategory_id" ref="hcategory_carrier"/>
             <field name="supplier">True</field>
-        </record>
+        </record> -->
 
         <record model="delivery.carrier" id ="giao_hang_nhanh_delivery_carrier">
             <field name="name">Giao hàng nhanh</field>
@@ -41,10 +40,10 @@
             <field name="code">3</field>
         </record>
 
-        <record id="config_ghn_token" model="ir.config_parameter">
+        <!-- <record id="config_ghn_token" model="ir.config_parameter">
             <field name="key">ghn_token</field>
             <field name="value">81f253e7-e8da-11ea-84a7-3e05d9a3136e</field>
-        </record>
+        </record> -->
 
         <!-- <record id="res_partner_2" model="res.partner">
             <field name="name">Agrolait</field>
@@ -59,5 +58,14 @@
             <field name="website">http://www.agrolait.com</field>
             <field name="image" type="base64" file="base/static/img/res_partner_2-image.jpg"/>
         </record> -->
+
+        <record id="config_ghn_token" model="ir.config_parameter">
+            <field name="key">ndt_ghn_extend.ghn_token</field>
+            <field name="value">81f253e7-e8da-11ea-84a7-3e05d9a3136e</field>
+        </record>
+
+        <record id="stock.warehouse0" model="stock.warehouse">
+            <field name="shop_id">1295159</field>
+        </record>
     </data>
 </odoo>

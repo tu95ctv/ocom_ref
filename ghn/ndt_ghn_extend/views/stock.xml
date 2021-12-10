@@ -40,9 +40,9 @@
                 <field name="carrier_update_info" />
             </field>
 
+            <!-- <field name="weight" position="replace">
+            </field> -->
             <field name="weight" position="replace">
-            </field>
-            <field name="shipping_weight" position="replace">
                 <field name="height" />
                 <field name="length" />
                 <field name="width" />
@@ -50,7 +50,7 @@
             </field>
             <xpath expr="//label[@for='weight']"  position="replace">
             </xpath>
-            <field name="weight_uom_id" position="replace" />
+            <!-- <field name="weight_uom_id" position="replace" /> -->
             <!-- <label for="weight" string="Weight"/> -->
         </field>
     </record>
@@ -61,13 +61,16 @@
         <field name="model">stock.warehouse</field>
         <field name="inherit_id" ref="stock.view_warehouse"/>
         <field name="arch" type="xml">
-            <xpath expr="//notebook" position="inside">
+            <!-- <xpath expr="//notebook" position="inside">
                 <notebook string="Vận chuyển">
                     <group>
                         <field name="ghn_shop_id" />
                     </group>
                 </notebook>
-            </xpath>
+            </xpath> -->
+            <field name="partner_id" position="after">
+                <field name="ghn_shop_id" />
+            </field>
 
         </field>
     </record>

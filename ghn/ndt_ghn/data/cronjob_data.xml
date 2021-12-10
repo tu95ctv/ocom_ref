@@ -7,7 +7,7 @@
         <field name="interval_type">minutes</field>
         <field name="numbercall">1</field>
         <field eval="False" name="doall"/>
-        <field eval="'res.country.state'" name="model"/>
+        <!-- <field eval="'res.country.state'" name="model"/> -->
         <field ref="ndt_ghn.model_res_country_state" name="model_id"/>
         <field name="state">code</field>
         <field name="code">model.ghn_province()</field>
@@ -23,7 +23,7 @@
         <field name="interval_type">minutes</field>
         <field name="numbercall">1</field>
         <field eval="False" name="doall"/>
-        <field eval="'res.country.state'" name="model"/>
+        <!-- <field eval="'res.country.state'" name="model"/> -->
         <field ref="ndt_ghn.model_res_country_state" name="model_id"/>
         <field name="state">code</field>
         <field name="code">model.get_ghn_district_all_province()</field>
@@ -38,7 +38,7 @@
         <field name="interval_type">minutes</field>
         <field name="numbercall">1</field>
         <field eval="False" name="doall"/>
-        <field eval="'res.country.district'" name="model"/>
+        <!-- <field eval="'res.country.district'" name="model"/> -->
         <field ref="partner_vn_localization.model_res_country_district" name="model_id"/>
         <field name="state">code</field>
         <field name="code">model.get_ghn_ward_all_district()</field>
@@ -53,7 +53,7 @@
         <field name="interval_type">minutes</field>
         <field name="numbercall">1</field>
         <field eval="False" name="doall"/>
-        <field eval="'res.country.ward'" name="model"/>
+        <!-- <field eval="'res.country.ward'" name="model"/> -->
         <field ref="partner_vn_localization.model_res_country_ward" name="model_id"/>
         <field name="state">code</field>
         <field name="code">

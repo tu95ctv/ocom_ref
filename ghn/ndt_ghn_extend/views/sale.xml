@@ -7,12 +7,20 @@
         <field name="inherit_id" ref="delivery.view_order_form_with_carrier"/>
         
         <field name="arch" type="xml">
-            <button name="get_delivery_price" position="before">
+            <!-- <xpath expr="//button[last()]" position="after">
                 <button name="calculate_dimension" string="Tính kích thước"
                 attrs="{'invisible':['|', '|', ('carrier_id','=',False),('state','not in',('draft','sent')),('delivery_so_line_id','!=',False) ]}"
                 class="oe_inline fa fa-arrow-right oe_link" type="object" 
                 />
-            </button>
+            </xpath> -->
+
+            <xpath expr="//button[last()]" position="after">
+                <button name="calculate_dimension" string="Tính kích thước"
+                class="oe_inline fa fa-arrow-right oe_link" type="object" 
+                />
+            </xpath>
+
+
             <field name="picking_policy" position="after">
                 <field name="height"/>
                 <field name="length"/>
@@ -20,7 +28,10 @@
                 <field name="weight" />
                 <field name="delivery_type" invisible="1" />
                 <!-- <field name="is_use_api_shipping"  /> -->
-                <field name="delivery_service_type_id" attrs="{'required':[('delivery_type','=','base_one_api')]}" domain="[('carrier_id','=',carrier_id)]"/>
+                <!-- <field name="delivery_service_type_id" attrs="{'required':[('delivery_type','=','base_one_api')]}" domain="[('carrier_id','=',carrier_id)]"/> -->
+
+                <field name="delivery_service_type_id" attrs="{'required':[('delivery_type','=','base_one_api')]}" />
+
                 <field name="delivery_payment_type_id"/>
                 <field name="delivery_cod_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                 <field name="delivery_so_line_id"/>

@@ -37,7 +37,7 @@ class District(models.Model):
     #         else:
     #             print ('name ward not map**** ',  ward.name.upper())
     
-    @api.one
+    # @api.one
     def get_ghn_ward_one_district(self):
         ghn_district_id = self.ghn_id
         print ('***ghn_district_id***', ghn_district_id, self.name)

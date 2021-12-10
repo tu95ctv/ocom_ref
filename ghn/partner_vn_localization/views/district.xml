@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
-    <!-- Viet Nam Ward -->
+    <!-- Viet Nam District -->
 
-    <record id="as_vn_address_ward_form_view" model="ir.ui.view">
-        <field name="name">res.country.ward.form</field>
-        <field name="model">res.country.ward</field>
+    <record id="partner_vn_localization_district_form_view" model="ir.ui.view">
+        <field name="name">res.country.district.form</field>
+        <field name="model">res.country.district</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -17,8 +17,7 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="name_without_prefix"/>
-                            <field name="district_id" readonly="1"/>
+                            <field name="state_id" readonly="1"/>
                         </group>
                         <group>
                             <field name="code"/>
@@ -29,24 +28,24 @@
         </field>
     </record>
 
-    <record id="as_vn_address_ward_tree_view" model="ir.ui.view">
-        <field name="name">res.country.ward.tree</field>
-        <field name="model">res.country.ward</field>
+    <record id="partner_vn_localization_district_tree_view" model="ir.ui.view">
+        <field name="name">res.country.district.tree</field>
+        <field name="model">res.country.district</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="code"/>
                 <field name="name"/>
-                <field name="name_without_prefix"/>
-                <field name="district_id"/>
+                <field name="state_id"/>
             </tree>
         </field>
     </record>
 
-    <record id="as_vn_address_ward_action" model="ir.actions.act_window">
-        <field name="name">Ward</field>
+
+    <record id="partner_vn_localization_district_action" model="ir.actions.act_window">
+        <field name="name">District</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">res.country.ward</field>
-        
+        <field name="res_model">res.country.district</field>
+        <!-- <field name="view_type">form</field> -->
         <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
     </record>

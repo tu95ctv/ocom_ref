@@ -60,7 +60,7 @@ class SaleOrder(models.Model):
     
 
     @api.depends('order_line','carrier_id')
-    @api.one
+    # @api.one
     def _compute_delivery_so_line_id(self):
         line = self.env['sale.order.line'].search([('order_id','=',self.id),
             ('product_id','=',self.carrier_id.product_id.id)], limit=1, order='id desc')

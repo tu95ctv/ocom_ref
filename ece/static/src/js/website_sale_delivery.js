@@ -26,7 +26,7 @@ odoo.define('ece.checkout', function (require) {
                     disabledReasons.carrier_selection = true;
                     $payButton.data('disabled_reasons', disabledReasons);
                 }
-                // $carriers.filter(':checked').off('click');
+                // $carriers.filter(':checked').off('click'); tắt đoạn này
             }
     
             // Asynchronously retrieve every carrier price
@@ -40,8 +40,57 @@ odoo.define('ece.checkout', function (require) {
                 }).then(self._handleCarrierUpdateResultBadge.bind(self));
             });
     
-            // return this._super.apply(this, arguments);
+            // return this._super.apply(this, arguments); tắt đoạn này
         },
+
+        _handleCarrierUpdateResult: function (result) {
+            console.log('_handleCarrierUpdateResult this', this)
+            // console.log('000000000000000000*** this.event',this.event)
+            // console.log('111111111111*** this.event',this.event)
+            // console.log('222222222222', this.event.currentTarget)
+            this._handleCarrierUpdateResultBadge(result);
+            var $payButton = $('#o_payment_form_pay');
+            var $amountDelivery = $('#order_delivery .monetary_field');
+            var $amountUntaxed = $('#order_total_untaxed .monetary_field');
+            var $amountTax = $('#order_total_taxes .monetary_field');
+            var $amountTotal = $('#order_total .monetary_field');
+    
+            if (result.status === true) {
+                $amountDelivery.html(result.new_amount_delivery);
+                $amountUntaxed.html(result.new_amount_untaxed);
+                $amountTax.html(result.new_amount_tax);
+                $amountTotal.html(result.new_amount_total);
+                var disabledReasons = $payButton.data('disabled_reasons') || {};
+                disabledReasons.carrier_selection = false;
+                $payButton.data('disabled_reasons', disabledReasons);
+                $payButton.prop('disabled', _.contains($payButton.data('disabled_reasons'), true));
+            } else {
+                $amountDelivery.html(result.new_amount_delivery);
+                $amountUntaxed.html(result.new_amount_untaxed);
+                $amountTax.html(result.new_amount_tax);
+                $amountTotal.html(result.new_amount_total);
+            }
+        },
+
+        _handleCarrierUpdateResultBadge: function (result) {
+
+            console.log('result in _handleCarrierUpdateResultBadge', result)
+            var $carrierBadge = $('#delivery_carrier input[name="delivery_type"][value=' + result.carrier_id + ']' + '[value='  + result.carrier_id  +   '] ~ .o_wsale_delivery_badge_price');
+            console.log('**$carrierBadge**', $carrierBadge)
+            if (result.status === true) {
+                 // if free delivery (`free_over` field), show 'Free', not '$0'
+                 if (result.is_free_delivery) {
+                     $carrierBadge.text(_t('Free'));
+                 } else {
+                     $carrierBadge.html(result.new_amount_delivery);
+                 }
+                 $carrierBadge.removeClass('o_wsale_delivery_carrier_error');
+            } else {
+                $carrierBadge.addClass('o_wsale_delivery_carrier_error');
+                $carrierBadge.text(result.error_message);
+            }
+        },
+
 
         _onCarrierClick: function (ev) {
             console.log('ev.currentTarget***', ev.currentTarget)

@@ -18,7 +18,7 @@
         <field name="inherit_id" ref="purchase.purchase_order_tree"/>
         <field name="arch" type="xml">
             <field name="invoice_status" position="after">
-                <field name="hcategory_id"/>
+                <!-- <field name="hcategory_id"/> -->
                 <field name="vendor_order_state"/>
             </field>
         </field>
@@ -30,7 +30,7 @@
         <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
         <field name="arch" type="xml">
             <filter name="draft" position="before">
-                <filter name="hcategory_id_carrier" string="Vận chuyển" domain="[('hcategory_id','=', 'Nhóm vận chuyển')]" />
+                <!-- <filter name="hcategory_id_carrier" string="Vận chuyển" domain="[('hcategory_id','=', 'Nhóm vận chuyển')]" /> -->
                 <separator/>
             </filter>
         </field>
