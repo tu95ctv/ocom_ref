@@ -12,7 +12,6 @@ class ProviderGridNDT(models.Model):
     delivery_type = fields.Selection(selection_add=[('base_on_api', 'Dựa trên API')], string='Loại giao hàng',ondelete={'base_on_api':'cascade'})
     # is_use_api_shipping = fields.Boolean()
     def base_on_api_rate_shipment(self, order):
-        print ('******base_on_api_rate_shipment**********')
         carrier = self._match_address(order.partner_shipping_id)
         if not carrier:
             return {'success': False,
@@ -35,7 +34,6 @@ class ProviderGridNDT(models.Model):
                 'error_message': False,
                 'warning_message': False,
                 'company_kakkaka':1}
-        print ('**rs**', rs)
         return rs
 
 
@@ -70,7 +68,6 @@ class ProviderGridNDT(models.Model):
 
 
     def cal_ghn_fee(self, order, weight):
-        print ('cal_ghn_fee')
         price = None
         token = self.env['ir.config_parameter'].sudo().get_param('ndt_ghn_extend.ghn_token')
         shop_id = order.warehouse_id.ghn_shop_id
@@ -79,13 +76,8 @@ class ProviderGridNDT(models.Model):
         service_id, service_type_id = False, int(order.delivery_service_type_id.code)
         from_district = int(order.warehouse_id.partner_id.district_id.ghn_id)
         partner_shipping_id = order.partner_shipping_id or order.partner_id
-        print ('**partner_shipping_id**', partner_shipping_id)
-        print ('*order.partner_shipping_id.district_id**', order.partner_shipping_id.district_id.name)
-        print ('*order.partner_shipping_id.district_id**', order.partner_shipping_id.district_id)
         to_district_id = int(partner_shipping_id.district_id.ghn_id)
-        print ('**to_district_id**', to_district_id)
         to_ward_code = partner_shipping_id.ward_id.ghn_code 
-        print ('**to_ward_code**', to_ward_code)
 
         demo_ward = self.env['res.country.ward'].browse(1)
         to_ward_code = demo_ward.ghn_code

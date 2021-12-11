@@ -40,7 +40,6 @@ def fetch_2_ghn(url, token, shop_id=None, data=None):
 
 def fetch_3_ghn(url, token, shop_id=None, data=None):
     json_response = fetch_2_ghn(url, token, shop_id, data)
-    print ('**trả về của ghn***', json_response)
     code  = json_response['code']
     if code == 200:
         return json_response['data']
@@ -57,7 +56,6 @@ def fetch_ghn_fee(token, shop_id, to_district_id, to_ward_code,service_type_id,s
         if not weight:
             # raise UserError('Trọng lượng phải lớn hơn 0')
             weight = 1
-        print ('to_district_id',to_district_id)
         #1A0112
         data = {    
                     "service_type_id":service_type_id,

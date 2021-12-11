@@ -14,7 +14,6 @@ def fetch_ghn_ward_data(ghn_district_id):
         url = 'https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id'
         data = {"district_id": int(ghn_district_id)}#int(self.ghn_id)}
         r = fetch_ghn(url, headers, data)
-        print (r)
         return r['data']
         
 token = '81f253e7-e8da-11ea-84a7-3e05d9a3136e'
@@ -24,7 +23,6 @@ def ghn_province():
                 headers=headers)
         rtj = response.json()
         ghn_provinces = rtj['data']
-        print ('ghn_provinces',ghn_provinces)
 
 
 

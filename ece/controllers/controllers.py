@@ -321,6 +321,8 @@ class WebsiteSaleDelivery1(WebsiteSaleDelivery):
                 return request.redirect("/shop/payment")
         return super(WebsiteSaleDelivery, self).payment(**post)# suửa chổ này
 
+    # @http.route(['/shop/update_carrier'], type='json', auth='public', methods=['POST'], website=True, csrf=False)
+
     @http.route()
     def update_eshop_carrier(self, **post):
         order = request.website.sale_get_order()
@@ -338,8 +340,9 @@ class WebsiteSaleDelivery1(WebsiteSaleDelivery):
         carrier_id = int(post['carrier_id'])
         currency = order.currency_id
         amount_delivery = order.amount_delivery
+        rate = order.carrier_id.browse(carrier_id).rate_shipment(order)
         # print ('**amount_delivery***', amount_delivery)
-        amount_delivery= 2
+        amount_delivery= rate['price']
         if order:
             return {
                 'company_id': post['company_id'],
@@ -359,7 +362,7 @@ class WebsiteSaleDelivery1(WebsiteSaleDelivery):
     def cart_carrier_rate_shipment(self, carrier_id, **kw):
         order = request.website.sale_get_order(force_create=True)
         company_id = kw.get('company_id')
-        # print ('**company_id cart_carrier_rate_shipment**',company_id)
+        print ('**company_id cart_carrier_rate_shipment**',company_id)
         if not int(carrier_id) in order._get_delivery_methods().ids:
             raise UserError(_('It seems that a delivery method is not compatible with your address. Please refresh the page and try again.'))
 

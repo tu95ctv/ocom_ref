@@ -14,7 +14,8 @@ odoo.define('ece.checkout', function (require) {
         start: function () {
             // console.log('1232131231231232((d4))')
             var self = this;
-            var $carriers = $('#delivery_carrier input[name="delivery_type"]');
+            var $carriers = $('input[name="delivery_type"]');
+            console.log('**$carriers  find in publicWidget.registry.websiteSaleDelivery',$carriers)
             var $payButton = $('#o_payment_form_pay');
             // Workaround to:
             // - update the amount/error on the label at first rendering
@@ -32,12 +33,11 @@ odoo.define('ece.checkout', function (require) {
             // Asynchronously retrieve every carrier price
             _.each($carriers, function (carrierInput, k) {
                 self._showLoading($(carrierInput));
-                console.log('*carrierInput.company**',carrierInput.company)
                 self._rpc({
                     route: '/shop/carrier_rate_shipment',
                     params: {
                         'carrier_id': carrierInput.value,
-                        'company_id':carrierInput.company
+                        'company_id':$(carrierInput).attr('company')
                     },
                 }).then(self._handleCarrierUpdateResultBadge.bind(self));
             });
@@ -77,7 +77,8 @@ odoo.define('ece.checkout', function (require) {
         _handleCarrierUpdateResultBadge: function (result) {
         
             // console.log('result.company_id in _handleCarrierUpdateResultBadge************', result.company_id)
-            var $carrierBadge = $('input[name="delivery_type"][value=' + result.carrier_id + ']'+ '[company=' + result.company_id + '] ~ .o_wsale_delivery_badge_price');
+            // delivery_carrier
+            var $carrierBadge = $('div#delivery_carrier input[value=' + result.carrier_id + ']'+ '[company=' + result.company_id + '] ~ .o_wsale_delivery_badge_price');
             // console.log('$carrierBadge',$carrierBadge )
             if (result.status === true) {
                  // if free delivery (`free_over` field), show 'Free', not '$0'

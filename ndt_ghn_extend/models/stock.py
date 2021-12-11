@@ -23,7 +23,6 @@ class Stockpicking(models.Model):
     adjustment_weight = fields.Float("Trọng lượng (gram)")
 
     def stock_update_shipment(self):
-        print ("**stock_update_shipment kakaka***")
         self.carrier_id.update_shipment(self)
            
     def stock_cancel_shipment(self):

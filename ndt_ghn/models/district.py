@@ -40,7 +40,6 @@ class District(models.Model):
     # @api.one
     def get_ghn_ward_one_district(self):
         ghn_district_id = self.ghn_id
-        print ('***ghn_district_id***', ghn_district_id, self.name)
         ward_ghn_items = fetch_ghn_ward_data(ghn_district_id)
         self.char_json_wards_data = ward_ghn_items
         wards = self.env['res.country.ward'].search([('district_id','=',self.id)]) 
