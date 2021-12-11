@@ -25,10 +25,11 @@
     'data': [
         # 'security/ir.model.access.csv',
         'data/data.xml',
+        'web_demo/data.xml',
         'views/sale.xml',
         'views/product_template.xml',
         'views/js_template.xml',
-
+        'templates/product.xml',
         'templates/card_line.xml',
         'templates/payment_delivery.xml',
         'templates/layout.xml',

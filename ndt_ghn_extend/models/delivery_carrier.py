@@ -11,7 +11,36 @@ class ProviderGridNDT(models.Model):
 
     delivery_type = fields.Selection(selection_add=[('base_on_api', 'Dựa trên API')], string='Loại giao hàng',ondelete={'base_on_api':'cascade'})
     # is_use_api_shipping = fields.Boolean()
+
+    def rate_shipment(self, order,company=None):
+        print ('self._context rate_shipment**', self._context)
+        print ('*********rate_shipment.*******', company)
+        ''' Compute the price of the order shipment
+
+        :param order: record of sale.order
+        :return dict: {'success': boolean,
+                       'price': a float,
+                       'error_message': a string containing an error message,
+                       'warning_message': a string containing a warning message}
+                       # TODO maybe the currency code?
+        '''
+        self.ensure_one()
+        if hasattr(self, '%s_rate_shipment' % self.delivery_type):
+            res = getattr(self, '%s_rate_shipment' % self.delivery_type)(order)
+            # apply margin on computed price
+            res['price'] = float(res['price']) * (1.0 + (self.margin / 100.0))
+            # save the real price in case a free_over rule overide it to 0
+            res['carrier_price'] = res['price']
+            # free when order is large enough
+            if res['success'] and self.free_over and order._compute_amount_total_without_delivery() >= self.amount:
+                res['warning_message'] = _('The shipping is free since the order amount exceeds %.2f.') % (self.amount)
+                res['price'] = 0.0
+            return res
+
     def base_on_api_rate_shipment(self, order):
+        print ('******self._context******', self._context)
+        # raise ValueError('adslkfldf')
+        
         carrier = self._match_address(order.partner_shipping_id)
         if not carrier:
             return {'success': False,
@@ -71,26 +100,34 @@ class ProviderGridNDT(models.Model):
         price = None
         token = self.env['ir.config_parameter'].sudo().get_param('ndt_ghn_extend.ghn_token')
         shop_id = order.warehouse_id.ghn_shop_id
-        # ghn_config = {'token':token,
-        #             'shop_id':order.warehouse_id.ghn_shop_id}
         service_id, service_type_id = False, int(order.delivery_service_type_id.code)
+        print ('**service_type_id**', service_type_id)
         from_district = int(order.warehouse_id.partner_id.district_id.ghn_id)
+        print ('**from_district***', from_district)
         partner_shipping_id = order.partner_shipping_id or order.partner_id
         to_district_id = int(partner_shipping_id.district_id.ghn_id)
         to_ward_code = partner_shipping_id.ward_id.ghn_code 
+        
+        #
+        company_id = self._context.get('web_company')
+        if isinstance(company_id,int):
+            from_ward = self.env['res.company'].browse(company_id).ward_ghn_code
+
 
         demo_ward = self.env['res.country.ward'].browse(1)
         to_ward_code = demo_ward.ghn_code
         to_district_id = demo_ward.district_id.ghn_id
+
+        print ('demo_ward, to_ward_code, to_district_id', demo_ward, to_ward_code, to_district_id )
+       
         ghn_rs = fetch_ghn_fee(token, shop_id, to_district_id, to_ward_code,
             service_type_id or 2, service_id, from_district,  height= order.height or 10, 
             length=order.length or 10, width=order.width or 10, weight=int(order.weight or weight),
-            # ghn_config = ghn_config
         )
+
+
         price = float(ghn_rs['total'])
         return price
-
-        # return price
 
 
     def order_shipping(self, picking): # viết mới, ko có ở hàm gốc

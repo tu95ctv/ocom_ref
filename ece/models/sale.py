@@ -21,8 +21,8 @@ class Sale(models.Model):
         for r in self:
             sol_groups = r.get_sol_group_by_company()
             ece_gr_ids = self.env['ece.gr']
-            for c_id,sols in sol_groups.items():
-                gr_obj = self.env['ece.gr'].new({'company_id': c_id,
+            for company_id,sols in sol_groups.items():
+                gr_obj = self.env['ece.gr'].new({'company_id': company_id,
                      'sol_ids':[(6,0, sols.ids)]})
                 ece_gr_ids |=gr_obj
             r.sol_gr_ids = ece_gr_ids
@@ -95,8 +95,10 @@ class Sale(models.Model):
                         break
                 self.write({'carrier_id': carrier.id})
             self._remove_delivery_line(company)
+            print ('**carrier**', carrier)
             if carrier:
-                res = carrier.rate_shipment(self)
+                res = carrier.with_context(web_company=company).rate_shipment(self, company=company)
+                #ĐƯA COMPANY VÀO ĐÂY
                 if res.get('success'):
                     self.set_delivery_line(carrier, res['price'],company=company)
                     self.delivery_rating_success = True

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import requests
-from odoo.exceptions import UserError
 shop_id_87 = 1295159
 token_87 = '81f253e7-e8da-11ea-84a7-3e05d9a3136e'
 token_090 = '7e079abb-fe1d-11ea-aeaa-9a0707cfe569'
@@ -33,6 +32,8 @@ def fetch_2_ghn(url, token, shop_id=None, data=None):
     headers = {'token': token }
     if shop_id:
         headers.update({'shop_id':str(shop_id)})
+
+    print ('**headers**', headers)
     response = requests.post(url, 
                              headers=headers, json =  data)
     json_response = response.json()
@@ -50,15 +51,16 @@ def fetch_3_ghn(url, token, shop_id=None, data=None):
 def fetch_ghn_fee(token, shop_id, to_district_id, to_ward_code,service_type_id,service_id, from_district_id , 
     height=0, length=0, width=0, weight=0):
         url = 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee'
-        shop_id = int(ghn_config.get('shop_id'))
-        if shop_id == False:
-            raise UserError('Phải cấu hình GHN shop id trong kho hàng')
+        # shop_id = int(ghn_config.get('shop_id'))
+        # if shop_id == False:
+        #     raise UserError('Phải cấu hình GHN shop id trong kho hàng')
         # more_headers = {"shop_id":str(shop_id)}
         if not weight:
             # raise UserError('Trọng lượng phải lớn hơn 0')
             weight = 1
         #1A0112
         data = {    
+                    "from_district_id":from_district_id,
                     "service_type_id":service_type_id,
                     "to_district_id":to_district_id,
                     "to_ward_code":to_ward_code,# char
@@ -197,9 +199,10 @@ def get_service(token, shop_id, from_district, to_district):
 
 
 if __name__ == "__main__":
+    shop_id = False
     # {'service_type_id': 2, 'to_district_id': 1484, 'to_ward_code': '1A0110', 'height': 10, 'length': 10, 'width': 10, 'weight': 1, 'coupon': None}
     from_district =  3135
-
+    from_district_id = 2003
     # demo_ward = 
     to_ward_code = '1A0110' 
     to_district_id = 1484
