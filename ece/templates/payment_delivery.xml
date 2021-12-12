@@ -40,9 +40,9 @@
     </template>
 
     <template id="website_sale_delivery.payment_delivery_methods">
-        <input t-att-company="company_id.id" t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id" type="radio" name="delivery_type" t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False" t-att-class="'d-none' if delivery_nb == 1 else ''"/>
+        <!-- <input t-att-company="company_id.id" t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id" type="radio" name="delivery_type" t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False" t-att-class="'d-none' if delivery_nb == 1 else ''"/> -->
         
-        <!-- <input t-att-company="company_id.id" t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id" type="radio" t-attf-name="delivery_type_#{company_id.id}" t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False" t-att-class="'d-none' if delivery_nb == 1 else ''"/> -->
+        <input t-att-company="company_id.id" t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id" type="radio" name1="delivery_type" t-attf-name="delivery_type_#{company_id.id}" t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False" t-att-class="'d-none' if delivery_nb == 1 else ''"/>
         <label class="label-optional" t-field="delivery.name"/>
         <t t-set='badge_class' t-value="(delivery_nb != 1 and 'float-right ' or '') + 'badge badge-secondary'" />
         <t t-if="delivery.delivery_type == 'fixed'">

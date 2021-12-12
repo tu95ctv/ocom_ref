@@ -14,7 +14,7 @@ odoo.define('ece.checkout', function (require) {
         start: function () {
             // console.log('1232131231231232((d4))')
             var self = this;
-            var $carriers = $('input[name="delivery_type"]');
+            var $carriers = $('input[name1="delivery_type"]');
             // console.log('**$carriers  find in publicWidget.registry.websiteSaleDelivery',$carriers)
             var $payButton = $('#o_payment_form_pay');
             // Workaround to:
