@@ -15,6 +15,13 @@
         <!-- <field name="currency_id" ref="base.EUR"/> -->
     </record>
 
+    <record id="company_demo_nvcs" model="res.company">
+        <field name="name">Công ty luật</field>
+        <field name="parent_id" ref="base.main_company"/>
+        <!-- <field name="website">https://nvcs.vn/</field> -->
+        <!-- <field name="currency_id" ref="base.EUR"/> -->
+    </record>
+
     <record id="product_product_hector_1" model="product.template">
         <field name="name">Đông trùng hạ thảo Hector Sâm</field>
         <field name="standard_price">800000</field>
