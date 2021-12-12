@@ -4,15 +4,14 @@
     <record id="company_demo_hector" model="res.company">
         <field name="name">Công ty Đông trùng hạ thảo Hector</field>
         <field name="parent_id" ref="base.main_company" />
+        <field name="ghn_shop_id">1329421</field>
         <!-- <field name="website">https://dongtrunghathaohector.almshop.online/</field> -->
-        <!-- <field name="currency_id" ref="base.EUR"/> -->
     </record>
 
     <record id="company_demo_sunhine" model="res.company">
         <field name="name">SunShine Spa</field>
         <field name="parent_id" ref="base.main_company" />
         <!-- <field name="website">https://sunshinespaclinic.com/</field> -->
-        <!-- <field name="currency_id" ref="base.EUR"/> -->
     </record>
 
      <record id="product_product_hector_1" model="product.template">
@@ -25,7 +24,7 @@
             <field name="uom_po_id" ref="uom.product_uom_unit"/>
             <!-- <field name="default_code">3B</field> -->
             <field name="image_1920" type="base64" file="ece/static/img/nước-dông-trùng-hạ-thảo-hector-sâm-510.jpg"/>
-            <field name="company_id" ref="company2"/>
+            <field name="company_id" ref="company_demo_hector"/>
             <field name="sale_line_warn">no-message</field>
             <field name="is_published">True</field>
         </record>

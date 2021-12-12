@@ -6,13 +6,13 @@
         <record id="company1" model="res.company">
             <field name="name">company A</field>
             <field name="parent_id" ref="base.main_company" />
-            <!-- <field name="currency_id" ref="base.EUR"/> -->
+            <field name="ghn_shop_id">1295159</field>
         </record>
 
         <record id="company2" model="res.company">
             <field name="name">company B</field>
             <field name="parent_id" ref="base.main_company" />
-            <!-- <field name="currency_id" ref="base.EUR"/> -->
+            <field name="ghn_shop_id">1329421</field>
         </record>
 
         <record id="u1_user" model="res.users">

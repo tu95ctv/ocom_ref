@@ -5,7 +5,7 @@ import requests
 from odoo.exceptions import UserError
 from odoo.addons.ndt_ghn_extend.models.ghn_api import fetch_ghn_fee
 from odoo.addons.ndt_ghn_extend.models.ghn_api import fetch_ghn_order, get_ghn_order_info, cancel_ghn_shipment, ghn_update_order, get_fee_of_order
-
+import inspect
 class ProviderGridNDT(models.Model):
     _inherit = 'delivery.carrier'
 
@@ -13,8 +13,9 @@ class ProviderGridNDT(models.Model):
     # is_use_api_shipping = fields.Boolean()
 
     def rate_shipment(self, order,company=None):
-        print ('self._context rate_shipment**', self._context)
-        print ('*********rate_shipment.*******', company)
+        # print ('self._context rate_shipment**', self._context)
+        # print ('caller name: rate_shipment', inspect.stack()[1][3])
+        # print ('*********rate_shipment.*******', company)
         ''' Compute the price of the order shipment
 
         :param order: record of sale.order
@@ -38,7 +39,7 @@ class ProviderGridNDT(models.Model):
             return res
 
     def base_on_api_rate_shipment(self, order):
-        print ('******self._context******', self._context)
+        print ('******self._context base_on_api_rate_shipment******', self._context)
         # raise ValueError('adslkfldf')
         
         carrier = self._match_address(order.partner_shipping_id)
@@ -101,24 +102,28 @@ class ProviderGridNDT(models.Model):
         token = self.env['ir.config_parameter'].sudo().get_param('ndt_ghn_extend.ghn_token')
         shop_id = order.warehouse_id.ghn_shop_id
         service_id, service_type_id = False, int(order.delivery_service_type_id.code)
-        print ('**service_type_id**', service_type_id)
+        # print ('**service_type_id**', service_type_id)
         from_district = int(order.warehouse_id.partner_id.district_id.ghn_id)
-        print ('**from_district***', from_district)
+        # print ('**from_district***', from_district)
         partner_shipping_id = order.partner_shipping_id or order.partner_id
         to_district_id = int(partner_shipping_id.district_id.ghn_id)
         to_ward_code = partner_shipping_id.ward_id.ghn_code 
         
         #
         company_id = self._context.get('web_company')
-        if isinstance(company_id,int):
-            from_ward = self.env['res.company'].browse(company_id).ward_ghn_code
+        print ('*company_id từ context', company_id,"isinstance(company_id, int)",isinstance(company_id, int),'type(company_id)',type(company_id))
+        if isinstance(company_id, int):
+            # from_ward = self.env['res.company'].browse(company_id).ward_ghn_code
+            shop_id = self.env['res.company'].browse(company_id).ghn_shop_id
 
+
+        
 
         demo_ward = self.env['res.country.ward'].browse(1)
         to_ward_code = demo_ward.ghn_code
         to_district_id = demo_ward.district_id.ghn_id
 
-        print ('demo_ward, to_ward_code, to_district_id', demo_ward, to_ward_code, to_district_id )
+        # print ('demo_ward, to_ward_code, to_district_id', demo_ward, to_ward_code, to_district_id )
        
         ghn_rs = fetch_ghn_fee(token, shop_id, to_district_id, to_ward_code,
             service_type_id or 2, service_id, from_district,  height= order.height or 10, 
@@ -127,6 +132,7 @@ class ProviderGridNDT(models.Model):
 
 
         price = float(ghn_rs['total'])
+        print ('company_id', company_id, '**shop_id**', shop_id,'price',price)
         return price
 
 

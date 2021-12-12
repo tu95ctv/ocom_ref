@@ -19,7 +19,8 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product','sale','website', 'website_sale','website_sale_delivery','website_sale_wishlist'],
+    'depends': ['base', 'product','sale','website', 'website_sale',
+        'website_sale_delivery','website_sale_wishlist','ndt_ghn_extend'],
 
     # always loaded
     'data': [
@@ -29,7 +30,7 @@
         'views/sale.xml',
         'views/product_template.xml',
         'views/js_template.xml',
-        'templates/product.xml',
+        # 'templates/product.xml',
         'templates/card_line.xml',
         'templates/payment_delivery.xml',
         'templates/layout.xml',

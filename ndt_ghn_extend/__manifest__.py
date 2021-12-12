@@ -12,6 +12,7 @@
         'security/ir.model.access.csv',
         'data/data.xml',
         # 'data/test.yml',
+        'views/res_company.xml',
         'views/sale.xml',
         'views/stock.xml',
         'views/purchase.xml',

@@ -35,13 +35,10 @@ class Stockpicking(models.Model):
         if self.carrier_id:
             self.carrier_id.order_shipping(self)
         
-  
-
 class StockWarehouse(models.Model):
     _inherit = 'stock.warehouse'
 
     ghn_shop_id = fields.Integer('GHN shop')
-
 
 class Product(models.Model):
     _inherit = 'product.template'

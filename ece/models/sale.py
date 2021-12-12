@@ -65,6 +65,7 @@ class Sale(models.Model):
     #     pass
     
     def _check_carrier_quotation(self, force_carrier_id=None, company=None):
+        # print ('*company in _check_carrier_quotation', company)
         self.ensure_one()
         DeliveryCarrier = self.env['delivery.carrier']
 
@@ -95,8 +96,9 @@ class Sale(models.Model):
                         break
                 self.write({'carrier_id': carrier.id})
             self._remove_delivery_line(company)
-            print ('**carrier**', carrier)
+            # print ('**carrier**', carrier)
             if carrier:
+                # print ('đưa context vào company', company)
                 res = carrier.with_context(web_company=company).rate_shipment(self, company=company)
                 #ĐƯA COMPANY VÀO ĐÂY
                 if res.get('success'):
@@ -107,7 +109,7 @@ class Sale(models.Model):
                     self.set_delivery_line(carrier, 0.0)
                     self.delivery_rating_success = False
                     self.delivery_message = res['error_message']
-        return bool(carrier)
+        return bool(carrier), res.get('price', 0.0)
     
     #tham khảo
     # def _remove_delivery_line(self):
@@ -169,12 +171,21 @@ class Sale(models.Model):
             values['name'] += '\n' + 'Free Shipping'
         if self.order_line:
             values['sequence'] = self.order_line[-1].sequence + 1
+        
+        
         if company=='all':
             company_ids = self.sol_gr_ids.company_id
             create_vals = []
-            for c in company_ids:
+            for company in company_ids:
                 new_values = values.copy()
-                new_values['company2_id'] = c.id
+                new_values['company2_id'] = company.id
+                res = carrier.with_context(web_company=company.id).rate_shipment(self, company=company.id)
+
+                if res.get('success'):
+                    price_unit =  res['price']
+                else:
+                    price_unit =  0.0
+                new_values['price_unit'] = price_unit
                 create_vals.append(new_values)
         else:
             if isinstance(company,int):

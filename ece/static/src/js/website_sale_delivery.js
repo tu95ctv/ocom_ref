@@ -15,11 +15,12 @@ odoo.define('ece.checkout', function (require) {
             // console.log('1232131231231232((d4))')
             var self = this;
             var $carriers = $('input[name="delivery_type"]');
-            console.log('**$carriers  find in publicWidget.registry.websiteSaleDelivery',$carriers)
+            // console.log('**$carriers  find in publicWidget.registry.websiteSaleDelivery',$carriers)
             var $payButton = $('#o_payment_form_pay');
             // Workaround to:
             // - update the amount/error on the label at first rendering
             // - prevent clicking on 'Pay Now' if the shipper rating fails
+            console.log("$carriers.length > 0", $carriers.length > 0,$carriers.length )
             if ($carriers.length > 0) {
                 if ($carriers.filter(':checked').length === 0) {
                     $payButton.prop('disabled', true);
@@ -28,6 +29,8 @@ odoo.define('ece.checkout', function (require) {
                     $payButton.data('disabled_reasons', disabledReasons);
                 }
                 // $carriers.filter(':checked').off('click'); tắt đoạn này
+                console.log("$carriers.length > 0", $carriers.length > 0,$carriers.length )
+                $carriers.filter(':checked').off('click');
             }
     
             // Asynchronously retrieve every carrier price
@@ -37,7 +40,7 @@ odoo.define('ece.checkout', function (require) {
                     route: '/shop/carrier_rate_shipment',
                     params: {
                         'carrier_id': carrierInput.value,
-                        'company_id':$(carrierInput).attr('company')
+                        'company_id':parseInt($(carrierInput).attr('company'))
                     },
                 }).then(self._handleCarrierUpdateResultBadge.bind(self));
             });
@@ -58,7 +61,7 @@ odoo.define('ece.checkout', function (require) {
             var $amountTotal = $('#order_total .monetary_field');
     
             if (result.status === true) {
-                $amountDelivery.html(result.new_amount_delivery);
+                $amountDelivery.html(result.total_new_amount_delivery);
                 $amountUntaxed.html(result.new_amount_untaxed);
                 $amountTax.html(result.new_amount_tax);
                 $amountTotal.html(result.new_amount_total);
