@@ -3,32 +3,81 @@
 
     <record id="company_demo_hector" model="res.company">
         <field name="name">Công ty Đông trùng hạ thảo Hector</field>
-        <field name="parent_id" ref="base.main_company" />
+        <field name="parent_id" ref="base.main_company"/>
         <!-- <field name="website">https://dongtrunghathaohector.almshop.online/</field> -->
         <!-- <field name="currency_id" ref="base.EUR"/> -->
     </record>
 
     <record id="company_demo_sunhine" model="res.company">
         <field name="name">SunShine Spa</field>
-        <field name="parent_id" ref="base.main_company" />
+        <field name="parent_id" ref="base.main_company"/>
         <!-- <field name="website">https://sunshinespaclinic.com/</field> -->
         <!-- <field name="currency_id" ref="base.EUR"/> -->
     </record>
 
-     <record id="product_product_hector_1" model="product.template">
-            <field name="name">Đông trùng hạ thảo Hector Sâm</field>
-            <field name="standard_price">800000</field>
-            <field name="list_price">900000</field>
-            <field name="type">consu</field>
-            <field name="weight">0.01</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <!-- <field name="default_code">3B</field> -->
-            <field name="image_1920" type="base64" file="ece/static/img/nước-dông-trùng-hạ-thảo-hector-sâm-510.jpg"/>
-            <field name="company_id" ref="company2"/>
-            <field name="sale_line_warn">no-message</field>
-            <field name="is_published">True</field>
-        </record>
+    <record id="product_product_hector_1" model="product.template">
+        <field name="name">Đông trùng hạ thảo Hector Sâm</field>
+        <field name="standard_price">800000</field>
+        <field name="list_price">900000</field>
+        <field name="type">consu</field>
+        <field name="weight">0.01</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <!-- <field name="default_code">3B</field> -->
+        <field name="image_1920" type="base64"
+               file="ece/static/img/nước-dông-trùng-hạ-thảo-hector-sâm-510.jpg"/>
+        <field name="company_id" ref="company2"/>
+        <field name="sale_line_warn">no-message</field>
+        <field name="is_published">True</field>
+    </record>
+
+    <record id="product_product_sunshine_1" model="product.template">
+        <field name="name">Gel Rửa Mặt IDENEL 150ml</field>
+        <field name="standard_price">600000</field>
+        <field name="list_price">650000</field>
+        <field name="type">consu</field>
+        <field name="weight">0.01</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <!-- <field name="default_code">3B</field> -->
+        <field name="image_1920" type="base64"
+               file="ece/static/img/Gel-Cleanser.jpg"/>
+        <field name="company_id" ref="company2"/>
+        <field name="sale_line_warn">no-message</field>
+        <field name="is_published">True</field>
+    </record>
+
+    <record id="product_product_sunshine_2" model="product.template">
+        <field name="name">Vi kim gai Nanotox</field>
+        <field name="standard_price">1200000</field>
+        <field name="list_price">1800000</field>
+        <field name="type">consu</field>
+        <field name="weight">0.01</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <!-- <field name="default_code">3B</field> -->
+        <field name="image_1920" type="base64"
+               file="ece/static/img/Thiet-ke-khong-ten.jpg"/>
+        <field name="company_id" ref="company2"/>
+        <field name="sale_line_warn">no-message</field>
+        <field name="is_published">True</field>
+    </record>
+
+    <record id="product_product_nvcs" model="product.template">
+        <field name="name">Gói “Luật sư”</field>
+        <field name="standard_price">500000</field>
+        <field name="list_price">500000</field>
+        <field name="type">consu</field>
+        <field name="weight">0.01</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <!-- <field name="default_code">3B</field> -->
+        <field name="image_1920" type="base64"
+               file="ece/static/img/nvcs.png"/>
+        <field name="company_id" ref="company2"/>
+        <field name="sale_line_warn">no-message</field>
+        <field name="is_published">True</field>
+    </record>
 
 
 </odoo>
