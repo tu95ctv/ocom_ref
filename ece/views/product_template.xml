@@ -9,6 +9,12 @@
             <field name="website_ribbon_id" position="after">
                 <field name="is_published" />
             </field>
+
+            <xpath expr="//group[@name='product_template_images']" position="after">
+                <group name="website_description" string="Website_description">
+                    <field name="website_description" nolabel="1"/>
+                </group>
+            </xpath>
         </field>
     </record>
 
