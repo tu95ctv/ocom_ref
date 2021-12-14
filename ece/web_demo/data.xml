@@ -40,9 +40,140 @@
         <!-- <field name="default_code">3B</field> -->
         <field name="image_1920" type="base64"
                file="ece/static/img/nước-dông-trùng-hạ-thảo-hector-sâm-510.jpg"/>
-        <field name="company_id" ref="company2"/>
+        <field name="company_id" ref="company_demo_hector"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
+        <!-- Description-->
+        <field name="website_description" type="xml">
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Mô tả</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <p>
+                            Trong mỗi gia đình mùa CoVID-19 đều nên có nước đông trùng hạ thảo Hector Sâm vì 3 lý do
+                            sau:
+                            <ol>
+                                <li style="line-heght: 1.75; padding: 8px 0px">
+                                    Dễ uống, cung cấp năng lượng nhanh khi cần làm việc. Buổi sáng dậy nếu chưa kịp
+                                    ăn sáng thì bạn chỉ cần uống một chai Hector Sâm. Có thể ăn 1-2 miếng bánh quy
+                                    nhỏ là có thể bắt tay vào làm việc ngay.
+                                </li>
+                                <li style="line-heght: 1.75; padding: 8px 0px">
+                                    Hỗ trợ sức khỏe cho người trung niên và người cao tuổi rất tốt.
+                                </li>
+                                <li style="line-heght: 1.75; padding: 8px 0px">
+                                    Tăng cường sức đề kháng và hệ miễn dịch của cơ thể để chống lại dịch bệnh. Nếu
+                                    có lây nhiễm cũng nhanh chóng vượt qua.
+                                </li>
+                            </ol>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!--  -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Đối tượng sử dụng nước đông trùng hạ thảo Hector Sâm</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người trưởng thành từ 25 tuổi trở lên.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người làm việc cường độ cao, nhiều stress, đi công tác thường xuyên.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người thường xuyên tiếp khách, hay dùng bia rượu.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Vận động viên, người chơi thể thao.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người cao tuổi, người cần phục hồi nhanh sau bệnh.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Phụ nữ sau sinh, ít sữa hoặc không có sữa cho con.
+                        </li>
+                        <p>Công dụng nổi bật</p>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tăng đề kháng, tăng sức khỏe.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Phục hồi sức khỏe người bệnh, người già.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Giải độc cho gan thận (khi bia rượu nhiều).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tăng cường sinh lực cho người chơi thể thao.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tăng cường sinh lý nam &amp; nữ.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tăng tiết sữa ở mẹ bầu sau khi sinh.
+                        </li>
+                    </div>
+                </div>
+            </section>
+            <!--  -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Thành phần của nước đông trùng hạ thảo Hector Sâm</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nấm đông trùng hạ thảo (500 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nam dương sâm (400 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Chùm ngây (400 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Đẳng sâm (100 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Phụ liệu: chất chống oxy hóa (Acid ascorbic (L-)), chất ổn định (xanthan gum, canxi
+                            lactate), chất tạo ngọt (sucralose, stevia), đường mía, nước tinh khiết vừa đủ 1 chai 50ml.
+                        </li>
+
+                        <p>Hướng dẫn sử dụng nước đông trùng hạ thảo Hector Sâm</p>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Uống 1-2 chai/ngày.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Uống trước khi ăn sáng. Lắc đều trước khi uống. Dùng ngon hơn khi ướp lạnh.
+                        </li>
+
+                        <p>Bảo quản:</p>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nơi khô ráo thoáng mát.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tránh ánh nắng mặt trời.
+                        </li>
+
+                        <p>Lưu ý:</p>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Sản phẩm không phải là thuốc, không có tác dụng thay thế thuốc chữa bệnh.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Không dùng nếu mẫn cảm với bất kỳ thành phần nào của sản phẩm.
+                        </li>
+                        <p style="line-heght: 1.75; padding: 10px 0px; font-size: 1rem; font-weight: 900;">
+                            Giá bán Đông trùng hạ thảo Hector Sâm: Giá bán lẻ chính hãng là 450.000đ/hộp 10 chai.
+                        </p>
+
+                    </div>
+                </div>
+            </section>
+        </field>
     </record>
 
     <record id="product_product_hector_2" model="product.template">
@@ -56,9 +187,151 @@
         <!-- <field name="default_code">3B</field> -->
         <field name="image_1920" type="base64"
                file="ece/static/img/Nước-Dông-trùng-hạ-thảo-Hector-Collagen.png"/>
-        <field name="company_id" ref="company2"/>
+        <field name="company_id" ref="company_demo_hector"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
+        <!-- Description-->
+        <field name="website_description" type="xml">
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Mô tả</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <p>
+                            Đông trùng hạ thảo Hector Collagen là chai dạng nước uống liền với hàm lượng Collage cao mà
+                            giá chỉ bằng 50% hàng nhập do bạn không phải trả thêm chi phí vận chuyển từ nước ngoài và
+                            thuế nhập khẩu.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!--  -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Đối tượng sử dụng</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Phụ nữ, trên 30, có nhu cầu sức khỏe, da đẹp, chống lão hóa.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Chị em rối loạn nội tiết tố, chu kỳ không đều, có dấu hiệu mụn do nội tiết tố
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Cải thiện vấn đề chăn gối.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Phụ nữ tiền mãn kinh và mãn kinh cần sử dụng đều.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nam giới có nhu cầu cải thiện về da, tóc, xương khớp.
+                        </li>
+
+                        <p>Công dụng nổi bật của Đông trùng hạ thảo Hector Collagen</p>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tăng đề kháng, tăng sức khỏe.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Bổ sung collagen &amp; HA, giúp da căng trẻ, mịn màng
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Chống lão hóa da, giảm mụn, nếp nhăn, vết thâm &amp; sạm nám
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người có nhu cầu chăm sóc, làm đẹp da
+                        </li>
+                    </div>
+                </div>
+            </section>
+
+            <!-- -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Công dụng nổi bật của Đông trùng hạ thảo Hector Collagen</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tăng đề kháng, tăng sức khỏe.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Bổ sung collagen &amp; HA, giúp da căng trẻ, mịn màng
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Chống lão hóa da, giảm mụn, nếp nhăn, vết thâm &amp; sạm nám
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người có nhu cầu chăm sóc, làm đẹp da
+                        </li>
+                    </div>
+                </div>
+            </section>
+
+            <!--  -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Thành phần chính:</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Đông trùng hạ thảo (200 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Collagen peptides (5000 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Hyaluronic acid (10 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nước ép chanh dây (1500 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nước ép dứa (500 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nước ép sơ ri (500 mg).
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Phụ liệu: chất chống oxy hóa (Acid ascorbic (L-)); chất ổn định (xanthan gum, canxi
+                            lactate), chất tạo ngọt (sucralose, stevia), đường mía, nước tinh khiết vừa đủ 1 chai 50ml.
+                        </li>
+
+                        <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                            <h2 class="o_page_header">Hướng dẫn sử dụng</h2>
+                        </section>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Uống 1-2 chai/ngày.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Uống trước khi ăn sáng. Lắc đều trước khi uống. Dùng ngon hơn khi ướp lạnh.
+                        </li>
+
+                        <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                            <h2 class="o_page_header">Bảo quản:</h2>
+                        </section>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nơi khô ráo thoáng mát.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tránh ánh nắng mặt trời.
+                        </li>
+
+                        <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                            <h2 class="o_page_header">Giá bán Đông trùng hạ thảo Hector Collagen</h2>
+                        </section>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Hector Collagen có giá bán là 580.000đ/hộp 10 chai.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Mỗi tháng dùng 3 hộp cho 30 ngày là 1.740.000đ.
+                        </li>
+                    </div>
+                </div>
+            </section>
+        </field>
     </record>
 
     <record id="product_product_hector_3" model="product.template">
@@ -72,9 +345,133 @@
         <!-- <field name="default_code">3B</field> -->
         <field name="image_1920" type="base64"
                file="ece/static/img/đông-trùng-hạ-thảo-viên.jpg"/>
-        <field name="company_id" ref="company2"/>
+        <field name="company_id" ref="company_demo_hector"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
+        <!-- Description-->
+        <field name="website_description" type="xml">
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Mô tả</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <p>
+                            VIÊN NANG ĐÔNG TRÙNG HẠ THẢO HECTOR 100%
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!--  -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Đối tượng sử dụng</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người lao động trí óc và thể lực với cường độ cao (doanh nhân, vận động viên…)
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người lớn tuổi và người vừa bệnh dậy, người suy nhược và thể trạng yếu
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người bệnh tiểu đường, huyết áp, người cần hỗ trợ, bảo vệ chức năng gan, thận phổi và đặc
+                            biệt bệnh ung thư.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Có nhu cầu trẻ hóa và tăng cuờng sức khỏe.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            *Trừ phụ nữ mang thai, người suy gan, suy thận và người dị ứng với đông trùng hạ thảo.
+                        </li>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Công dụng nổi bật</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Bồi bổ sức khỏe, tăng sức đề kháng, tăng năng lượng &amp; chống mệt mỏi.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Bảo vệ và phục hồi chức năng phổi, gan &amp; thận.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Cải thiện lưu thông máu huyết, tuần hoàn tim mạch và giảm stress.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Hỗ trợ phòng ngừa và điều trị ung thư, tiểu đường, huyết áp, mất ngủ.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Giúp tăng sinh lý cho cả hai giới.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Chống oxy hóa, trẻ hóa cơ thể.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tiện dụng với dạng viên.
+                        </li>
+                    </div>
+                </div>
+            </section>
+
+            <!--  -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Thành phần chính:</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            100% Bột nấm đông trùng hạ thảo (Cordyceps militaris): 300 mg.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Phụ liệu: Vỏ nang gelatin vừa đủ 1 viên.
+                        </li>
+
+                        <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                            <h2 class="o_page_header">Cách dùng:</h2>
+                        </section>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Liều phục hồi: mỗi ngày dùng 2 viên, vào sáng và trưa.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Liều duy trì: mỗi ngày dùng đều 1 viên, dùng đều mỗi sáng.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Sản phẩm có thể dùng thường xuyên.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Hấp thu tốt khi dùng lúc đói.
+                        </li>
+
+                        <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                            <h2 class="o_page_header">Bảo quản:</h2>
+                        </section>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nơi khô ráo thoáng mát.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tránh ánh nắng mặt trời.
+                        </li>
+
+                        <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                            <h2 class="o_page_header">Giá bán viên nang Đông trùng hạ thảo Hector:</h2>
+                        </section>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Giá bán lẻ viên nang Hector là 900.000đ/lọ 30 viên.
+                        </li>
+                    </div>
+                </div>
+            </section>
+        </field>
     </record>
 
     <record id="product_product_hector_4" model="product.template">
@@ -88,7 +485,7 @@
         <!-- <field name="default_code">3B</field> -->
         <field name="image_1920" type="base64"
                file="ece/static/img/Dông-trùng-hạ-thảo-Hector-sợi-sấy.png"/>
-        <field name="company_id" ref="company2"/>
+        <field name="company_id" ref="company_demo_hector"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
     </record>
@@ -105,7 +502,7 @@
         <!-- <field name="default_code">3B</field> -->
         <field name="image_1920" type="base64"
                file="ece/static/img/Gel-Cleanser.jpg"/>
-        <field name="company_id" ref="company2"/>
+        <field name="company_id" ref="company_demo_sunhine"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
     </record>
@@ -121,7 +518,7 @@
         <!-- <field name="default_code">3B</field> -->
         <field name="image_1920" type="base64"
                file="ece/static/img/Thiet-ke-khong-ten.jpg"/>
-        <field name="company_id" ref="company2"/>
+        <field name="company_id" ref="company_demo_sunhine"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
     </record>
@@ -137,7 +534,7 @@
         <!-- <field name="default_code">3B</field> -->
         <field name="image_1920" type="base64"
                file="ece/static/img/nvcs.png"/>
-        <field name="company_id" ref="company2"/>
+        <field name="company_id" ref="company_demo_nvcs"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
     </record>
@@ -153,9 +550,10 @@
         <!-- <field name="default_code">3B</field> -->
         <field name="image_1920" type="base64"
                file="ece/static/img/vjp.png"/>
-        <field name="company_id" ref="company2"/>
+        <field name="company_id" ref="company_demo_vjp"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
+
     </record>
 
 </odoo>
