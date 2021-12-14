@@ -97,7 +97,7 @@
                         <li style="line-heght: 1.75; padding: 8px 0px">
                             Phụ nữ sau sinh, ít sữa hoặc không có sữa cho con.
                         </li>
-                        <p>Công dụng nổi bật</p>
+                        <p style="margin-top: 10px">Công dụng nổi bật</p>
                         <li style="line-heght: 1.75; padding: 8px 0px">
                             Tăng đề kháng, tăng sức khỏe.
                         </li>
@@ -138,12 +138,13 @@
                         <li style="line-heght: 1.75; padding: 8px 0px">
                             Đẳng sâm (100 mg).
                         </li>
-                        <li style="line-heght: 1.75; padding: 8px 0px">
+                        <li style="line-heght: 1.75; padding: 8px 0px;">
                             Phụ liệu: chất chống oxy hóa (Acid ascorbic (L-)), chất ổn định (xanthan gum, canxi
-                            lactate), chất tạo ngọt (sucralose, stevia), đường mía, nước tinh khiết vừa đủ 1 chai 50ml.
+                            lactate), chất tạo ngọt (sucralose, stevia), đường mía, nước tinh khiết vừa đủ 1 chai
+                            50ml.
                         </li>
 
-                        <p>Hướng dẫn sử dụng nước đông trùng hạ thảo Hector Sâm</p>
+                        <p style="margin-top: 10px">Hướng dẫn sử dụng nước đông trùng hạ thảo Hector Sâm</p>
                         <li style="line-heght: 1.75; padding: 8px 0px">
                             Uống 1-2 chai/ngày.
                         </li>
@@ -151,7 +152,7 @@
                             Uống trước khi ăn sáng. Lắc đều trước khi uống. Dùng ngon hơn khi ướp lạnh.
                         </li>
 
-                        <p>Bảo quản:</p>
+                        <p style="margin-top: 10px;">Bảo quản:</p>
                         <li style="line-heght: 1.75; padding: 8px 0px">
                             Nơi khô ráo thoáng mát.
                         </li>
@@ -159,7 +160,7 @@
                             Tránh ánh nắng mặt trời.
                         </li>
 
-                        <p>Lưu ý:</p>
+                        <p style="margin-top: 10px">Lưu ý:</p>
                         <li style="line-heght: 1.75; padding: 8px 0px">
                             Sản phẩm không phải là thuốc, không có tác dụng thay thế thuốc chữa bệnh.
                         </li>
@@ -169,7 +170,6 @@
                         <p style="line-heght: 1.75; padding: 10px 0px; font-size: 1rem; font-weight: 900;">
                             Giá bán Đông trùng hạ thảo Hector Sâm: Giá bán lẻ chính hãng là 450.000đ/hộp 10 chai.
                         </p>
-
                     </div>
                 </div>
             </section>
@@ -229,7 +229,7 @@
                             Nam giới có nhu cầu cải thiện về da, tóc, xương khớp.
                         </li>
 
-                        <p>Công dụng nổi bật của Đông trùng hạ thảo Hector Collagen</p>
+                        <p style="margin-top: 10px">Công dụng nổi bật của Đông trùng hạ thảo Hector Collagen</p>
                         <li style="line-heght: 1.75; padding: 8px 0px">
                             Tăng đề kháng, tăng sức khỏe.
                         </li>
@@ -382,10 +382,9 @@
                         <li style="line-heght: 1.75; padding: 8px 0px">
                             Có nhu cầu trẻ hóa và tăng cuờng sức khỏe.
                         </li>
-                        <li style="line-heght: 1.75; padding: 8px 0px">
-                            *Trừ phụ nữ mang thai, người suy gan, suy thận và người dị ứng với đông trùng hạ thảo.
-                        </li>
-
+                        <p style="line-heght: 1.75; padding: 8px 0px">
+                            * Trừ phụ nữ mang thai, người suy gan, suy thận và người dị ứng với đông trùng hạ thảo.
+                        </p>
                     </div>
                 </div>
             </section>
@@ -488,8 +487,126 @@
         <field name="company_id" ref="company_demo_hector"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
-    </record>
+        <!-- Description-->
+        <field name="website_description" type="xml">
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Mô tả</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <p>
+                            Đông trùng hạ thảo Hector sấy thăng hoa là loại dùng để uống với nước nóng như uống trà hoặc
+                            nấu với cháo và lẩu, soup rất bổ dưỡng.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!--  -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Đối tượng sử dụng</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Sợi đông trùng hạ thảo Hector tốt cho người lao động trí óc và thể lực với cường độ cao
+                            (doanh nhân, vận động viên…)
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người lớn tuổi và người vừa bệnh dậy, người suy nhược và thể trạng yếu
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Người bệnh tiểu đường, huyết áp, người cần hỗ trợ, bảo vệ chức năng gan, thận phổi và đặc
+                            biệt bệnh ung thư.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Có nhu cầu trẻ hóa và tăng cuờng sức khỏe.
+                        </li>
+                    </div>
+                </div>
+            </section>
 
+            <!-- -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Công dụng nổi bật</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Bồi bổ sức khỏe, tăng sức đề kháng, tăng năng lượng &amp; chống mệt mỏi.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Bảo vệ và phục hồi chức năng phổi, gan &amp; thận.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Cải thiện lưu thông máu huyết, tuần hoàn tim mạch và giảm stress.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Hỗ trợ phòng ngừa và điều trị ung thư, tiểu đường, huyết áp, mất ngủ.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Giúp tăng sinh lý cho cả hai giới.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Chống oxy hóa, trẻ hóa cơ thể.
+                        </li>
+                    </div>
+                </div>
+            </section>
+
+            <!--  -->
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Thành phần chính:</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <p style="line-heght: 1.75; padding: 8px 0px">
+                            100% Sợi nấm Đông trùng hạ thảo sấy thăng hoa.
+                            Không chứa tạp chất, không chất bảo quản hay bất kỳ thành phần lạ nào khác
+                        </p>
+
+                        <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                            <h2 class="o_page_header">Cách dùng:</h2>
+                        </section>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Pha trà: ngâm 2 – 3 sợi nấm với 150 – 200 ml nước sôi trong 10 phút. Dùng cả nước lẫn sợi
+                            nấm. Mỗi ngày có thể sử dụng 1 – 2 lần, tuỳ nhu cầu.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Ngâm rượu: 5gr nấm đông trùng hạ thảo/ 1 lít rượu
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Ngâm mật ong: 5gr nấm đông trùng hạ thảo/ 1 lít mật ong
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nấu cháo/soup: sử dụng như một thành phần nguyên liệu để nấu cháo hay soup dinh dưỡng…, dùng
+                            2 – 3 sợi nấm/chén. Dùng 1 – 2 chén/ngày.
+                        </li>
+
+                        <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                            <h2 class="o_page_header">Bảo quản:</h2>
+                        </section>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Nơi khô ráo thoáng mát.
+                        </li>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Tránh ánh nắng mặt trời.
+                        </li>
+
+                        <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                            <h2 class="o_page_header">Giá bán sản phẩm sợi Đông trùng hạ thảo Hector sấy thăng hoa</h2>
+                        </section>
+                        <li style="line-heght: 1.75; padding: 8px 0px">
+                            Hector sợi sấy có giá bán là 900.000đ/lọ.
+                        </li>
+                    </div>
+                </div>
+            </section>
+        </field>
+    </record>
 
     <record id="product_product_sunshine_1" model="product.template">
         <field name="name">Gel Rửa Mặt IDENEL 150ml</field>
