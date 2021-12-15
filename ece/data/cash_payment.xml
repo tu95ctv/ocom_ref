@@ -26,7 +26,7 @@
 
     <record id="cash_acquirer_transfer" model="payment.acquirer">
         <field name="name">Tiền mặt</field>
-        <field name="provider">cash</field>
+        <field name="provider">transfer</field>
         <field name="sequence">2</field>
         <field name="view_template_id" ref="default_acquirer_button"/>
         <field name="image_128" type="base64" file="payment_transfer/static/src/img/transfer_icon.png"/>

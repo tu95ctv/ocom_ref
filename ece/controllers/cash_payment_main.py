@@ -19,8 +19,7 @@ class TransferController(http.Controller):
         # print (haha)
         post
         _logger.info('Beginning form_feedback with post data %s', pprint.pformat(post))  # debug
-        request.env['payment.transaction'].sudo().form_feedback(post, 'cash')
-        # return request.redirect('/shop/confirmation')
+        request.env['payment.transaction'].sudo().form_feedback(post, 'transfer')
         return werkzeug.utils.redirect('/payment/process')
         # return werkzeug.utils.redirect('/shop/confirmation')
 

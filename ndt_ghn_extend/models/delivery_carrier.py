@@ -63,7 +63,7 @@ class ProviderGridNDT(models.Model):
                 'price': price_unit,
                 'error_message': False,
                 'warning_message': False,
-                'company_kakkaka':1}
+                }
         return rs
 
 

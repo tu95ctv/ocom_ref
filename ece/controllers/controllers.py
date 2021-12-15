@@ -386,7 +386,6 @@ class WebsiteSaleDelivery1(WebsiteSaleDelivery):
     def cart_carrier_rate_shipment(self, carrier_id, **kw):
         order = request.website.sale_get_order(force_create=True)
         company_id = kw.get('company_id')
-        print ('**company_id cart_carrier_rate_shipment**',company_id)
         if not int(carrier_id) in order._get_delivery_methods().ids:
             raise UserError(_('It seems that a delivery method is not compatible with your address. Please refresh the page and try again.'))
 
@@ -394,9 +393,7 @@ class WebsiteSaleDelivery1(WebsiteSaleDelivery):
 
         res = {'carrier_id': carrier_id}
         carrier = request.env['delivery.carrier'].sudo().browse(int(carrier_id)).with_context(web_company=company_id)
-        print ('###############################################################')
         rate = carrier.rate_shipment(order, company_id)
-        print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         
         if rate.get('success'):
             # tax_ids = carrier.product_id.taxes_id.filtered(lambda t: t.company_id == order.company_id)

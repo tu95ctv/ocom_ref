@@ -17,6 +17,7 @@ class WebsiteSale2(WebsiteSale):
     pass
     @http.route('/shop/payment/validate', type='http', auth="public", website=True, sitemap=False)
     def payment_validate(self, transaction_id=None, sale_order_id=None, **post):
+        # print (ha1)
         """ Method that should be called by the server when receiving an update
         for a transaction. State at this point :
 
