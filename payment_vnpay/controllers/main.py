@@ -189,6 +189,7 @@ class VNpayController(http.Controller):
             # _logger.error('Error code 3: TX and SO do not same Acquirer %d != %d' % (so.payment_acquirer_id.id,tx.acquirer_id.id))
             # return werkzeug.utils.redirect('/shop/payment?payment_error=3')
         url = self.get_payment_url(tx, bankCode)
+        print ('url', url)
         return werkzeug.utils.redirect(url)
 
     def get_payment_url(self, tx, bankCode):

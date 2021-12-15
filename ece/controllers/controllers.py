@@ -29,9 +29,6 @@ from odoo.addons.website_form.controllers.main import WebsiteForm
 from odoo.osv import expression
 _logger = logging.getLogger(__name__)
 
-
-###
-
 def sitemap_shop(env, rule, qs):
         if not qs or qs.lower() in '/shop':
             yield {'loc': '/shop'}
