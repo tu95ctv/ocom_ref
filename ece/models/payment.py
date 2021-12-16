@@ -32,7 +32,7 @@ class TransferPaymentAcquirer(models.Model):
 
     def cash_get_form_action_url(self):
         # print (ha1)
-        return '/payment/transfer/feedback'
+        return '/payment/cash/feedback'
 
 #     def _format_transfer_data(self):
 #         company_id = self.env.company.id

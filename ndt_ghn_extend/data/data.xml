@@ -4,6 +4,7 @@
         <record model="product.product" id ="giao_hang_nhanh_delivery">
             <field name="name">Dịch vụ giao hàng nhanh</field>
             <field name="type">service</field>
+            <field name="taxes_ids" eval="[(5,0,0)]" />
         </record>
 
         <!-- <record model="res.partner.hcategory" id ="hcategory_carrier">
