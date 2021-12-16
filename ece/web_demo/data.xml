@@ -1251,7 +1251,48 @@
         <field name="company_id" ref="company_demo_vjp"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
-
+        <!-- Description -->
+        <field name="website_description" type="xml">
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Lĩnh vực hoạt động</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li>
+                            Đào tạo và tư vấn tuyển dụng nhân lực IT
+                        </li>
+                        <li>
+                            Tư vấn, giới thiệu đối tác kinh doanh
+                        </li>
+                        <li>
+                            Tư vấn &amp; hỗ trợ dự án offshore
+                        </li>
+                    </div>
+                </div>
+            </section>
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Tầm nhìn và sứ mệnh</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="padding: 10px 0">
+                            Hỗ trợ các dự án đang thiếu nhân lực trầm trọng của thị trường CNTT Nhật Bản bằng hình thức
+                            đào tạo, cung cấp nhân lực IT chất lượng cao.
+                        </li>
+                        <li style="padding: 10px 0">
+                            Qua đó, giúp nhanh chóng nâng cao trình độ kỹ thuật, kỹ năng cho nhân lực Việt Nam, đóng góp
+                            cho sự nghiệp phát triển của Việt Nam và Nhật Bản.
+                        </li>
+                    </div>
+                </div>
+            </section>
+            <div style="text-align: center; margin: 10px 0;">
+                <img src="/ece/static/img/MicrosoftTeams-image.png"
+                     style="width: 1054px; height: 456px; object-fit: contain; text-align: center"/>
+            </div>
+        </field>
     </record>
 
     <record id="extra_image_demo1" model="product.image">
