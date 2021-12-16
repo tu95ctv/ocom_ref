@@ -46,8 +46,8 @@ class Sale(models.Model):
         self = self.sudo()
         lines = self.order_line
         group = {}
-        for l in lines: 
-            key  = l.company2_id or l.product_id.company_id
+        for l in lines:
+            key = l.company2_id or l.product_id.company_id
             d = group.setdefault(key, self.env['sale.order.line'])
             group[key] = d | l
 

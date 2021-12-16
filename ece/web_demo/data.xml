@@ -490,7 +490,6 @@
         <field name="company_id" ref="company_demo_hector"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
-        <field name='product_template_image_ids' eval="[(5,0,0)]" />
         <!-- Description-->
         <field name="website_description" type="xml">
             <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
@@ -1251,18 +1250,110 @@
         <field name="company_id" ref="company_demo_vjp"/>
         <field name="sale_line_warn">no-message</field>
         <field name="is_published">True</field>
-
+        <!-- Description -->
+        <field name="website_description" type="xml">
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Lĩnh vực hoạt động</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li>
+                            Đào tạo và tư vấn tuyển dụng nhân lực IT
+                        </li>
+                        <li>
+                            Tư vấn, giới thiệu đối tác kinh doanh
+                        </li>
+                        <li>
+                            Tư vấn &amp; hỗ trợ dự án offshore
+                        </li>
+                    </div>
+                </div>
+            </section>
+            <section data-snippet-id="title" class="mt32" style="padding: 0 8px;">
+                <h2 class="o_page_header">Tầm nhìn và sứ mệnh</h2>
+            </section>
+            <section data-snippet-id="text-block" style="padding: 0 20px;">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+                        <li style="padding: 10px 0">
+                            Hỗ trợ các dự án đang thiếu nhân lực trầm trọng của thị trường CNTT Nhật Bản bằng hình thức
+                            đào tạo, cung cấp nhân lực IT chất lượng cao.
+                        </li>
+                        <li style="padding: 10px 0">
+                            Qua đó, giúp nhanh chóng nâng cao trình độ kỹ thuật, kỹ năng cho nhân lực Việt Nam, đóng góp
+                            cho sự nghiệp phát triển của Việt Nam và Nhật Bản.
+                        </li>
+                    </div>
+                </div>
+            </section>
+            <div style="text-align: center; margin: 10px 0;">
+                <img src="/ece/static/img/MicrosoftTeams-image.png"
+                     style="width: 1054px; height: 456px; object-fit: contain; text-align: center"/>
+            </div>
+        </field>
     </record>
 
-    <record id="extra_image_demo1" model="product.image" >
+    <record id="extra_image_demo1" model="product.image">
         <field name="image_1920" type="base64" file="ece/static/img/demo1.jpg"/>
-        <field name="product_tmpl_id" ref="product_product_hector_4" />
+        <field name="product_tmpl_id" ref="product_product_hector_4"/>
         <field name="name">demo1</field>
     </record>
-    <record id="extra_image_demo2" model="product.image" >
+    <record id="extra_image_demo2" model="product.image">
         <field name="image_1920" type="base64" file="ece/static/img/demo2.jpg"/>
-        <field name="product_tmpl_id" ref="product_product_hector_4" />
+        <field name="product_tmpl_id" ref="product_product_hector_4"/>
         <field name="name">demo1</field>
+    </record>
+
+    <record id="extra_image_demo1" model="product.image">
+        <field name="image_1920" type="base64" file="ece/static/img/demo1.jpg"/>
+        <field name="product_tmpl_id" ref="product_product_sunshine_1"/>
+        <field name="name">demo2</field>
+    </record>
+    <record id="extra_image_demo2" model="product.image">
+        <field name="image_1920" type="base64" file="ece/static/img/demo2.jpg"/>
+        <field name="product_tmpl_id" ref="product_product_sunshine_1"/>
+        <field name="name">demo2</field>
+    </record>
+
+    <record id="extra_image_demo2" model="product.image">
+        <field name="image_1920" type="base64" file="ece/static/img/z2289986880050_b.jpg"/>
+        <field name="product_tmpl_id" ref="product_product_sunshine_2"/>
+        <field name="name">demo1</field>
+    </record>
+
+    <record id="extra_image_demo3" model="product.image">
+        <field name="image_1920" type="base64"
+               file="ece/static/img/Hector-Sâm-phục-hồi-nhanh-sức-khỏe-cho-người-ốm-người-bệnh.jpg"/>
+        <field name="product_tmpl_id" ref="product_product_hector_1"/>
+        <field name="name">demo4</field>
+    </record>
+    <record id="extra_image_demo4" model="product.image">
+        <field name="image_1920" type="base64"
+               file="ece/static/img/Hector-Sâm-tăng-cường-sinh-lực-cho-người-chơi-thể-thao.jpg"/>
+        <field name="product_tmpl_id" ref="product_product_hector_1"/>
+        <field name="name">demo5</field>
+    </record>
+
+    <record id="extra_image_demo6" model="product.image">
+        <field name="image_1920" type="base64"
+               file="ece/static/img/Nước-Dông-trùng-hạ-thảo-Hector-Collagen.png"/>
+        <field name="product_tmpl_id" ref="product_product_hector_2"/>
+        <field name="name">demo6</field>
+    </record>
+
+    <record id="extra_image_demo7" model="product.image">
+        <field name="image_1920" type="base64"
+               file="ece/static/img/Dong-trung-ha-thao-hector-vien-nang.jpg"/>
+        <field name="product_tmpl_id" ref="product_product_hector_3"/>
+        <field name="name">demo7</field>
+    </record>
+
+    <record id="extra_image_demo8" model="product.image">
+        <field name="image_1920" type="base64"
+               file="ece/static/img/Dông-trùng-hạ-thảo-Hector-sợi-sấy.png"/>
+        <field name="product_tmpl_id" ref="product_product_hector_4"/>
+        <field name="name">demo8</field>
     </record>
 
 </odoo>
