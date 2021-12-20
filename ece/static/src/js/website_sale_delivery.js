@@ -1,4 +1,5 @@
 odoo.define('ece.checkout', function (require) {
+    'use strict';
     // var Checkout = require('website_sale_delivery.checkout');
     
     var core = require('web.core');

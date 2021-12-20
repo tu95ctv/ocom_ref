@@ -3,7 +3,7 @@
     <data noupdate="1">
          <record id="config_parameter_web_base_title_demo" model="ir.config_parameter">
             <field name="key">web.base.title</field>
-            <field name="value">dsp</field>
+            <field name="value">DSP ERP</field>
         </record>
     </data>
 </openerp>

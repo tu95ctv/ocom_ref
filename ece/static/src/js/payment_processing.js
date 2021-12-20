@@ -1,4 +1,5 @@
 odoo.define('ece.payment.processing', function (require) {
+    'use strict';
     var publicWidget = require('web.public.widget');
     var ajax = require('web.ajax');
     var core = require('web.core');

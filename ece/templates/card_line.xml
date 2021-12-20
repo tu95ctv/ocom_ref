@@ -16,11 +16,11 @@
                 </tr>
             </thead>
             <tbody>
-                <t t-foreach="website_sale_order.sol_gr_ids" t-as="sol_gr">
+                <t t-foreach="website_sale_order.sol_gr_ids.filtered(lambda i: i.company_id)" t-as="sol_gr">
                     <tr >
-                        <td><h3 t-field="sol_gr.company_id.name" /></td>
+                        <td><h3 t-esc="sol_gr.company_id.name or 'VC'" /></td>
                     </tr>
-                    <t t-foreach="sol_gr.sol_ids" t-as="line">
+                    <t t-foreach="sol_gr.sol_ids.filtered(lambda l: not l.is_delivery)" t-as="line">
                         <tr t-att-class="'optional_product info' if line.linked_line_id else None">
                             <td colspan="2" t-if="not line.product_id.product_tmpl_id" class='td-img'></td>
                             <td align="center" t-if="line.product_id.product_tmpl_id" class='td-img'>

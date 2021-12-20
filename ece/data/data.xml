@@ -3,6 +3,21 @@
 
     <data noupdate="0">
 
+        <record id="base.main_company" model="res.company">
+            <field name="name">CÔNG TY CỔ PHẦN VJP</field>
+            <field name="street">Gò Vấp</field>
+            <field name="city">Gò Vấp</field>
+            <field name="state_id" ref="base.state_vn_VN-SG"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="phone">0916022787</field>
+            <field name="email">ductu19871@gmail.com</field>
+            <field name="website">www.com</field>
+            <field name="vat">0303452460</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="logo" type="base64" file="ece/static/description/logo.png"/>
+            <field name="favicon" type="base64" file="ece/static/description/logo.png"/>
+        </record>
+
         <record id="company1" model="res.company">
             <field name="name">company A</field>
             <field name="parent_id" ref="base.main_company" />
@@ -13,7 +28,18 @@
             <field name="name">company B</field>
             <field name="parent_id" ref="base.main_company" />
             <field name="ghn_shop_id">1329421</field>
+        </record>   
+
+        <record id="u1p_user" model="res.users">
+            <field name="name">u1p</field>
+            <field name="login">u1p</field>
+            <field name="password">1</field>
+            <field name="groups_id" eval="[(4,ref('base.group_portal'))]"/>
+            <field name="active" eval="True"/>
+            <!-- <field name="company_id" ref="company1" />
+            <field name="company_ids" eval="[(6,0,[ref('company1')])]" /> -->
         </record>
+
 
         <record id="u1_user" model="res.users">
             <field name="name">u1e</field>
@@ -127,11 +153,6 @@
             <field name="is_published">True</field>
         </record>
 
-
-        <!-- <record id="product_category_deliveries" model="product.category">
-            <field name="parent_id" ref="product.product_category_all"/>
-            <field name="name">Deliveries</field>
-        </record> -->
         <record id="product_product_delivery_fix500" model="product.product">
             <field name="name">Fix 500</field>
             <field name="default_code">Delivery_007</field>
@@ -143,7 +164,7 @@
             <field name="invoice_policy">order</field>
         </record>
 
-        <record id="fix_500_delivery_carrier" model="delivery.carrier">
+        <!-- <record id="fix_500_delivery_carrier" model="delivery.carrier">
             <field name="name">Fix 500 delivery</field>
             <field name="fixed_price">500</field>
             <field name="free_over" eval="False"/>
@@ -152,7 +173,7 @@
             <field name="delivery_type">fixed</field>
             <field name="product_id" ref="product_product_delivery_fix500"/>
             <field name="is_published">True</field>
-        </record>
+        </record> -->
 
 
         <record id="product_product_delivery_fix1000" model="product.product">
@@ -166,21 +187,20 @@
             <field name="invoice_policy">order</field>
         </record>
 
-        <record id="fix_1000_delivery_carrier" model="delivery.carrier">
-            <field name="name">Fix 1000 delivery</field>
-            <field name="fixed_price">1000</field>
-            <field name="free_over" eval="False"/>
-            <field name="amount">1000</field>
-            <field name="sequence">1</field>
-            <field name="delivery_type">fixed</field>
-            <field name="product_id" ref="product_product_delivery_fix1000"/>
-            <field name="is_published">True</field>
-        </record>
+            <!-- <record id="fix_1000_delivery_carrier" model="delivery.carrier">
+                <field name="name">Fix 1000 delivery</field>
+                <field name="fixed_price">1000</field>
+                <field name="free_over" eval="False"/>
+                <field name="amount">1000</field>
+                <field name="sequence">1</field>
+                <field name="delivery_type">fixed</field>
+                <field name="product_id" ref="product_product_delivery_fix1000"/>
+                <field name="is_published">True</field>
+            </record> -->
 
-        <!-- <function model="ir.model.data" name="write">
-            <value eval="[ref('delivery.free_delivery_carrier')]"/>
-            <value eval="{'noupdate': 'False'}"/>
-        </function> -->
+
+
+
 
         <function model="ir.model.data" name="set_noupdate_false">
             <value eval="'delivery.free_delivery_carrier'"/>
@@ -201,6 +221,14 @@
             <field name="model_id" ref="model_product_template"/>
             <field name="domain_force"> ['|', ('company_id', 'child_of', company_ids), ('company_id', '=', False)]</field>
         </record>
+        <!-- ############### -->
+
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+            <value>res.partner</value>
+            <value eval="[
+                'district_id', 'ward_id'
+            ]"/>
+        </function>
 
     </data>
 </odoo>

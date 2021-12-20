@@ -32,6 +32,7 @@
         'views/product_template.xml',
         'views/js_template.xml',
         'templates/product.xml',
+        'templates/address.xml',
         'templates/card_line.xml',
         'templates/payment_delivery.xml',
         'templates/layout.xml',
