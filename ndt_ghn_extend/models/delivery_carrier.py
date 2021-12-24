@@ -106,8 +106,9 @@ class ProviderGridNDT(models.Model):
         from_district = int(order.warehouse_id.partner_id.district_id.ghn_id)
         # print ('**from_district***', from_district)
         partner_shipping_id = order.partner_shipping_id or order.partner_id
-        to_district_id = int(partner_shipping_id.district_id.ghn_id)
-        to_ward_code = partner_shipping_id.ward_id.ghn_code 
+        to_district_id = partner_shipping_id.district_id.ghn_id
+        to_ward_code = partner_shipping_id.ward_id.ghn_code
+        print ('**to_ward_code**', to_ward_code)
         
         #
         company_id = self._context.get('web_company')
@@ -119,9 +120,9 @@ class ProviderGridNDT(models.Model):
 
         
 
-        demo_ward = self.env['res.country.ward'].browse(1)
-        to_ward_code = demo_ward.ghn_code
-        to_district_id = demo_ward.district_id.ghn_id
+        # demo_ward = self.env['res.country.ward'].browse(1)
+        # to_ward_code = demo_ward.ghn_code
+        # to_district_id = demo_ward.district_id.ghn_id
 
         # print ('demo_ward, to_ward_code, to_district_id', demo_ward, to_ward_code, to_district_id )
        
