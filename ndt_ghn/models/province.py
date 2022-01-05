@@ -141,7 +141,7 @@ class Province(models.Model):
             if map==0:
                 print ('name  not map**** ', name)
     
-    def fetch_district_ghn_items_of_this_province(self):
+    def fetch_district_ghn_items_of_this_province(self):# get quận, huyện
         headers = {'token': '81f253e7-e8da-11ea-84a7-3e05d9a3136e'}
         url = 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district'
         data = {"province_id":int(self.ghn_id)}
