@@ -4,7 +4,7 @@ from odoo.exceptions import UserError
 from time import sleep
 from odoo.tools import config
 from datetime import date
-from odoo.addons.queue_job.job import job
+# from odoo.addons.queue_job.job import job #khoong hieu sao phien bang nay bi @job
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -44,7 +44,7 @@ class Sale(models.Model):
 
     # _inherits = {'tp.sale.order.parent': 'tp_sale_parent_id'}
     # amount = fields.Float(compute='_compute_amount', store=True)
-    amount = fields.Float(compute='_compute_amount', store=True)
+    amount = fields.Float()
     @api.depends('line_ids.price','m2m_a_line_ids')
     def _compute_amount(self):
         for rec in self:
@@ -60,6 +60,19 @@ class Sale(models.Model):
     b = fields.Integer(compute='_b', store=1, groups='hr.group_hr_manager')
     c = fields.Integer(compute='_c', store=1)
     d = fields.Integer()
+
+    b = fields.Integer()
+    c = fields.Integer()
+    # d = fields.Integer()
+    e = fields.Integer()
+    g3 = fields.Integer()
+    abcd4 = fields.Integer(compute='_compute_g4',store=True)
+
+    def _compute_g4(self):
+        self.abcd4 = 1
+        # raise ValueError('kkkk')
+
+
     attachment_ids = fields.One2many('ir.attachment','res_id')
     line_id = fields.Many2one('tp.sale.order.line')
     name_line = fields.Char(related='line_id.name', store=True)
@@ -77,7 +90,7 @@ class Sale(models.Model):
     def _compute_m2m_a_line_ids(self):
         self.m2m_a_line_ids = False
 
-    @job
+    # @job # khoong hieu sao phien bang nay bi @job
     def create_queue(self, vals):
         print ("self._context.get('create')", self._context.get('create'))
         print ("self.env.user", self.env.user)
@@ -227,6 +240,9 @@ class Sale(models.Model):
     def test(self):
         # raise UserError(_('This addon is already installed on your system'))
         raise UserError(_('This addon is already installed on your system kaka'))
+
+    def action_test_for_debug(self):
+        self.write({'line_ids':[(0,0,{'product_id':1})]})
 
 
 

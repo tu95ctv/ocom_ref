@@ -1,16 +1,15 @@
 <odoo>
-    <record id="run_ghn_province" model="ir.cron">
-        <field name="name">ghn_province</field>
+    <record id="action_update_province_ghn_code_from_availabe_provines" model="ir.cron">
+        <field name="name">action_update_province_ghn_code_from_availabe_provines</field>
         <field name="active">False</field> 
         <field name="user_id" ref="base.user_root"/>
         <field name="interval_number">1</field>
         <field name="interval_type">minutes</field>
         <field name="numbercall">1</field>
         <field eval="False" name="doall"/>
-        <!-- <field eval="'res.country.state'" name="model"/> -->
         <field ref="ndt_ghn.model_res_country_state" name="model_id"/>
         <field name="state">code</field>
-        <field name="code">model.ghn_province()</field>
+        <field name="code">model.update_province_ghn_code_from_availabe_provines()</field>
     </record>
 
    
@@ -23,7 +22,6 @@
         <field name="interval_type">minutes</field>
         <field name="numbercall">1</field>
         <field eval="False" name="doall"/>
-        <!-- <field eval="'res.country.state'" name="model"/> -->
         <field ref="ndt_ghn.model_res_country_state" name="model_id"/>
         <field name="state">code</field>
         <field name="code">model.get_ghn_district_all_province()</field>

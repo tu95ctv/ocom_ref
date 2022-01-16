@@ -15,9 +15,9 @@
                 ],
     'images': ['images/main_screenshot.png'],
     'data': [
-            'data/province.xml',
-            'data/district.xml',
-            'data/ward.xml',
+            # 'data/province.xml',
+            # 'data/district.xml',
+            # 'data/ward.xml',
             'security/ir.model.access.csv',
             'views/res_partner_view.xml',
             'views/ward.xml',

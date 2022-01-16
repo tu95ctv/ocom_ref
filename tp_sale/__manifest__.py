@@ -12,7 +12,7 @@
         'security/security.xml',
 
         'data/email.xml',
-
+        'data/ir_actions_server.xml',
         # 'views/demo_view.xml',
         'views/tp_sale.xml',
         'views/tp_sale2.xml',

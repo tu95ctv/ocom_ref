@@ -9,8 +9,8 @@
         <field name="inherit_id" ref="partner_vn_localization.partner_vn_localization_district_form_view"></field>
         <field name="arch" type="xml">
             <field name="state_id" position="after">
-                <field name="ghn_code" />
-                <field name="ghn_id" />
+                <field name="ghn_district_code" />
+                <field name="ghn_district_id" />
                 <field name="char_json_wards_data" />
                 <field name="ward_ids" />
             </field>
@@ -22,8 +22,9 @@
         <field name="inherit_id" ref="partner_vn_localization.partner_vn_localization_district_tree_view" />
         <field name="arch" type="xml">
             <field name="state_id" position="after">
-                <field name="ghn_code" />
-                <field name="ghn_id" />
+                <field name="ghn_district_code" />
+                <field name="ghn_district_id" />
+                <field name="is_done_ward" />
             </field>
         </field>
     </record>

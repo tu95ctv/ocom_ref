@@ -103,10 +103,10 @@ class ProviderGridNDT(models.Model):
         shop_id = order.warehouse_id.ghn_shop_id
         service_id, service_type_id = False, int(order.delivery_service_type_id.code)
         # print ('**service_type_id**', service_type_id)
-        from_district = int(order.warehouse_id.partner_id.district_id.ghn_id)
+        from_district = int(order.warehouse_id.partner_id.district_id.ghn_district_id)# ghn_district_id is tring
         # print ('**from_district***', from_district)
         partner_shipping_id = order.partner_shipping_id or order.partner_id
-        to_district_id = partner_shipping_id.district_id.ghn_id
+        to_district_id = partner_shipping_id.district_id.ghn_district_id# ghn_district_id is tring
         to_ward_code = partner_shipping_id.ward_id.ghn_code
         print ('**to_ward_code**', to_ward_code)
         

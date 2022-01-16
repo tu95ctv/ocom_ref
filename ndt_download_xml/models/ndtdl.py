@@ -42,6 +42,8 @@ class NDTDLXML(models.AbstractModel):
     limit = fields.Integer()
     offset = fields.Integer()
     domain = fields.Char()
+    order_by_field_id = fields.Many2one('ir.model.fields', domain="[('model','=',model_name)]")
+    asc_desc = fields.Selection([('asc','asc'),('desc','desc')],required=True)
 
     @api.depends('model_id','select_model_id')
     def _compute_model_name(self):
@@ -124,13 +126,16 @@ class NDTDLXML(models.AbstractModel):
 
     def get_records(self):
         model = self.get_model()
+
         if not self.select_model_id:
-            rcs = model.browse(self._context.get('active_ids'))
+            # rcs = model.browse(self._context.get('active_ids'))
+            domain = [('id','in',self._context.get('active_ids'))]
         else:
             domain = eval(self.domain or '[]')
-            limit = self.limit
-            offset = self.offset
-            rcs = model.search( domain, limit=limit, offset=offset)
+        limit = self.limit
+        offset = self.offset
+        order = self.order_by_field_id.name and '%s %s'%(self.order_by_field_id.name, self.asc_desc) or None
+        rcs = model.search( domain, limit=limit, offset=offset, order=order)
         return rcs
 
 

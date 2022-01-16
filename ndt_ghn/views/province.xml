@@ -8,8 +8,9 @@
         <field name="inherit_id" ref="base.view_country_state_tree"></field>
         <field name="arch" type="xml">
             <field name="country_id" position="after">
-                <field name="ghn_code" />
-                <field name="ghn_id" />
+                <field name="ghn_province_code" />
+                <field name="ghn_province_id" />
+                <field name="note" />
             </field>
         </field>
     </record>
@@ -20,8 +21,8 @@
         <field name="inherit_id" ref="base.view_country_state_form"></field>
         <field name="arch" type="xml">
             <field name="country_id" position="after">
-                <field name="ghn_code" />
-                <field name="ghn_id" />
+                <field name="ghn_province_code" />
+                <field name="ghn_province_id" />
                 <field name="char_json_districts_data" />
             </field>
         </field>

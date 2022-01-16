@@ -18,6 +18,8 @@
                             <group>
                                 <field name="limit"/>
                                 <field name="offset" />
+                                <field name="order_by_field_id" />
+                                <field name="asc_desc" attrs="{'required':[('order_by_field_id','!=',False)]}"/>
                                 <field name="model_name" />
                                 <field name="domain" widget="domain" options="{'model': 'model_name'}"/>
                                 <!-- <field name="exclude_ids" widget="many2many_tags"/> -->
@@ -43,6 +45,10 @@
             <field name="binding_model_id" ref="base.model_res_country_state"/>
             <field name="binding_view_types">list</field>
         </record>
+
+      
+
+
 
         <record id="fixdl_form" model="ir.ui.view">
             <field name="name">ndtdl.fixdl</field>

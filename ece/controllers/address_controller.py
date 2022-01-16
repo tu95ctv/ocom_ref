@@ -35,7 +35,7 @@ class WebsiteSale2(WebsiteSale):
             state_required=country.state_required,
         )
 
-    @http.route(['/shop/state_infos/<model("res.country.state"):country>'], type='json', auth="public", methods=['POST'], website=True)
+    @http.route(['/shop/state_infos/<model("res.country.state"):state>'], type='json', auth="public", methods=['POST'], website=True)
     def state_infos(self, state, **kw):
         print ('**state**', state)
         return dict(

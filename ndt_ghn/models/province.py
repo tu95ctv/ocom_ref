@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from types import TracebackType
 from odoo import api, fields, models
 import re
 import requests
 from unidecode import unidecode
+import traceback
 # headers = ''
 # headers = {'token': '81f253e7-e8da-11ea-84a7-3e05d9a3136e'}
 # response = requests.post('https://online-gateway.ghn.vn/shiip/public-api/master-data/province', 
@@ -39,7 +41,7 @@ class Jsonb(fields.Char):
         return value
 
 
-def replacetrim(name):
+def replacetrim_province(name):
     name = re.sub('tỉnh |thành phố |tp |thủ đô ','',name,flags= re.I)
     name = re.sub('-',' ',name)
     name = re.sub(' +',' ', name)
@@ -104,27 +106,56 @@ def get_ghn_item_by_name(region_obj, ghn_items, item_name = 'DistrictName',\
 class Province(models.Model):
     _inherit = ['res.country.state']
     _sql_constraints = [
-        ('unique_ghn_code', 'unique (ghn_code)', 'unique_ghn_code'),
-        ('unique_ghn_id', 'unique (ghn_id)', 'unique_ghn_id'),
+        ('unique_ghn_province_code', 'unique (ghn_province_code)', 'unique_ghn_province_code'),
+        ('unique_ghn_province_id', 'unique (ghn_province_id)', 'unique_ghn_province_id'),
     ]
 
-    ghn_code = fields.Char()
-    ghn_id = fields.Integer()
+    ghn_province_code = fields.Char()
+    ghn_province_id = fields.Integer()
     char_json_districts_data = fields.Char()
+    note = fields.Char()
     
-    def ghn_province(self):
+
+    def clone_ghn_district_per_1_province(self): #new
+        try:
+            districts_per_province_ghn_items = self.fetch_district_ghn_items_of_this_province()
+            state_id = self.id
+            state_name = self.name
+            data_list = []
+            for district_item in districts_per_province_ghn_items:
+                name = district_item['DistrictName']
+                ghn_district_id = district_item['DistrictID']
+                code = district_item.get('Code')
+                if not self.env['res.country.district'].search([('name','=',name),('state_id','=', state_id)]):
+                    rs = self.env['res.country.district'].create({'name':name,
+                        'ghn_district_id':ghn_district_id, 'code':code, 'state_id': state_id, 'ghn_district_code':code})
+                    xml_id = 'ndt_ghn_.' + unidecode(state_name + '__' + name + '_' + str(rs.id)).replace(' ','_') 
+                    data_list.append({'xml_id': xml_id, 'record': rs})
+            self.env['ir.model.data']._update_xmlids(data_list)
+        except:
+            traceback.print_exc()
+            raise
+
+    def clone_ghn_district_per_multi_provinces(self): #new
+        for r in self:
+            r.clone_ghn_district_per_1_province()
+    
+    def _get_all_ghn_province_items(self):
         headers = {'token': token}
         response = requests.post('https://online-gateway.ghn.vn/shiip/public-api/master-data/province', 
                 headers=headers)
         rtj = response.json()
         ghn_provinces = rtj['data']
+        return ghn_provinces
 
-        for r in self.search([]):
-            name = replacetrim(r.name)
+    def update_province_ghn_code_from_availabe_provines(self):
+        ghn_provinces = self._get_all_ghn_province_items()
+        for r in self.search(['|',('country_id.name','ilike','Vietnam'),('country_id.name','ilike','việt nam')]):
+            name = replacetrim_province(r.name)
             map = 0
             for ghn_item in ghn_provinces:
                 ProvinceName = ghn_item['ProvinceName']
-                ProvinceName = replacetrim(ProvinceName)
+                ProvinceName = replacetrim_province(ProvinceName)
                 if ProvinceName == name:
                     map = 1
                 else:
@@ -136,36 +167,55 @@ class Province(models.Model):
                 if map ==1:
                     break
             if map ==1:
-                r.ghn_id = ghn_item['ProvinceID']
-                r.ghn_code = ghn_item['Code']
+                r.ghn_province_id = ghn_item['ProvinceID']
+                r.ghn_province_code = ghn_item['Code']
             if map==0:
                 print ('name  not map**** ', name)
+
+    def update_ghn_province_code_from_all_ghn_provines(self):#New
+        ghn_provinces = self._get_all_ghn_province_items()
+        available_vn_provinces = \
+            self.search(['|',('country_id.name','ilike','Vietnam'),('country_id.name','ilike','việt nam')])
+        available_vn_provinces_dicts = {i.name:i  for i in available_vn_provinces}
+        for ghn_item in ghn_provinces:
+            map = False
+            ProvinceName = ghn_item['ProvinceName']
+            for avail_province in available_vn_provinces:
+                name = avail_province.name
+                if ProvinceName == name:
+                    map = True
+                else:
+                    trim_ProvinceName= replacetrim_province(ProvinceName)
+                    trimed_name = replacetrim_province(name)
+                    if trim_ProvinceName == trimed_name:
+                        map = True
+                        avail_province.note = ProvinceName
+                
+                if map == True:
+                    avail_province.ghn_province_id = ghn_item['ProvinceID']
+                    avail_province.ghn_province_code = ghn_item['Code']
+                    break
+            if map ==0:
+                print (map==0, ProvinceName)
     
-    def fetch_district_ghn_items_of_this_province(self):# get quận, huyện
+    def fetch_district_ghn_items_of_this_province(self):
         headers = {'token': '81f253e7-e8da-11ea-84a7-3e05d9a3136e'}
         url = 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district'
-        data = {"province_id":int(self.ghn_id)}
+        data = {"province_id":int(self.ghn_province_id)}
         r = fetch_ghn(url, headers, data)
         return r['data']
 
     def get_ghn_districts_one_province(self):
-        ghn_items = self.fetch_district_ghn_items_of_this_province()
-        self.char_json_districts_data = ghn_items
+        districts_ghn_items = self.fetch_district_ghn_items_of_this_province()
+        self.char_json_districts_data = districts_ghn_items
 
         districts = self.env['res.country.district'].search([('state_id','=',self.id)])  
         for district in districts:
-            district.get_this_ghn_district(ghn_items)
-            # get_item = get_ghn_item_by_name(district, ghn_items)
-            # if get_item:
-            #     district.ghn_id = get_item['DistrictID']
-            #     district.ghn_code = get_item['Code']
-            # else:
-            #     print ('name  not map**** ', district.name)
-
+            district.update_this_district_ghn_code(districts_ghn_items)
 
     def get_ghn_district_all_province(self):
-        for r in self.search(['|',('country_id.name','ilike','Vietnam'),('country_id.name','ilike','việt nam')]):
-            r.get_ghn_districts_one_province()
+        for province in self.search(['|',('country_id.name','ilike','Vietnam'),('country_id.name','ilike','việt nam')]):
+            province.get_ghn_districts_one_province()
         
         
 

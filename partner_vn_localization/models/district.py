@@ -10,6 +10,6 @@ class District(models.Model):
     state_id = fields.Many2one('res.country.state', string='Province', required=True)
     active = fields.Boolean(default=True)
     name = fields.Char(string='District Name', required=True)
-    code = fields.Char(string='District Code', required=True)
+    code = fields.Char(string='District Code')
 
     
