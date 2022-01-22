@@ -57,11 +57,22 @@ class Sale(models.Model):
     order_date = fields.Date()  
     number = fields.Float(digits=(6,2))
     a = fields.Integer()
-    b = fields.Integer(compute='_b', store=1, groups='hr.group_hr_manager')
-    c = fields.Integer(compute='_c', store=1)
+    b = fields.Integer(compute='_b', inverse='_set_a', store=True )
+    
+    @api.depends('a')
+    def _b(self):
+        for r in self:
+            r.b = 2*r.a
+
+    def _set_a(self):
+        for r in self:
+            r.a = r.b/2  
+
+
+    # c = fields.Integer(compute='_c', store=1)
     d = fields.Integer()
 
-    b = fields.Integer()
+    # b = fields.Integer()
     c = fields.Integer()
     # d = fields.Integer()
     e = fields.Integer()
@@ -172,20 +183,20 @@ class Sale(models.Model):
     # d = fields.Integer(store=False)
     e = fields.Integer()
     
-    @api.depends('a', 'c', 'm2m_line_ids','line_ids')
-    def _b(self):
-        print ("inspect.stack()[1][3]", inspect.stack()[1][3])
-        print ('_b')
-        for r in self:
-            r.b = r.a
-            r.a = 2*r.b
+    # @api.depends('a', 'c', 'm2m_line_ids','line_ids')
+    # def _b(self):
+    #     print ("inspect.stack()[1][3]", inspect.stack()[1][3])
+    #     print ('_b')
+    #     for r in self:
+    #         r.b = r.a
+    #         r.a = 2*r.b
 
-    @api.depends('b')
-    def _c(self):
-        print ('_c')
-        for r in self:
-            r.c = r.b
-            r.a = 2*r.c 
+    # @api.depends('b')
+    # def _c(self):
+    #     print ('_c')
+    #     for r in self:
+    #         r.c = r.b
+    #         r.a = 2*r.c 
            
           
 
@@ -243,6 +254,13 @@ class Sale(models.Model):
 
     def action_test_for_debug(self):
         self.write({'line_ids':[(0,0,{'product_id':1})]})
+
+    def action_test_create_for_debug(self):
+        self.create({'name':1, 'line_ids':[(0,0,{'product_id':1})]})  
+
+    
+    def action_test_create_m2m_for_debug(self):
+        self.create({'name':1, 'm2m_line_ids':[(0,0,{'product_id':1})]})
 
 
 

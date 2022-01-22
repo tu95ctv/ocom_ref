@@ -1,0 +1,108 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="my_sale_order_list">
+      <field name="name">my_sale_order_list</field>
+      <field name="model">my_sale.order</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="date_order" />
+          <field name="state" />
+          <field name="partner_id" />
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="my_sale_order_form">
+      <field name="name">my_sale_order_form</field>
+      <field name="model">my_sale.order</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <field name="state" widget="statusbar" statusbar_visible="draft,sent,sale" />
+          </header>
+          <sheet>
+          <group>
+            <group>
+              <field name="company_id" />
+              <field name="name" />
+            </group>
+            <group>
+              <field name="date_order" />
+              <field name="partner_id" />
+            </group>
+          </group>
+          <notebook>
+            <page string="Order Lines" name="order_lines">
+                <field name="order_line" >
+                    <tree editable="bottom">
+                      <field name="product_id" />
+                      <field name="product_uom_qty" />
+                      <field name="price_unit" />
+                      <field name="price_total" />
+                    </tree>
+                </field>
+
+                <group col="6" class="mt-2 mt-md-0">
+                  <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                      <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                          <label for="amount_total"/>
+                      </div>
+                      <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" />
+                  </group>
+                  <div class="oe_clear"/>
+              </group>
+            </page>
+          </notebook>
+        </sheet>
+        
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_my_sale">
+      <field name="name">My sale</field>
+      <field name="res_model">my_sale.order</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="my_sale.action_server">
+      <field name="name">my_sale server</field>
+      <field name="model_id" ref="model_my_sale_my_sale"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="My Sale" id="menu_my_sale_order_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="My Sale" id="menu_my_sale_order" parent="my_sale.menu_my_sale_order_root" action="my_sale.action_my_sale" />
+
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="my_sale.menu_1_list" parent="my_sale.menu_1"
+              action="my_sale.action_window"/>
+    <menuitem name="Server to list" id="my_sale" parent="my_sale.menu_2"
+              action="my_sale.action_server"/>
+-->
+  </data>
+</odoo>

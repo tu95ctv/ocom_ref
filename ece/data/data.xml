@@ -3,7 +3,7 @@
 
     <data noupdate="0">
 
-        <record id="base.main_company" model="res.company">
+        <!-- <record id="base.main_company" model="res.company">
             <field name="name">CÔNG TY CỔ PHẦN VJP</field>
             <field name="street">Gò Vấp</field>
             <field name="city">Gò Vấp</field>
@@ -16,7 +16,7 @@
             <field name="currency_id" ref="base.VND"/>
             <field name="logo" type="base64" file="ece/static/description/logo.png"/>
             <field name="favicon" type="base64" file="ece/static/description/logo.png"/>
-        </record>
+        </record> -->
 
         <record id="company1" model="res.company">
             <field name="name">company A</field>
