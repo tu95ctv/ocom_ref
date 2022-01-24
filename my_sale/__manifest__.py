@@ -20,10 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'payment'],
+    'depends': ['base', 'payment','sale'],
 
     # always loaded
     'data': [
+        'report/my_sale_report_templates.xml',
+        'report/my_sale_report.xml',
+        'data/data.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',

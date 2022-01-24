@@ -45,9 +45,9 @@ class mysaleline(models.Model):
     _name = 'my_sale.order.line'
     _description = "My Sales Order line"
 
-    order_id = fields.Many2one('my_sale.order')
+    order_id = fields.Many2one('my_sale.order',required=True, ondelete='cascade')
     order2_id = fields.Many2one('my_sale.order')
-    product_id = fields.Many2one('product.product')
+    product_id = fields.Many2one('product.product', required=1)
     product_uom_qty = fields.Float(string='Quantity', digits='Product Unit of Measure', required=True, default=1.0)
     price_unit = fields.Float('Unit Price', required=True, digits='Product Price', default=0.0)
     price_total = fields.Float(compute='_compute_amount', string='Total', readonly=True, store=True)
