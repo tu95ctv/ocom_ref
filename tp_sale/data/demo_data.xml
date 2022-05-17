@@ -1,0 +1,21 @@
+<odoo>
+    <!-- <record id="product_product_hector_1" model="product.template">
+        <field name="name">Đông trùng hạ thảo Hector Sâm</field>
+    </record> -->
+
+    <record id="product_product_p1_1" model="product.product">
+        <field name="name">p1</field>
+        
+    </record>
+
+    <record id="tp_sale_order_1" model="tp.sale.order">
+        <field name="name">Nguyễn Đức Tứ</field>
+        <field name="g_field">abc</field>
+    </record>
+
+    <record id="tp_sale_line_1" model="tp.sale.order.line">
+        <field name="product_id" ref="tp_sale.product_product_p1_1"></field>
+    </record>
+
+
+</odoo>

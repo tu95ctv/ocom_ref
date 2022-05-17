@@ -51,20 +51,7 @@
                 </tbody>
             </table>
 
-            <div class="clearfix" name="so_total_summary">
-                <div id="total" class="row" name="total">
-                    <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
-                        <table class="table table-sm">
-                            <tr class="border-black o_total">
-                                <td name="td_amount_total_label"><strong>Total</strong></td>
-                                <td name="td_amount_total" class="text-right">
-                                    <span t-field="doc.amount_total"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            
         </t>
     </template>
     <template id="report_my_saleorder">

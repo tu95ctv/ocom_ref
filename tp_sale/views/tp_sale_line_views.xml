@@ -5,6 +5,7 @@
         <field name="model">tp.sale.order.line</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="line1_ids" />
                 <field name="name" />
                 <field name="product_id" />
                 <field name="qty" />
@@ -14,26 +15,27 @@
         </field>
     </record>
 
-    <record id="tp_sale_line_form1" model="ir.ui.view">
+    <!-- <record id="tp_sale_line_form1" model="ir.ui.view">
         <field name="name">tp.sale.order.form</field>
         <field name="model">tp.sale.order.line</field>
         <field name="arch" type="xml">
             <form>
                 <group>
                     <group>
-                <field name="name" />
-                <field name="product_id" />
-                </group>
+                        <field name="name" />
+                        <field name="product_id" />
+                        <field name="line1_ids" />
+                    </group>
                     <group>
-                                    <field name="qty" />
+                        <field name="qty" />
 
-                <field name="price_unit" />
-                <field name="price" />
-                </group>
+                        <field name="price_unit" />
+                        <field name="price" />
+                    </group>
                 </group>
             </form>
         </field>
-    </record>
+    </record> -->
 
 
     <record id="tp_sale_line_form2" model="ir.ui.view">
@@ -43,18 +45,22 @@
             <form>
                 <group>
                     <group>
-                <field name="name" />
-                <field name="product_id" />
-                <field name="qty" />
-                </group>
+                        <field name="name" />
+                        <field name="product_id" />
+                        <field name="qty" />
+                        <field name="line1_ids" > 
+                            <tree editable="bottom">
+                                <field name="name"></field>
+                                <field name="product_id" />
+                            </tree>
+                        </field>     
+                    </group>
                     <group>
-                <field name="price_unit" />
-                <field name="price" />
-                </group>
+                        <field name="price_unit" />
+                        <field name="price" />
+                    </group>
                 </group>
             </form>
         </field>
     </record>
-
-
 </odoo>

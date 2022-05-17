@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="my_sale_xlsx"
+        model="my_sale.order"
+        string="Print to XLSX"
+        report_type="xlsx"
+        name="module_name.report_name"
+        file="sale_order"
+        attachment_use="False"
+    />
+
+</odoo>

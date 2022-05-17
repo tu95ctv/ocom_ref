@@ -14,7 +14,7 @@ class DocsConfigInstaller(models.TransientModel):
     _name = 'docs_config.installer'
     _inherit = 'res.config.installer'
     _rec_name = 'host'
-    _logo_image = None
+    _logo_image = fields.Binary()
     
     @api.model
     def _get_image(self):

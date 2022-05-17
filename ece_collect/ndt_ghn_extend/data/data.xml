@@ -72,9 +72,9 @@
             <value eval="{'noupdate': False}" />
         </function>
 
-        <record id="stock.warehouse0" model="stock.warehouse">
+        <!-- <record id="stock.warehouse0" model="stock.warehouse">
             <field name="ghn_shop_id">1295159</field>
-        </record>
+        </record> -->
         
     </data>
 </odoo>
